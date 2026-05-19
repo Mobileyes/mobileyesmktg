@@ -1,0 +1,25 @@
+{
+  "crons": [
+    {
+      "path": "/api/admin/inbox/sync",
+      "schedule": "*/15 * * * *"
+    },
+    {
+      "path": "/api/admin/streams/check",
+      "schedule": "*/5 * * * *"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.mobileyes.live"
+        }
+      ],
+      "destination": "https://mobileyes.live/:path*",
+      "permanent": true
+    }
+  ]
+}

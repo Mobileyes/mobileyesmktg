@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+/app/generated/prisma
+
+# Firebase service account key - NEVER commit
+firebase-service-account.json
+*.json.bak
