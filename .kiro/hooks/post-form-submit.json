@@ -1,0 +1,13 @@
+{
+  "name": "Brand Safety Check on Application",
+  "version": "1.0.0",
+  "description": "When a creator applies via the public form, automatically run a brand safety check on their social profiles and flag any concerns in the admin dashboard.",
+  "when": {
+    "type": "postToolUse",
+    "toolTypes": ["write"]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A new creator application was just submitted. Check if the creator's profile URL is accessible, run a quick brand safety assessment based on their platform and handle, and note any red flags (controversial content, fake followers, competitor associations). Add findings to the creator's notes field."
+  }
+}

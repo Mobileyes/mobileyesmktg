@@ -1,0 +1,12 @@
+{
+  "name": "Lint TypeScript on Save",
+  "version": "1.0.0",
+  "when": {
+    "type": "fileEdited",
+    "patterns": ["*.ts", "*.tsx"]
+  },
+  "then": {
+    "type": "runCommand",
+    "command": "npx tsc --noEmit --pretty 2>&1 | head -20"
+  }
+}

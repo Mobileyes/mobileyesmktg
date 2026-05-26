@@ -1,0 +1,13 @@
+{
+  "name": "Fabulate Email Auto-Dossier",
+  "version": "1.0.0",
+  "description": "When the inbox sync detects an email from @fabulate.com.au, automatically extract creator handles, research their profiles, and create a pre-outreach dossier with audience data and pricing recommendations.",
+  "when": {
+    "type": "postToolUse",
+    "toolTypes": ["write"]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A Fabulate email was just ingested. Extract any creator handles or profile URLs from the email body. For each creator found, scrape their public profile data (followers, engagement, content niche, top games), estimate a rate card, run a quick brand safety check, and create a dossier record. Present the findings in a format ready for Joel to review before outreach."
+  }
+}

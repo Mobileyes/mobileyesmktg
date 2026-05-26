@@ -1,37 +1,28 @@
 import { NextResponse } from 'next/server'
-import { createSessionCookie, verifyIdToken } from '@/lib/auth'
 import { cookies } from 'next/headers'
 
-// POST /api/auth/session — create session cookie from Firebase ID token
 export async function POST(request: Request) {
   try {
-    const { idToken } = await request.json()
+    const body = await request.json()
+    const { email, password } = body
 
-    if (!idToken) {
-      return NextResponse.json({ error: 'No token provided' }, { status: 400 })
+    const adminEmail = process.env.ADMIN_EMAIL || 'admin@mobileyes.live'
+    const adminPassword = process.env.ADMIN_PASSWORD || ''
+
+    // Trim whitespace from inputs
+    const inputEmail = (email || '').trim().toLowerCase()
+    const inputPassword = (password || '').trim()
+    const expectedEmail = adminEmail.trim().toLowerCase()
+    const expectedPassword = adminPassword.trim()
+
+    if (inputEmail !== expectedEmail || inputPassword !== expectedPassword) {
+      return NextResponse.json({ error: 'Invalid email or password' }, { status: 401 })
     }
 
-    // Verify the ID token
-    const decoded = await verifyIdToken(idToken)
-    if (!decoded) {
-      return NextResponse.json({ error: 'Invalid token' }, { status: 401 })
-    }
-
-    // Check if user is admin
-    if (decoded.email !== process.env.ADMIN_EMAIL) {
-      return NextResponse.json(
-        { error: 'Access denied. Admin only.' },
-        { status: 403 }
-      )
-    }
-
-    // Create session cookie
-    const sessionCookie = await createSessionCookie(idToken)
-
-    // Set the cookie
+    // Set session cookie
     const cookieStore = await cookies()
-    cookieStore.set('__session', sessionCookie, {
-      maxAge: 60 * 60 * 24 * 5, // 5 days
+    cookieStore.set('__session', `admin_${Date.now()}`, {
+      maxAge: 60 * 60 * 24 * 5,
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       path: '/',
@@ -39,16 +30,12 @@ export async function POST(request: Request) {
     })
 
     return NextResponse.json({ success: true })
-  } catch (error) {
-    console.error('Session creation error:', error)
-    return NextResponse.json(
-      { error: 'Failed to create session' },
-      { status: 500 }
-    )
+  } catch (error: any) {
+    console.error('Session error:', error?.message)
+    return NextResponse.json({ error: 'Failed to sign in' }, { status: 500 })
   }
 }
 
-// DELETE /api/auth/session — sign out (clear session cookie)
 export async function DELETE() {
   const cookieStore = await cookies()
   cookieStore.delete('__session')

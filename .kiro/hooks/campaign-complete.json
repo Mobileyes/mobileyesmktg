@@ -1,0 +1,13 @@
+{
+  "name": "Auto-Generate Campaign Analytics",
+  "version": "1.0.0",
+  "description": "When a campaign is marked as COMPLETE, automatically generate a campaign analytics report with reach, engagement, watch time, and attribution data. Send the report to the admin and prepare a client-facing summary.",
+  "when": {
+    "type": "postToolUse",
+    "toolTypes": ["write"]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A campaign was just marked as complete. Generate a full campaign analytics report including: total reach across all creators, average engagement rate, total watch time, click-through rates, promo code redemptions, and estimated ROI. Format this as both an internal report (for the admin dashboard) and a client-facing summary (for email delivery). Include comparison to industry benchmarks where possible."
+  }
+}

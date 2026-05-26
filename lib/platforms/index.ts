@@ -10,6 +10,8 @@
  * Priority order: YouTube > Twitch > Kick > TikTok > Instagram
  */
 
+import { fetchYouTubeChannel, fetchRecentVideos, calculateEngagementRate } from './youtube'
+
 export type PlatformType = 'YouTube' | 'Twitch' | 'Kick' | 'TikTok' | 'Instagram'
 
 export interface PlatformCreatorData {
@@ -83,98 +85,229 @@ export async function checkStreamCompletion(platform: PlatformType, handle: stri
 // ─── YOUTUBE ───────────────────────────────────────────
 // Uses YouTube Data API v3 (free tier: 10,000 units/day)
 async function fetchYouTubeCreator(handle: string): Promise<PlatformCreatorData | null> {
-  // YouTube Data API v3 integration
-  // GET https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&forHandle={handle}
-  // Requires: YOUTUBE_API_KEY env var
-  
-  // Placeholder — implement with googleapis SDK
+  const channel = await fetchYouTubeChannel(handle)
+  if (!channel) return null
+
+  const videos = await fetchRecentVideos(channel.id, 10)
+  const engagementRate = calculateEngagementRate(videos, channel.subscriberCount)
+  const avgViews = videos.length > 0
+    ? Math.round(videos.reduce((sum, v) => sum + v.viewCount, 0) / videos.length)
+    : null
+
+  // Check if any recent videos are live content
+  const hasLiveContent = videos.some(v => v.isLiveContent)
+  const lastLiveVideo = videos.find(v => v.isLiveContent)
+
   return {
     platform: 'YouTube',
-    handle,
-    displayName: handle,
-    bio: null,
-    profileImageUrl: null,
-    bannerImageUrl: null,
-    followerCount: 0,
-    subscriberCount: null,
-    totalViews: null,
-    avgViewers: null,
-    isLive: false,
-    lastStreamDate: null,
+    handle: channel.handle,
+    displayName: channel.title,
+    bio: channel.description,
+    profileImageUrl: channel.thumbnailUrl,
+    bannerImageUrl: channel.bannerUrl,
+    followerCount: channel.subscriberCount,
+    subscriberCount: channel.subscriberCount,
+    totalViews: channel.viewCount,
+    avgViewers: avgViews,
+    isLive: false, // YouTube doesn't expose this in channel data — checked via stream completion
+    lastStreamDate: lastLiveVideo?.publishedAt ?? null,
     topCategories: ['Gaming'],
     audienceGeo: null,
   }
 }
 
 async function checkYouTubeStreamCompletion(handle: string): Promise<StreamEvent | null> {
-  // YouTube Live Streaming API
-  // Check for recently completed live broadcasts
-  // GET https://www.googleapis.com/youtube/v3/search?part=snippet&channelId={id}&type=video&eventType=completed
-  return null
+  const apiKey = process.env.YOUTUBE_API_KEY
+  if (!apiKey || apiKey === 'PLACEHOLDER') return null
+
+  try {
+    // First get channel ID from handle
+    const channel = await fetchYouTubeChannel(handle)
+    if (!channel) return null
+
+    const YOUTUBE_API_BASE = 'https://www.googleapis.com/youtube/v3'
+
+    // Check for active live broadcasts
+    const liveResponse = await fetch(
+      `${YOUTUBE_API_BASE}/search?part=snippet&channelId=${channel.id}&type=video&eventType=live&key=${apiKey}`
+    )
+    if (liveResponse.ok) {
+      const liveData = await liveResponse.json()
+      if (liveData.items && liveData.items.length > 0) {
+        const liveVideo = liveData.items[0]
+        // Currently live
+        return {
+          platform: 'YouTube',
+          streamId: liveVideo.id.videoId,
+          creatorHandle: handle,
+          title: liveVideo.snippet.title,
+          startedAt: liveVideo.snippet.publishedAt,
+          endedAt: null,
+          isLive: true,
+          viewerCount: 0, // Would need liveStreamingDetails for concurrent viewers
+          peakViewers: 0,
+          category: liveVideo.snippet.categoryId ?? null,
+        }
+      }
+    }
+
+    // Check for recently completed broadcasts (last 2 hours)
+    const completedResponse = await fetch(
+      `${YOUTUBE_API_BASE}/search?part=snippet&channelId=${channel.id}&type=video&eventType=completed&order=date&maxResults=1&key=${apiKey}`
+    )
+    if (!completedResponse.ok) return null
+    const completedData = await completedResponse.json()
+
+    if (!completedData.items || completedData.items.length === 0) return null
+
+    const recentStream = completedData.items[0]
+    const publishedAt = new Date(recentStream.snippet.publishedAt)
+    const twoHoursAgo = new Date(Date.now() - 2 * 60 * 60 * 1000)
+
+    // Only return if stream ended within last 2 hours
+    if (publishedAt < twoHoursAgo) return null
+
+    // Get video details for viewer stats
+    const videoResponse = await fetch(
+      `${YOUTUBE_API_BASE}/videos?part=statistics,liveStreamingDetails&id=${recentStream.id.videoId}&key=${apiKey}`
+    )
+    let viewCount = 0
+    let concurrentViewers = 0
+    let actualStartTime: string | null = null
+    let actualEndTime: string | null = null
+
+    if (videoResponse.ok) {
+      const videoData = await videoResponse.json()
+      if (videoData.items && videoData.items.length > 0) {
+        const video = videoData.items[0]
+        viewCount = parseInt(video.statistics?.viewCount ?? '0', 10)
+        concurrentViewers = parseInt(video.liveStreamingDetails?.concurrentViewers ?? '0', 10)
+        actualStartTime = video.liveStreamingDetails?.actualStartTime ?? null
+        actualEndTime = video.liveStreamingDetails?.actualEndTime ?? null
+      }
+    }
+
+    return {
+      platform: 'YouTube',
+      streamId: recentStream.id.videoId,
+      creatorHandle: handle,
+      title: recentStream.snippet.title,
+      startedAt: actualStartTime ?? recentStream.snippet.publishedAt,
+      endedAt: actualEndTime ?? new Date().toISOString(),
+      isLive: false,
+      viewerCount: viewCount,
+      peakViewers: concurrentViewers || viewCount,
+      category: null,
+    }
+  } catch (error) {
+    console.error(`Failed to check YouTube stream completion for ${handle}:`, error)
+    return null
+  }
 }
 
 // ─── TWITCH ────────────────────────────────────────────
 // Uses Twitch Helix API (requires Client ID + OAuth token)
 async function fetchTwitchCreator(handle: string): Promise<PlatformCreatorData | null> {
-  // Twitch Helix API
-  // GET https://api.twitch.tv/helix/users?login={handle}
-  // GET https://api.twitch.tv/helix/channels?broadcaster_id={id}
-  // Requires: TWITCH_CLIENT_ID, TWITCH_CLIENT_SECRET env vars
-  
+  const { fetchTwitchUser, getTwitchStream, getTwitchFollowerCount } = await import('./twitch')
+
+  const user = await fetchTwitchUser(handle)
+  if (!user) return null
+
+  const followerCount = await getTwitchFollowerCount(user.id)
+  const stream = await getTwitchStream(handle)
+
   return {
     platform: 'Twitch',
-    handle,
-    displayName: handle,
-    bio: null,
-    profileImageUrl: null,
-    bannerImageUrl: null,
-    followerCount: 0,
+    handle: user.login,
+    displayName: user.displayName,
+    bio: user.description,
+    profileImageUrl: user.profileImageUrl,
+    bannerImageUrl: user.offlineImageUrl,
+    followerCount,
     subscriberCount: null,
-    totalViews: null,
-    avgViewers: null,
-    isLive: false,
-    lastStreamDate: null,
-    topCategories: ['Gaming'],
+    totalViews: user.viewCount,
+    avgViewers: stream?.viewerCount ?? null,
+    isLive: !!stream,
+    lastStreamDate: stream?.startedAt ?? null,
+    topCategories: stream?.gameName ? [stream.gameName] : ['Gaming'],
     audienceGeo: null,
   }
 }
 
 async function checkTwitchStreamCompletion(handle: string): Promise<StreamEvent | null> {
-  // Twitch Helix API — check stream status
-  // GET https://api.twitch.tv/helix/streams?user_login={handle}
-  // If was live and now offline → stream completed
-  // Then fetch VOD for metrics: GET https://api.twitch.tv/helix/videos?user_id={id}&type=archive
+  const { getTwitchStream } = await import('./twitch')
+
+  const stream = await getTwitchStream(handle)
+
+  if (stream) {
+    // Currently live
+    return {
+      platform: 'Twitch',
+      streamId: stream.id,
+      creatorHandle: handle,
+      title: stream.title,
+      startedAt: stream.startedAt,
+      endedAt: null,
+      isLive: true,
+      viewerCount: stream.viewerCount,
+      peakViewers: stream.viewerCount,
+      category: stream.gameName,
+    }
+  }
+
+  // Not live — if wasLive was true, the stream-monitor will detect completion
   return null
 }
 
 // ─── KICK ──────────────────────────────────────────────
-// Kick API (newer, less documented — use available endpoints)
+// Kick API (public endpoints, no auth required)
 async function fetchKickCreator(handle: string): Promise<PlatformCreatorData | null> {
-  // Kick API
-  // GET https://kick.com/api/v2/channels/{handle}
-  // Note: Kick's API is less mature than Twitch — may need scraping fallback
-  
+  const { fetchKickChannel, getKickLivestream } = await import('./kick')
+
+  const channel = await fetchKickChannel(handle)
+  if (!channel) return null
+
+  const livestream = await getKickLivestream(handle)
+
   return {
     platform: 'Kick',
-    handle,
-    displayName: handle,
-    bio: null,
-    profileImageUrl: null,
-    bannerImageUrl: null,
-    followerCount: 0,
+    handle: channel.slug,
+    displayName: channel.username,
+    bio: channel.bio,
+    profileImageUrl: channel.profilePic,
+    bannerImageUrl: channel.bannerImage,
+    followerCount: channel.followersCount,
     subscriberCount: null,
     totalViews: null,
-    avgViewers: null,
-    isLive: false,
-    lastStreamDate: null,
-    topCategories: ['Gaming'],
+    avgViewers: livestream?.viewerCount ?? null,
+    isLive: livestream?.isLive ?? false,
+    lastStreamDate: livestream?.startedAt ?? null,
+    topCategories: channel.recentCategories.length > 0 ? channel.recentCategories : ['Gaming'],
     audienceGeo: null,
   }
 }
 
 async function checkKickStreamCompletion(handle: string): Promise<StreamEvent | null> {
-  // Kick API — check if stream recently ended
-  // GET https://kick.com/api/v2/channels/{handle}/livestream
+  const { getKickLivestream } = await import('./kick')
+
+  const livestream = await getKickLivestream(handle)
+
+  if (livestream?.isLive) {
+    return {
+      platform: 'Kick',
+      streamId: `kick-${handle}-${Date.now()}`,
+      creatorHandle: handle,
+      title: livestream.title ?? 'Live Stream',
+      startedAt: livestream.startedAt ?? new Date().toISOString(),
+      endedAt: null,
+      isLive: true,
+      viewerCount: livestream.viewerCount,
+      peakViewers: livestream.viewerCount,
+      category: livestream.category,
+    }
+  }
+
+  // Not live — stream-monitor handles the transition detection
   return null
 }
 

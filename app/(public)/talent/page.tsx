@@ -155,11 +155,11 @@ export default function TalentPage() {
             <h3 className="text-lg font-bold text-slate-900 mb-3">Why we don&apos;t publicly list our roster</h3>
             <p className="text-slate-600 leading-relaxed">
               Our creators are matched to campaigns privately to protect their commercial relationships 
-              and ensure brands get exclusive access. If you&apos;re a brand looking for specific creator profiles, 
-              submit a brief and we&apos;ll send you a curated shortlist with full analytics.
+              and ensure brands get exclusive access. Send us a brief and we&apos;ll match you with tailored talent 
+              that fits your audience, market, and objectives — with full analytics on each creator.
             </p>
             <Link href="/brands" className="inline-flex items-center gap-2 mt-6 text-blue-600 font-medium hover:text-blue-700">
-              Submit a brief to see our roster
+              Send a brief — we&apos;ll match your requirements
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
             </Link>
           </div>

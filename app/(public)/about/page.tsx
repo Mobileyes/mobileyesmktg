@@ -128,8 +128,9 @@ export default function AboutPage() {
           <h2 className="text-3xl font-bold text-slate-900 mb-12">The Team</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="w-32 h-32 bg-slate-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                <span className="text-2xl font-bold text-slate-400">JK</span>
+              <div className="w-32 h-32 rounded-full mx-auto mb-4 overflow-hidden">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/joel-kirk.jpg" alt="Joel Kirk" className="w-full h-full object-cover" />
               </div>
               <h3 className="font-bold text-slate-900">Joel Kirk</h3>
               <p className="text-slate-500 text-sm">Founder & Managing Director</p>

@@ -1,3 +1,7 @@
+---
+inclusion: auto
+---
+
 # Mobileyes Platform — Steering
 
 ## Project Overview
@@ -8,50 +12,49 @@ Mobileyes is a live video gaming talent agency platform. One codebase, one Verce
 - **Styling**: Tailwind CSS v4
 - **Database**: Google Firestore (NoSQL)
 - **Auth**: Firebase Auth (Google OAuth — admin only)
-- **Storage**: Firebase Storage (media kits, agreements, invoices)
-- **Email**: Resend (campaign briefs, invoices, payment confirmations)
+- **Storage**: Firebase Storage
+- **Email**: Resend
 - **Gmail Integration**: googleapis SDK (inbox sync from campaigns@)
-- **Analytics**: PostHog (public + admin events)
-- **Deployment**: Vercel
-- **NO SQL. NO PRISMA. NO SUPABASE.**
+- **Analytics**: PostHog
+- **Attribution**: UTM + AppsFlyer OneLink + Promo Codes
+- **Deployment**: Vercel (mobileyes.live)
+- **NO SQL. NO PRISMA. Full Google stack.**
 
 ## Key Principles
 1. **No clarification questions** — proceed with best judgment
-2. **Mobileyes branding only** — Gamefluence Pty Ltd appears ONLY in footer small print and invoice small print
-3. **Navy + white + electric blue** — brand colours throughout
-4. **Joel's voice** — direct, industry-insider, never corporate
-5. **14-day payment** — the core differentiator, referenced everywhere
-6. **MBL IDs** — every entity gets a Mobileyes ID (MBL-CR-XXXXX, MBL-CAMP-XXXXX, MBL-INV-XXXXX, MBL-PAY-XXXXX)
+2. **Never use "level up"** — use "leverage" instead
+3. **Mobileyes branding only** — Gamefluence only in legal small print
+4. **Navy + white + electric blue** — brand colours
+5. **Joel's voice** — direct, industry-insider, never corporate
+6. **4-day payment** — the core differentiator
+7. **MBL IDs** — MBL-CR-XXXXX, MBL-CAMP-XXXXX, MBL-INV-XXXXX, MBL-PAY-XXXXX
+8. **Platform priority**: YouTube > Twitch > Kick > TikTok > Instagram
+9. **Markets**: ANZ + APAC (AU, NZ, VN, TH, ID, PH)
 
-## Firestore Collections
-- `creators` — talent roster
-- `campaigns` — campaign tickets
-- `campaignCreators` — join records (creator assigned to campaign)
-- `invoices` — client invoices
-- `payments` — creator payments
-- `inboxBriefs` — Gmail ingestion
-- `dossiers` — pre-outreach creator research (Fabulate pipeline)
-- `counters` — atomic counters for MBL ID generation
-
-## Route Structure
-- `/` — Public home page
-- `/about`, `/brands`, `/creators`, `/talent`, `/news`, `/contact`, `/privacy`, `/terms` — Public pages
-- `/login` — Firebase Auth Google sign-in (admin only)
-- `/admin` — Protected admin dashboard
-- `/admin/inbox` — Gmail ingestion from campaigns@
-- `/admin/creators` — Creator CRM
-- `/admin/campaigns` — Campaign ticket system
-- `/admin/billing` — Financial dashboard
-- `/admin/analytics` — PostHog + business metrics
+## Agentic Intelligence System
+5 agents power the platform:
+- Market Intelligence (StreamCharts, StreamElements, Sensor Tower)
+- Outreach Agent (insight-powered personalised messages)
+- Finance Agent (opportunity prioritisation, pipeline value)
+- Creator Matching (audience overlap, fit scoring, pitch decks)
+- Competitive Intelligence (market share, gaps, first-mover opportunities)
 
 ## Fabulate Integration
-- Fabulate (Nath/Lisa) sends campaign briefs and creator referrals
-- System auto-recognises @fabulate.com.au emails
-- Extracts creator handles from email body
-- Creates dossier records with research data
-- Presents pre-outreach intel in admin before Joel reaches out
+- Auto-recognises @fabulate.com.au emails (Nath/Lisa)
+- Extracts creator handles → scrapes profiles → creates dossiers
+- Presents pre-outreach intel before Joel reaches out
+
+## Email Addresses
+- admin@mobileyes.live — general admin, invoices
+- talent@mobileyes.live — creator comms, briefs (set up later)
+- campaigns@mobileyes.live — inbound briefs (set up later)
 
 ## Legal
 - Trading name: Mobileyes
-- Legal entity: Gamefluence Pty Ltd (ACN 696 199 461)
-- Footer: "Mobileyes is a trading name of Gamefluence Pty Ltd (ACN 696 199 461). Registered in Australia. Sydney, NSW. admin@mobileyes.live"
+- Entity: Gamefluence Pty Ltd (ACN 696 199 461)
+- Footer only: "Mobileyes is a trading name of Gamefluence Pty Ltd (ACN 696 199 461). Sydney, Australia."
+
+## Deploy
+- `npx vercel deploy --prod --yes` from project root
+- Site: https://mobileyes.live
+- Admin: https://mobileyes.live/admin

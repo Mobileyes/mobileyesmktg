@@ -97,12 +97,12 @@ export default function CreatorsPage() {
           <h2 className="text-2xl font-bold text-slate-900 mb-8">What managed creators get</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { title: '4-day payment', desc: 'Content approved → paid in 4 days. We carry the float.' },
-              { title: 'Selective briefs', desc: 'Only campaigns that match your audience and content style.' },
-              { title: 'Campaign analytics', desc: 'Full performance data after every campaign — reach, engagement, conversions.' },
-              { title: 'Rate card management', desc: 'We negotiate your rates and ensure you are fairly compensated.' },
-              { title: 'Brand protection', desc: 'We say no to campaigns that could damage your audience trust.' },
-              { title: 'APAC opportunities', desc: 'Access to campaigns across Australia, Vietnam, Thailand, and more.' },
+              { title: '4-day payment', desc: 'Content approved → paid in 4 days. We work directly with platforms and carry the float. No chasing. No excuses.' },
+              { title: 'Selective briefs only', desc: 'Only campaigns that match your audience and content style. We say no to bad fits so you never have to.' },
+              { title: 'Campaign analytics in 48hrs', desc: 'Full performance data delivered within 48 hours — reach, engagement, watch time, conversions. Your proof of value.' },
+              { title: 'Rate card management', desc: 'We negotiate your rates and ensure you are fairly compensated. Transparent commission. No hidden fees.' },
+              { title: 'Bot-free transparency', desc: 'We verify audience authenticity for every creator on our roster. Real audiences = real results = better briefs for you.' },
+              { title: 'ANZ + APAC campaigns', desc: 'Access to brand campaigns across Australia, New Zealand, Vietnam, Thailand, and the broader APAC gaming market.' },
             ].map((item) => (
               <div key={item.title} className="p-5 rounded-xl bg-slate-50 border border-slate-100">
                 <h3 className="font-semibold text-slate-900 mb-1">{item.title}</h3>

@@ -153,9 +153,9 @@ export default function HomePage() {
             <div className="bg-slate-900 rounded-3xl p-10 text-white relative overflow-hidden">
               <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full -translate-y-1/2 translate-x-1/2" />
               <div className="relative">
-                <div className="w-20 h-20 bg-slate-700 rounded-2xl mb-6 flex items-center justify-center">
-                  {/* Placeholder for Joel's photo */}
-                  <span className="text-2xl font-bold text-slate-400">JK</span>
+                <div className="w-20 h-20 rounded-2xl mb-6 overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/joel-kirk.jpg" alt="Joel Kirk" className="w-full h-full object-cover" />
                 </div>
                 <p className="text-slate-400 text-sm font-medium uppercase tracking-wider mb-2">Founder</p>
                 <h3 className="text-2xl font-bold mb-4">Joel Kirk</h3>
@@ -301,7 +301,7 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-t from-blue-950/20 to-transparent" />
         <div className="relative max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-            Ready to level up your creator career?
+            Ready to leverage your live streaming career?
           </h2>
           <p className="text-xl text-slate-300 mb-10 max-w-2xl mx-auto">
             Whether you are a creator looking for professional representation or a brand looking for authentic gaming content — let&apos;s talk.

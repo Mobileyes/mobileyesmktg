@@ -1,0 +1,12 @@
+{
+  "name": "Auto Deploy to Vercel",
+  "version": "1.0.0",
+  "description": "After agent completes a task, automatically deploy to production if build passes.",
+  "when": {
+    "type": "userTriggered"
+  },
+  "then": {
+    "type": "runCommand",
+    "command": "npm run build && npx vercel deploy --prod --yes"
+  }
+}

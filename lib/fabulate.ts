@@ -99,17 +99,90 @@ export type RateEstimate = {
 
 /**
  * Research a creator based on their handle
- * In production, this would call social media APIs or scraping services.
- * For now, it structures the data model and provides a framework for enrichment.
+ * Calls the appropriate platform API to pull real data.
+ * Falls back to structured placeholder if API credentials aren't configured.
  */
 export async function researchCreator(handle: CreatorHandle): Promise<CreatorResearchData> {
-  // This is the framework — actual API integrations would go here:
-  // - TikTok: TikTok Research API or third-party (Modash, HypeAuditor)
-  // - YouTube: YouTube Data API v3 (free tier)
-  // - Twitch: Twitch Helix API
-  // - Instagram: Instagram Graph API or third-party
-  
-  // For now, return a structured placeholder that the admin UI can display
+  try {
+    switch (handle.platform) {
+      case 'YouTube': {
+        const { fetchYouTubeChannel, fetchRecentVideos, calculateEngagementRate } = await import('./platforms/youtube')
+        const channel = await fetchYouTubeChannel(handle.handle)
+        if (channel) {
+          const videos = await fetchRecentVideos(channel.id, 10)
+          const engagementRate = calculateEngagementRate(videos, channel.subscriberCount)
+          const avgViews = videos.length > 0
+            ? Math.round(videos.reduce((sum, v) => sum + v.viewCount, 0) / videos.length)
+            : null
+
+          // Estimate rate based on subscriber count (industry standard: $20-50 per 1K subs for gaming)
+          const estimatedRate = estimateCreatorRate(channel.subscriberCount, avgViews, 'YouTube')
+
+          return {
+            handle,
+            followerCount: channel.subscriberCount,
+            avgViews,
+            engagementRate,
+            audienceLocation: channel.country,
+            contentNiche: ['Gaming'], // Could be enriched with video category analysis
+            recentBrandDeals: [], // Would need content analysis or third-party data
+            estimatedRate,
+            notes: `YouTube channel: ${channel.title}. ${channel.videoCount} videos, ${channel.viewCount.toLocaleString()} total views. ${videos.some(v => v.isLiveContent) ? 'Active live streamer.' : 'Primarily VOD content.'}`,
+          }
+        }
+        break
+      }
+
+      case 'Twitch': {
+        const { fetchTwitchUser, getTwitchFollowerCount, getTwitchStream } = await import('./platforms/twitch')
+        const user = await fetchTwitchUser(handle.handle)
+        if (user) {
+          const followerCount = await getTwitchFollowerCount(user.id)
+          const stream = await getTwitchStream(handle.handle)
+          const estimatedRate = estimateCreatorRate(followerCount, null, 'Twitch')
+
+          return {
+            handle,
+            followerCount,
+            avgViews: stream?.viewerCount ?? null,
+            engagementRate: null, // Twitch doesn't expose this easily
+            audienceLocation: null,
+            contentNiche: stream?.gameName ? [stream.gameName] : ['Gaming'],
+            recentBrandDeals: [],
+            estimatedRate,
+            notes: `Twitch ${user.broadcasterType || 'streamer'}: ${user.displayName}. ${followerCount.toLocaleString()} followers. ${stream ? `Currently live with ${stream.viewerCount} viewers playing ${stream.gameName}.` : 'Currently offline.'}`,
+          }
+        }
+        break
+      }
+
+      case 'Kick': {
+        const { fetchKickChannel, getKickLivestream } = await import('./platforms/kick')
+        const channel = await fetchKickChannel(handle.handle)
+        if (channel) {
+          const livestream = await getKickLivestream(handle.handle)
+          const estimatedRate = estimateCreatorRate(channel.followersCount, null, 'Kick')
+
+          return {
+            handle,
+            followerCount: channel.followersCount,
+            avgViews: livestream?.viewerCount ?? null,
+            engagementRate: null,
+            audienceLocation: null,
+            contentNiche: channel.recentCategories.length > 0 ? channel.recentCategories : ['Gaming'],
+            recentBrandDeals: [],
+            estimatedRate,
+            notes: `Kick channel: ${channel.username}. ${channel.followersCount.toLocaleString()} followers. ${channel.verified ? 'Verified.' : ''} ${livestream?.isLive ? `Currently live with ${livestream.viewerCount} viewers.` : 'Currently offline.'}`,
+          }
+        }
+        break
+      }
+    }
+  } catch (error) {
+    console.error(`Error researching ${handle.platform} creator @${handle.handle}:`, error)
+  }
+
+  // Fallback: return structured placeholder
   return {
     handle,
     followerCount: null,
@@ -119,7 +192,51 @@ export async function researchCreator(handle: CreatorHandle): Promise<CreatorRes
     contentNiche: [],
     recentBrandDeals: [],
     estimatedRate: null,
-    notes: `Research pending for ${handle.platform} creator @${handle.handle}. Connect platform APIs for auto-enrichment.`,
+    notes: `Research pending for ${handle.platform} creator @${handle.handle}. API returned no data or credentials not configured.`,
+  }
+}
+
+/**
+ * Estimate creator rate based on follower count and platform
+ * Industry benchmarks for gaming creators (AUD):
+ * - YouTube: $20-50 per 1K subscribers for dedicated video
+ * - Twitch: $50-150 per hour of sponsored stream per 1K avg viewers
+ * - Kick: Similar to Twitch but 20-30% lower (newer platform)
+ */
+function estimateCreatorRate(
+  followers: number,
+  avgViews: number | null,
+  platform: string
+): RateEstimate | null {
+  if (!followers || followers < 1000) return null
+
+  const followersK = followers / 1000
+
+  switch (platform) {
+    case 'YouTube': {
+      // $20-50 per 1K subs for a dedicated video
+      const low = Math.round(followersK * 20)
+      const high = Math.round(followersK * 50)
+      const mid = Math.round((low + high) / 2)
+      return { low, mid, high, currency: 'AUD', basis: 'per dedicated video' }
+    }
+    case 'Twitch': {
+      // Based on avg viewers if available, otherwise followers
+      const base = avgViews ? avgViews : followers * 0.02 // ~2% of followers as avg viewers estimate
+      const low = Math.round(base * 50)
+      const high = Math.round(base * 150)
+      const mid = Math.round((low + high) / 2)
+      return { low, mid, high, currency: 'AUD', basis: 'per stream hour' }
+    }
+    case 'Kick': {
+      const base = avgViews ? avgViews : followers * 0.03 // Kick tends to have higher viewer ratios
+      const low = Math.round(base * 40)
+      const high = Math.round(base * 120)
+      const mid = Math.round((low + high) / 2)
+      return { low, mid, high, currency: 'AUD', basis: 'per stream hour' }
+    }
+    default:
+      return null
   }
 }
 

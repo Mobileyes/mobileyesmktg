@@ -12,14 +12,20 @@ import {
   DollarSign,
   BarChart3,
   LogOut,
+  Search,
+  Radar,
+  Send,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const navItems = [
   { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/admin/inbox', label: 'Inbox', icon: Inbox },
+  { href: '/admin/outreach', label: 'Outreach', icon: Send },
+  { href: '/admin/discover', label: 'Discover', icon: Radar },
   { href: '/admin/creators', label: 'Creators', icon: Users },
   { href: '/admin/campaigns', label: 'Campaigns', icon: Megaphone },
+  { href: '/admin/brands', label: 'Brand Intel', icon: Search },
   { href: '/admin/billing', label: 'Billing', icon: DollarSign },
   { href: '/admin/analytics', label: 'Analytics', icon: BarChart3 },
 ]

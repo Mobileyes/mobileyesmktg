@@ -38,14 +38,41 @@ export default function BrandsPage() {
   if (submitted) {
     return (
       <div className="min-h-screen flex items-center justify-center px-6 bg-slate-50">
-        <div className="text-center max-w-md">
+        <div className="text-center max-w-lg">
           <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
             <svg className="w-10 h-10 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
           </div>
           <h1 className="text-3xl font-bold text-slate-900 mb-4">Brief Received</h1>
-          <p className="text-slate-600 text-lg">
-            We&apos;ll review and respond within 24 hours with creator recommendations and a campaign proposal.
-          </p>
+          
+          {/* Countdown promise */}
+          <div className="bg-white rounded-2xl border border-slate-200 p-6 mb-6">
+            <div className="flex items-center justify-center gap-3 mb-3">
+              <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                <svg className="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              </div>
+              <p className="text-lg font-bold text-slate-900">Response within 24 hours</p>
+            </div>
+            <p className="text-slate-600 text-sm leading-relaxed">
+              Our fast outreach promise: we&apos;ll review your brief and respond with tailored talent recommendations matched to your requirements — including audience data, engagement metrics, and campaign fit scores.
+            </p>
+          </div>
+
+          <div className="space-y-3 text-left bg-slate-50 rounded-xl p-5 border border-slate-100">
+            <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider">What happens next</p>
+            <div className="flex items-start gap-3">
+              <span className="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5 text-xs font-bold text-blue-600">1</span>
+              <p className="text-sm text-slate-700">We review your brief and match creators from our verified roster</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5 text-xs font-bold text-blue-600">2</span>
+              <p className="text-sm text-slate-700">You receive a curated shortlist with analytics, rates, and audience data</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5 text-xs font-bold text-blue-600">3</span>
+              <p className="text-sm text-slate-700">We handle the brief, the creator, and the campaign — you get results</p>
+            </div>
+          </div>
+
           <Link href="/" className="inline-block mt-8 text-blue-600 font-medium hover:text-blue-700">
             ← Back to home
           </Link>
@@ -171,7 +198,8 @@ export default function BrandsPage() {
 
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-2">Brief Details</label>
-              <textarea rows={5} placeholder="What are you promoting? Key messages? Specific creator requirements?" value={formData.briefDetails} onChange={(e) => setFormData({ ...formData, briefDetails: e.target.value })} className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none" />
+              <textarea rows={5} placeholder="What are you promoting? Target audience? Key messages? Any specific creator requirements or platforms? The more detail you provide, the better we can match talent to your campaign." value={formData.briefDetails} onChange={(e) => setFormData({ ...formData, briefDetails: e.target.value })} className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none" />
+              <p className="text-xs text-slate-400 mt-2">We respond within 24 hours with tailored creator recommendations matched to your brief.</p>
             </div>
 
             <button type="submit" disabled={isSubmitting} className="w-full py-4 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-500 transition-colors disabled:opacity-50 text-lg">
