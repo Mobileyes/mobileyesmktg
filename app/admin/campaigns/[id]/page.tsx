@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useParams } from 'next/navigation'
 import Link from 'next/link'
 import {
   ArrowLeft,
@@ -26,47 +27,109 @@ const CAMPAIGN_STATUS_FLOW = [
 ]
 
 export default function CampaignDetailPage() {
-  // Placeholder data — will be API-driven
-  const campaign = {
-    id: 'placeholder',
-    mblId: 'MBL-CAMP-00001',
-    title: 'Example Campaign',
-    clientName: 'Example Brand',
-    clientEmail: 'brand@example.com',
-    source: 'DIRECT',
-    objective: 'Awareness',
-    markets: ['Australia'],
-    budgetRange: '$5,000 - $10,000',
-    briefDetails: 'Campaign brief details will appear here...',
-    status: 'DRAFT',
-    campaignFee: 8000,
-    commissionPct: 25,
-    startDate: null as string | null,
-    endDate: null as string | null,
-    notes: '',
-    creators: [] as Array<{
-      id: string
-      mblId: string
-      fullName: string
-      platform: string
-      fee: number
-      status: string
-      briefSentAt: string | null
-      contentUrl: string | null
-    }>,
-    invoices: [] as Array<{
-      mblId: string
-      amount: number
-      status: string
-      issuedAt: string | null
-    }>,
+  const params = useParams()
+  const campaignId = params.id as string
+
+  const [campaign, setCampaign] = useState<any>(null)
+  const [isLoading, setIsLoading] = useState(true)
+  const [isSaving, setIsSaving] = useState(false)
+
+  useEffect(() => {
+    if (campaignId) fetchCampaign()
+  }, [campaignId])
+
+  const fetchCampaign = async () => {
+    try {
+      const response = await fetch(`/api/admin/campaigns/${campaignId}`)
+      if (response.ok) {
+        const data = await response.json()
+        setCampaign(data)
+      }
+    } catch (err) {
+      console.error('Failed to fetch campaign:', err)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const updateStatus = async (newStatus: string) => {
+    setIsSaving(true)
+    try {
+      const response = await fetch(`/api/admin/campaigns/${campaignId}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status: newStatus }),
+      })
+      if (response.ok) {
+        setCampaign({ ...campaign, status: newStatus })
+      }
+    } catch (err) {
+      console.error('Failed to update status:', err)
+    } finally {
+      setIsSaving(false)
+    }
+  }
+
+  const updateNotes = async (notes: string) => {
+    try {
+      await fetch(`/api/admin/campaigns/${campaignId}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ notes }),
+      })
+    } catch (err) {
+      console.error('Failed to save notes:', err)
+    }
+  }
+
+  const handleSendBrief = async () => {
+    try {
+      const response = await fetch(`/api/admin/campaigns/${campaignId}/send-brief`, {
+        method: 'POST',
+      })
+      if (response.ok) {
+        setCampaign({ ...campaign, status: 'SENT' })
+      }
+    } catch (err) {
+      console.error('Failed to send brief:', err)
+    }
+  }
+
+  const handleGenerateInvoice = async () => {
+    try {
+      const response = await fetch(`/api/admin/campaigns/${campaignId}/generate-invoice`, {
+        method: 'POST',
+      })
+      if (response.ok) {
+        await fetchCampaign() // refresh to get new invoice
+      }
+    } catch (err) {
+      console.error('Failed to generate invoice:', err)
+    }
+  }
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-64">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-slate-900"></div>
+      </div>
+    )
+  }
+
+  if (!campaign) {
+    return (
+      <div className="text-center py-12">
+        <p className="text-gray-500">Campaign not found</p>
+        <Link href="/admin/campaigns" className="text-blue-600 text-sm mt-2 inline-block">Back to campaigns</Link>
+      </div>
+    )
   }
 
   const commissionAud = campaign.campaignFee
     ? (campaign.campaignFee * campaign.commissionPct) / 100
     : 0
-  const totalCreatorFees = campaign.creators.reduce(
-    (sum, c) => sum + c.fee,
+  const totalCreatorFees = (campaign.creators ?? []).reduce(
+    (sum: number, c: any) => sum + (c.fee || 0),
     0
   )
 
@@ -102,14 +165,38 @@ export default function CampaignDetailPage() {
           </p>
         </div>
         <div className="flex items-center gap-2">
-          <button className="flex items-center gap-2 px-3 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700">
+          <button
+            onClick={handleSendBrief}
+            disabled={campaign.status !== 'BRIEFING' && campaign.status !== 'DRAFT'}
+            className="flex items-center gap-2 px-3 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
             <Send className="w-4 h-4" />
             Send Brief
           </button>
-          <button className="flex items-center gap-2 px-3 py-2 border border-gray-200 rounded-lg text-sm hover:bg-gray-50">
+          <button
+            onClick={handleGenerateInvoice}
+            disabled={campaign.status !== 'APPROVED'}
+            className="flex items-center gap-2 px-3 py-2 border border-gray-200 rounded-lg text-sm hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
             <FileText className="w-4 h-4" />
             Generate Invoice
           </button>
+          {/* Advance status */}
+          {CAMPAIGN_STATUS_FLOW.indexOf(campaign.status) < CAMPAIGN_STATUS_FLOW.length - 1 && (
+            <button
+              onClick={() => {
+                const currentIdx = CAMPAIGN_STATUS_FLOW.indexOf(campaign.status)
+                if (currentIdx < CAMPAIGN_STATUS_FLOW.length - 1) {
+                  updateStatus(CAMPAIGN_STATUS_FLOW[currentIdx + 1])
+                }
+              }}
+              disabled={isSaving}
+              className="flex items-center gap-2 px-3 py-2 bg-green-600 text-white rounded-lg text-sm hover:bg-green-700 disabled:opacity-50"
+            >
+              <CheckCircle className="w-4 h-4" />
+              Advance →
+            </button>
+          )}
         </div>
       </div>
 
@@ -241,7 +328,7 @@ export default function CampaignDetailPage() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-50">
-                  {campaign.creators.map((creator) => (
+                  {campaign.creators.map((creator: any) => (
                     <tr key={creator.id}>
                       <td className="py-2">
                         <p className="text-sm font-medium text-gray-900">
@@ -315,7 +402,7 @@ export default function CampaignDetailPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {campaign.invoices.map((invoice) => (
+                  {campaign.invoices.map((invoice: any) => (
                     <tr key={invoice.mblId}>
                       <td className="py-2 text-sm font-mono text-gray-600">
                         {invoice.mblId}
@@ -407,6 +494,7 @@ export default function CampaignDetailPage() {
             <h3 className="text-sm font-semibold text-gray-900 mb-3">Notes</h3>
             <textarea
               defaultValue={campaign.notes}
+              onBlur={(e) => updateNotes(e.target.value)}
               placeholder="Campaign notes..."
               className="w-full h-32 text-sm border border-gray-200 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-slate-900 resize-none"
             />

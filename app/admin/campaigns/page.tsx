@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Plus, List, LayoutGrid, Filter } from 'lucide-react'
 import { cn, getStatusColor, formatCurrency } from '@/lib/utils'
@@ -35,9 +35,55 @@ export default function CampaignsPage() {
   const [viewMode, setViewMode] = useState<'kanban' | 'list'>('list')
   const [statusFilter, setStatusFilter] = useState<string>('ALL')
   const [sourceFilter, setSourceFilter] = useState<string>('ALL')
+  const [campaigns, setCampaigns] = useState<Campaign[]>([])
+  const [isLoading, setIsLoading] = useState(true)
+  const [showNewForm, setShowNewForm] = useState(false)
+  const [newCampaign, setNewCampaign] = useState({
+    title: '',
+    clientName: '',
+    clientEmail: '',
+    source: 'DIRECT',
+    objective: '',
+    markets: ['Australia'],
+    budgetRange: '',
+  })
 
-  // Placeholder — will be API-driven
-  const campaigns: Campaign[] = []
+  useEffect(() => {
+    fetchCampaigns()
+  }, [])
+
+  const fetchCampaigns = async () => {
+    try {
+      const response = await fetch('/api/admin/campaigns')
+      if (response.ok) {
+        const data = await response.json()
+        setCampaigns(data)
+      }
+    } catch (err) {
+      console.error('Failed to fetch campaigns:', err)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const handleCreateCampaign = async (e: React.FormEvent) => {
+    e.preventDefault()
+    try {
+      const response = await fetch('/api/admin/campaigns', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newCampaign),
+      })
+      if (response.ok) {
+        const created = await response.json()
+        setCampaigns([created, ...campaigns])
+        setShowNewForm(false)
+        setNewCampaign({ title: '', clientName: '', clientEmail: '', source: 'DIRECT', objective: '', markets: ['Australia'], budgetRange: '' })
+      }
+    } catch (err) {
+      console.error('Failed to create campaign:', err)
+    }
+  }
 
   const filteredCampaigns = campaigns.filter((c) => {
     if (statusFilter !== 'ALL' && c.status !== statusFilter) return false
@@ -81,12 +127,39 @@ export default function CampaignsPage() {
               <LayoutGrid className="w-4 h-4" />
             </button>
           </div>
-          <button className="flex items-center gap-2 bg-slate-900 text-white px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-800 transition-colors">
+          <button
+            onClick={() => setShowNewForm(true)}
+            className="flex items-center gap-2 bg-slate-900 text-white px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-800 transition-colors"
+          >
             <Plus className="w-4 h-4" />
             New Campaign
           </button>
         </div>
       </div>
+
+      {/* New Campaign Form */}
+      {showNewForm && (
+        <div className="bg-white rounded-xl border border-gray-200 p-6 mb-6">
+          <h3 className="text-sm font-semibold text-gray-900 mb-4">Create Campaign</h3>
+          <form onSubmit={handleCreateCampaign} className="grid grid-cols-2 gap-4">
+            <input type="text" placeholder="Campaign title" value={newCampaign.title} onChange={(e) => setNewCampaign({...newCampaign, title: e.target.value})} className="px-3 py-2 border border-gray-200 rounded-lg text-sm" required />
+            <input type="text" placeholder="Client name" value={newCampaign.clientName} onChange={(e) => setNewCampaign({...newCampaign, clientName: e.target.value})} className="px-3 py-2 border border-gray-200 rounded-lg text-sm" required />
+            <input type="email" placeholder="Client email" value={newCampaign.clientEmail} onChange={(e) => setNewCampaign({...newCampaign, clientEmail: e.target.value})} className="px-3 py-2 border border-gray-200 rounded-lg text-sm" />
+            <select value={newCampaign.source} onChange={(e) => setNewCampaign({...newCampaign, source: e.target.value})} className="px-3 py-2 border border-gray-200 rounded-lg text-sm">
+              <option value="DIRECT">Direct</option>
+              <option value="FABULATE">Fabulate</option>
+              <option value="INBOUND_EMAIL">Inbound Email</option>
+              <option value="OTHER">Other</option>
+            </select>
+            <input type="text" placeholder="Objective (e.g. Awareness, Installs)" value={newCampaign.objective} onChange={(e) => setNewCampaign({...newCampaign, objective: e.target.value})} className="px-3 py-2 border border-gray-200 rounded-lg text-sm" />
+            <input type="text" placeholder="Budget range (e.g. $5,000 - $10,000)" value={newCampaign.budgetRange} onChange={(e) => setNewCampaign({...newCampaign, budgetRange: e.target.value})} className="px-3 py-2 border border-gray-200 rounded-lg text-sm" />
+            <div className="col-span-2 flex gap-3">
+              <button type="submit" className="px-4 py-2 bg-slate-900 text-white rounded-lg text-sm font-medium hover:bg-slate-800">Create</button>
+              <button type="button" onClick={() => setShowNewForm(false)} className="px-4 py-2 border border-gray-200 rounded-lg text-sm text-gray-600 hover:bg-gray-50">Cancel</button>
+            </div>
+          </form>
+        </div>
+      )}
 
       {/* Filters */}
       <div className="flex items-center gap-4 mb-6">
