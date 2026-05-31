@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Calendar, MapPin, Clock, CheckCircle, Circle, AlertTriangle, ChevronRight, Users, Target, MessageSquare } from 'lucide-react'
+import { Calendar, MapPin, Clock, CheckCircle, Circle, AlertTriangle, ChevronRight, Users, Target, MessageSquare, CalendarPlus, Loader2 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 type View = 'timeline' | 'event' | 'questions'
@@ -12,6 +12,8 @@ export default function EventPlannerPage() {
   const [selectedEvent, setSelectedEvent] = useState<any>(null)
   const [eventTasks, setEventTasks] = useState<any[]>([])
   const [isLoading, setIsLoading] = useState(true)
+  const [isSyncing, setIsSyncing] = useState(false)
+  const [syncedEvents, setSyncedEvents] = useState<Set<string>>(new Set())
 
   useEffect(() => {
     fetchPlanner()
@@ -42,6 +44,24 @@ export default function EventPlannerPage() {
       }
     } catch (err) {
       console.error('Failed to fetch event:', err)
+    }
+  }
+
+  const syncToCalendar = async (eventId: string) => {
+    setIsSyncing(true)
+    try {
+      const response = await fetch('/api/admin/calendar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'sync_event', eventId }),
+      })
+      if (response.ok) {
+        setSyncedEvents(new Set([...syncedEvents, eventId]))
+      }
+    } catch (err) {
+      console.error('Failed to sync to calendar:', err)
+    } finally {
+      setIsSyncing(false)
     }
   }
 
@@ -162,6 +182,21 @@ export default function EventPlannerPage() {
                 </div>
               </div>
               <a href={selectedEvent.website} target="_blank" rel="noopener noreferrer" className="text-sm text-blue-600 hover:underline">Website →</a>
+            </div>
+            <div className="flex items-center gap-2 mt-3">
+              <button
+                onClick={() => syncToCalendar(selectedEvent.id)}
+                disabled={isSyncing || syncedEvents.has(selectedEvent.id)}
+                className={cn(
+                  'flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors',
+                  syncedEvents.has(selectedEvent.id)
+                    ? 'bg-green-50 text-green-700 border border-green-200'
+                    : 'bg-slate-900 text-white hover:bg-slate-800 disabled:opacity-50'
+                )}
+              >
+                {isSyncing ? <Loader2 className="w-4 h-4 animate-spin" /> : <CalendarPlus className="w-4 h-4" />}
+                {syncedEvents.has(selectedEvent.id) ? 'Synced to Calendar ✓' : 'Sync All Tasks to Google Calendar'}
+              </button>
             </div>
             <p className="text-sm text-gray-600 mt-3">{selectedEvent.description}</p>
             <div className="mt-4 p-3 bg-blue-50 rounded-lg">
