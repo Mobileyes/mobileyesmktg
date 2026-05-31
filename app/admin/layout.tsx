@@ -15,6 +15,8 @@ import {
   Search,
   Radar,
   Send,
+  TrendingUp,
+  Calendar,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -25,6 +27,8 @@ const navItems = [
   { href: '/admin/discover', label: 'Discover', icon: Radar },
   { href: '/admin/creators', label: 'Creators', icon: Users },
   { href: '/admin/campaigns', label: 'Campaigns', icon: Megaphone },
+  { href: '/admin/planner', label: 'Event Planner', icon: Calendar },
+  { href: '/admin/trends', label: 'Market Trends', icon: TrendingUp },
   { href: '/admin/brands', label: 'Brand Intel', icon: Search },
   { href: '/admin/billing', label: 'Billing', icon: DollarSign },
   { href: '/admin/analytics', label: 'Analytics', icon: BarChart3 },
