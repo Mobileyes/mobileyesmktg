@@ -65,14 +65,15 @@ export function MBIcon({ size = 44, className = '' }: { size?: number; className
         </svg>
       )}
 
-      {/* Core — solid red radial gradient, NO white */}
+      {/* Core — solid red radial gradient with pulse animation */}
       <div
-        className="rounded-full"
+        className="rounded-full animate-pulse"
         style={{
           width: size * 0.36,
           height: size * 0.36,
           background: 'radial-gradient(circle, #EF4444 0%, #DC2626 70%, #B91C1C 100%)',
-          boxShadow: '0 0 8px rgba(239, 68, 68, 0.6)',
+          boxShadow: '0 0 12px rgba(239, 68, 68, 0.8), 0 0 24px rgba(239, 68, 68, 0.4)',
+          animationDuration: '1.5s',
         }}
       />
     </div>
