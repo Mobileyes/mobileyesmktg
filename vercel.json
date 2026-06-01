@@ -2,11 +2,11 @@
   "crons": [
     {
       "path": "/api/admin/inbox/sync",
-      "schedule": "*/15 * * * *"
+      "schedule": "0 9 * * *"
     },
     {
       "path": "/api/admin/streams/check",
-      "schedule": "*/5 * * * *"
+      "schedule": "0 */4 * * *"
     }
   ],
   "redirects": [
