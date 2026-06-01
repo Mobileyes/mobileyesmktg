@@ -6,7 +6,7 @@
     },
     {
       "path": "/api/admin/streams/check",
-      "schedule": "0 */4 * * *"
+      "schedule": "0 12 * * *"
     }
   ],
   "redirects": [
