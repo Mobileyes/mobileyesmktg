@@ -26,13 +26,14 @@ export async function POST(request: Request) {
     const data = parsed.data
 
     // 1. Save to Firestore as a campaign
+    const campaignTypeLabel = data.campaignType === 'ua' ? 'UA' : data.campaignType === 'both' ? 'Creator + UA' : 'Creator'
     const campaign = await createCampaign({
-      title: `${data.companyName} — Inbound Brief`,
+      title: `${data.companyName} — ${campaignTypeLabel} Brief`,
       clientName: data.companyName,
       clientEmail: data.email,
       source: 'DIRECT',
-      objective: data.objective,
-      markets: data.markets,
+      objective: data.campaignType ?? data.objective ?? 'Creator campaigns',
+      markets: data.targetMarket ? [data.targetMarket] : (data.markets ?? []),
       budgetRange: data.budget,
       briefDetails: data.briefDetails ?? null,
       status: 'DRAFT',
@@ -40,7 +41,7 @@ export async function POST(request: Request) {
       commissionPct: 25,
       startDate: null,
       endDate: null,
-      notes: `Contact: ${data.contactName}\nTimeline: ${data.timeline ?? 'Not specified'}\nPlatforms: ${data.platforms.join(', ')}`,
+      notes: `Contact: ${data.contactName}${data.phone ? `\nPhone: ${data.phone}` : ''}\nCampaign type: ${campaignTypeLabel}${data.appName ? `\nApp: ${data.appName}` : ''}${data.targetCPI ? `\nTarget CPI: ${data.targetCPI}` : ''}${data.appPlatform && data.campaignType !== 'creator' ? `\nPlatform: ${data.appPlatform}` : ''}`,
       inboxMessageId: null,
     })
 
@@ -48,20 +49,22 @@ export async function POST(request: Request) {
     try {
       await resend.emails.send({
         from: EMAIL_FROM.admin,
-        to: process.env.ADMIN_EMAIL ?? 'admin@mobileyes.live',
-        subject: `[New Brief] ${data.companyName} — ${data.objective} (${data.budget})`,
+        to: process.env.ADMIN_EMAIL ?? 'admin@mobileyes.live', // M-05: admin@ only
+        subject: `[New Brief] ${data.companyName} — ${campaignTypeLabel} (${data.budget})`,
         html: `
           <div style="font-family: -apple-system, sans-serif; max-width: 600px;">
             <h2 style="color: #1e293b;">New Brand Brief Submitted</h2>
             <table style="width: 100%; border-collapse: collapse;">
-              <tr><td style="padding: 8px 0; font-weight: bold; color: #64748b;">Company</td><td>${data.companyName}</td></tr>
               <tr><td style="padding: 8px 0; font-weight: bold; color: #64748b;">Contact</td><td>${data.contactName}</td></tr>
+              <tr><td style="padding: 8px 0; font-weight: bold; color: #64748b;">Company</td><td>${data.companyName}</td></tr>
               <tr><td style="padding: 8px 0; font-weight: bold; color: #64748b;">Email</td><td><a href="mailto:${data.email}">${data.email}</a></td></tr>
-              <tr><td style="padding: 8px 0; font-weight: bold; color: #64748b;">Objective</td><td>${data.objective}</td></tr>
-              <tr><td style="padding: 8px 0; font-weight: bold; color: #64748b;">Markets</td><td>${data.markets.join(', ')}</td></tr>
+              ${data.phone ? `<tr><td style="padding: 8px 0; font-weight: bold; color: #64748b;">Phone</td><td>${data.phone}</td></tr>` : ''}
+              <tr><td style="padding: 8px 0; font-weight: bold; color: #64748b;">Campaign Type</td><td>${campaignTypeLabel}</td></tr>
+              <tr><td style="padding: 8px 0; font-weight: bold; color: #64748b;">Market</td><td>${data.targetMarket || (data.markets ?? []).join(', ')}</td></tr>
               <tr><td style="padding: 8px 0; font-weight: bold; color: #64748b;">Budget</td><td>${data.budget}</td></tr>
-              <tr><td style="padding: 8px 0; font-weight: bold; color: #64748b;">Platforms</td><td>${data.platforms.join(', ') || 'Any'}</td></tr>
-              <tr><td style="padding: 8px 0; font-weight: bold; color: #64748b;">Timeline</td><td>${data.timeline ?? 'Not specified'}</td></tr>
+              ${data.appName ? `<tr><td style="padding: 8px 0; font-weight: bold; color: #64748b;">App Name</td><td>${data.appName}</td></tr>` : ''}
+              ${data.targetCPI ? `<tr><td style="padding: 8px 0; font-weight: bold; color: #64748b;">Target CPI</td><td>${data.targetCPI}</td></tr>` : ''}
+              ${data.appPlatform && data.campaignType !== 'creator' ? `<tr><td style="padding: 8px 0; font-weight: bold; color: #64748b;">App Platform</td><td>${data.appPlatform}</td></tr>` : ''}
               ${data.briefDetails ? `<tr><td style="padding: 8px 0; font-weight: bold; color: #64748b;">Details</td><td>${data.briefDetails}</td></tr>` : ''}
             </table>
             <p style="margin-top: 24px; color: #64748b; font-size: 12px;">

@@ -20,15 +20,23 @@ export const creatorApplicationSchema = z.object({
 })
 
 export const brandBriefSchema = z.object({
-  companyName: z.string().min(2).max(200).trim(),
   contactName: z.string().min(2).max(100).trim(),
+  companyName: z.string().min(2).max(200).trim(),
   email: z.string().email().max(255).trim().toLowerCase(),
-  objective: z.string().min(2).max(100),
-  markets: z.array(z.string().max(50)).max(10).default([]),
+  phone: z.string().max(30).optional().nullable(),
+  campaignType: z.enum(['creator', 'ua', 'both']).default('creator'),
+  targetMarket: z.string().max(50).default('Australia'),
   budget: z.string().min(1).max(100),
-  platforms: z.array(z.string().max(50)).max(5).default([]),
-  timeline: z.string().max(500).optional().nullable(),
   briefDetails: z.string().max(5000).optional().nullable(),
+  // UA conditional fields
+  appName: z.string().max(200).optional().nullable(),
+  targetCPI: z.string().max(50).optional().nullable(),
+  appPlatform: z.string().max(20).optional().nullable(),
+  // Legacy fields (still accepted from old form)
+  objective: z.string().max(100).optional().nullable(),
+  markets: z.array(z.string().max(50)).max(10).optional().default([]),
+  platforms: z.array(z.string().max(50)).max(5).optional().default([]),
+  timeline: z.string().max(500).optional().nullable(),
 })
 
 export const contactFormSchema = z.object({
