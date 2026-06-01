@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-950 text-white border-t border-white/5">
+    <footer className="text-white" style={{ background: '#0B0F2E', borderTop: '1px solid #1E2A5E' }}>
       <div className="max-w-7xl mx-auto px-6 py-20">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           {/* Brand */}
@@ -11,8 +11,8 @@ export default function Footer() {
               <div className="w-2 h-2 bg-red-500 rounded-full" />
               <h2 className="text-xl font-bold tracking-tight">MOBILEYES</h2>
             </div>
-            <p className="text-slate-400 text-sm max-w-md leading-relaxed">
-              Live video gaming talent agency. Professional briefs. 4-day payment.
+            <p className="text-sm max-w-md leading-relaxed" style={{ color: 'rgba(255,255,255,0.6)' }}>
+              Live streaming talent agency. Professional briefs. 4-day payment.
               Representing streaming creators across Australia and APAC.
             </p>
             <div className="flex gap-4 mt-6">
@@ -22,7 +22,7 @@ export default function Footer() {
                 { label: 'Twitch', href: 'https://twitch.tv/mobileyes' },
                 { label: 'LinkedIn', href: 'https://linkedin.com/company/mobileyes' },
               ].map((social) => (
-                <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-white transition-colors text-sm">
+                <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>
                   {social.label}
                 </a>
               ))}
@@ -31,30 +31,30 @@ export default function Footer() {
 
           {/* Links */}
           <div>
-            <h3 className="text-sm font-semibold text-slate-300 mb-4">Creators</h3>
+            <h3 className="text-sm font-semibold mb-4" style={{ color: 'rgba(255,255,255,0.7)' }}>Creators</h3>
             <ul className="space-y-3">
-              <li><Link href="/creators" className="text-slate-500 hover:text-white text-sm transition-colors">Apply Now</Link></li>
-              <li><Link href="/talent" className="text-slate-500 hover:text-white text-sm transition-colors">Our Talent</Link></li>
-              <li><Link href="/about" className="text-slate-500 hover:text-white text-sm transition-colors">About Us</Link></li>
+              <li><Link href="/creators" className="text-sm transition-colors hover:text-white" style={{ color: '#3B82F6' }}>Apply Now</Link></li>
+              <li><Link href="/talent" className="text-sm transition-colors hover:text-white" style={{ color: '#3B82F6' }}>Our Talent</Link></li>
+              <li><Link href="/about" className="text-sm transition-colors hover:text-white" style={{ color: '#3B82F6' }}>About Us</Link></li>
             </ul>
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-slate-300 mb-4">Brands</h3>
+            <h3 className="text-sm font-semibold mb-4" style={{ color: 'rgba(255,255,255,0.7)' }}>Brands</h3>
             <ul className="space-y-3">
-              <li><Link href="/brands" className="text-slate-500 hover:text-white text-sm transition-colors">Submit a Brief</Link></li>
-              <li><Link href="/contact" className="text-slate-500 hover:text-white text-sm transition-colors">Contact</Link></li>
-              <li><Link href="/news" className="text-slate-500 hover:text-white text-sm transition-colors">News</Link></li>
+              <li><Link href="/brands" className="text-sm transition-colors hover:text-white" style={{ color: '#3B82F6' }}>Submit a Brief</Link></li>
+              <li><Link href="/contact" className="text-sm transition-colors hover:text-white" style={{ color: '#3B82F6' }}>Contact</Link></li>
+              <li><Link href="/news" className="text-sm transition-colors hover:text-white" style={{ color: '#3B82F6' }}>News</Link></li>
             </ul>
           </div>
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4" style={{ borderTop: '1px solid #1E2A5E' }}>
           <div className="flex items-center gap-6">
-            <Link href="/privacy" className="text-slate-600 hover:text-slate-400 text-xs transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="text-slate-600 hover:text-slate-400 text-xs transition-colors">Terms</Link>
+            <Link href="/privacy" className="text-xs transition-colors hover:text-white" style={{ color: 'rgba(255,255,255,0.5)' }}>Privacy Policy</Link>
+            <Link href="/terms" className="text-xs transition-colors hover:text-white" style={{ color: 'rgba(255,255,255,0.5)' }}>Terms</Link>
           </div>
-          <p className="text-slate-600 text-xs text-center">
+          <p className="text-xs text-center" style={{ color: 'rgba(255,255,255,0.5)' }}>
             Mobileyes is a trading name of Gamefluence Pty Ltd (ACN 696 199 461). Sydney, Australia. admin@mobileyes.live
           </p>
         </div>
