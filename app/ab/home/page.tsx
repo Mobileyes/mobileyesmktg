@@ -11,7 +11,7 @@ export default function ABHomePage() {
       >
         <MobileyesLogo size={26} />
         <div className="flex items-center gap-6">
-          <Link href="/ab/home" className="text-sm text-white/70 hover:text-white transition-colors">Talent</Link>
+          <Link href="/ab/home" className="text-sm text-white/70 hover:text-white transition-colors">For Creators</Link>
           <Link href="/ab/home" className="text-sm text-white/70 hover:text-white transition-colors">For Brands</Link>
           <Link href="/ab/brief" className="px-4 py-2 text-sm font-medium text-white rounded-lg" style={{ backgroundColor: '#3B82F6' }}>
             Apply Now
@@ -39,7 +39,7 @@ export default function ABHomePage() {
             {/* Live indicator */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8" style={{ backgroundColor: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.2)' }}>
               <MBIcon size={16} />
-              <span className="text-sm font-medium" style={{ color: '#EF4444' }}>Live gaming talent — Sydney, AU</span>
+              <span className="text-sm font-medium" style={{ color: '#EF4444' }}>Live streaming talent — Sydney, AU</span>
             </div>
 
             <h1 className="text-6xl md:text-8xl font-extrabold tracking-tight leading-[0.9] mb-8 text-white" style={{ letterSpacing: '-1px' }}>
@@ -49,7 +49,7 @@ export default function ABHomePage() {
             </h1>
 
             <p className="text-xl md:text-2xl max-w-2xl mb-12 leading-relaxed" style={{ color: 'rgba(255,255,255,0.7)' }}>
-              Gaming creator representation that works. Better briefs. 4-day payment.
+              Creator representation that works. Better briefs. 4-day payment.
               Selective campaigns across Australia and APAC.
             </p>
 
@@ -100,7 +100,7 @@ export default function ABHomePage() {
           <div className="max-w-2xl mb-16">
             <p className="font-semibold text-sm uppercase tracking-wider mb-3" style={{ color: '#3B82F6' }}>What we do</p>
             <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight" style={{ letterSpacing: '-0.3px' }}>
-              The agency model, rebuilt for live gaming creators.
+              The agency model, rebuilt for live streaming creators.
             </h2>
           </div>
 
@@ -108,7 +108,7 @@ export default function ABHomePage() {
             {[
               { title: '4-Day Payment', desc: 'Content approved? Paid in 4 days. We carry the float. No chasing invoices while you stream.', icon: '⚡' },
               { title: 'Selective Briefs', desc: 'Not every campaign fits every creator. We match on audience, content style, and brand alignment.', icon: '🎯' },
-              { title: 'AU + APAC Reach', desc: 'Deep brand relationships across Australia, Vietnam, Thailand, and the broader APAC gaming market.', icon: '🌏' },
+              { title: 'AU + APAC Reach', desc: 'Deep brand relationships across Australia, Vietnam, Thailand, and the broader APAC market. Local knowledge, regional scale.', icon: '🌏' },
             ].map((card) => (
               <div key={card.title} className="p-8 rounded-2xl" style={{ backgroundColor: '#111633', border: '1px solid #1E2A5E' }}>
                 <span className="text-2xl mb-4 block">{card.icon}</span>
@@ -181,7 +181,7 @@ export default function ABHomePage() {
             Ready to level up your streaming career?
           </h2>
           <p className="text-xl mb-10 max-w-2xl mx-auto" style={{ color: 'rgba(255,255,255,0.6)' }}>
-            Whether you&apos;re a creator looking for representation or a brand looking for authentic gaming content — let&apos;s talk.
+            Whether you&apos;re a creator looking for representation or a brand looking for authentic live content — let&apos;s talk.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/ab/brief" className="px-8 py-4 text-white rounded-xl font-semibold text-lg" style={{ backgroundColor: '#3B82F6' }}>
