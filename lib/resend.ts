@@ -3,10 +3,11 @@ import { Resend } from 'resend'
 export const resend = new Resend(process.env.RESEND_API_KEY)
 
 // Email sender addresses
+// M-05: admin@mobileyes.live is the single inbox. talent@ added when staff hired.
 export const EMAIL_FROM = {
-  admin: process.env.RESEND_FROM_ADMIN ?? 'admin@mobileyes.live',
-  talent: process.env.RESEND_FROM_TALENT ?? 'talent@mobileyes.live',
-  campaigns: process.env.RESEND_FROM_CAMPAIGNS ?? 'campaigns@mobileyes.live',
+  admin: 'admin@mobileyes.live',
+  talent: 'admin@mobileyes.live', // talent@ added when staff hired
+  campaigns: 'admin@mobileyes.live', // campaigns@ added when staff hired
 }
 
 // Email templates
