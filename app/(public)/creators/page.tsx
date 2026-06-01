@@ -59,25 +59,24 @@ export default function CreatorsPage() {
   }
 
   return (
-    <div>
+    <div style={{ background: '#0B0F2E' }}>
       {/* Hero */}
-      <section className="bg-slate-950 text-white py-32 px-6 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950" />
-        <div className="relative max-w-5xl mx-auto">
-          <p className="text-blue-400 font-semibold text-sm uppercase tracking-wider mb-4">For Creators</p>
-          <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6">
-            Professional representation for gaming creators.
+      <section className="py-32 px-6 relative overflow-hidden" style={{ background: '#0B0F2E' }}>
+        <div className="max-w-5xl mx-auto">
+          <p className="font-semibold text-sm uppercase tracking-wider mb-4" style={{ color: '#3B82F6' }}>For Creators</p>
+          <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6 text-white">
+            Professional representation for live streaming creators.
           </h1>
-          <p className="text-xl text-slate-300 max-w-3xl mb-12">
-            Better briefs. 4-day payment. Selective campaigns that fit your audience. 
+          <p className="text-xl max-w-3xl mb-12" style={{ color: 'rgba(255,255,255,0.7)' }}>
+            Better briefs. 4-day payment. Selective campaigns that fit your audience.
             We handle the business so you can focus on content.
           </p>
-          
+
           {/* Key stats */}
           <div className="grid grid-cols-3 gap-6 max-w-lg">
-            <div className="text-center p-4 bg-slate-800/50 rounded-xl border border-slate-700/50">
-              <p className="text-3xl font-bold text-blue-400">4</p>
-              <p className="text-slate-400 text-xs mt-1">Day payment</p>
+            <div className="text-center p-4 rounded-xl" style={{ backgroundColor: '#111633', border: '1px solid #1E2A5E' }}>
+              <p className="text-3xl font-bold" style={{ color: '#3B82F6' }}>4</p>
+              <p className="text-xs mt-1" style={{ color: 'rgba(255,255,255,0.5)' }}>Day payment</p>
             </div>
             <div className="text-center p-4 bg-slate-800/50 rounded-xl border border-slate-700/50">
               <p className="text-3xl font-bold text-green-400">25%</p>
