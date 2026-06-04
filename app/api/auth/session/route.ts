@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
+import { trackAdminEvent } from '@/lib/posthog'
 
 export async function POST(request: Request) {
   try {
@@ -28,6 +29,8 @@ export async function POST(request: Request) {
       path: '/',
       sameSite: 'lax',
     })
+
+    trackAdminEvent('admin_logged_in')
 
     return NextResponse.json({ success: true })
   } catch (error: any) {

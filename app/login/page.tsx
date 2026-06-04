@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { MBIcon } from '@/components/brand/MBIcon'
+import posthog from 'posthog-js'
 
 export default function LoginPage() {
   const [email, setEmail] = useState('admin@mobileyes.live')
@@ -23,6 +24,7 @@ export default function LoginPage() {
     })
 
     if (res.ok) {
+      posthog.identify(email, { email })
       router.push('/admin')
     } else {
       const data = await res.json()

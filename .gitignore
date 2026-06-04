@@ -46,3 +46,4 @@ next-env.d.ts
 firebase-service-account.json
 *.json.bak
 .env*.local
+.env.local

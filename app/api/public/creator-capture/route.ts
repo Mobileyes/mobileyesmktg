@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { fetchYouTubeChannel, fetchRecentVideos, calculateEngagementRate } from '@/lib/platforms/youtube'
 import { fetchTwitchUser, getTwitchFollowerCount } from '@/lib/platforms/twitch'
 import { fetchKickChannel } from '@/lib/platforms/kick'
+import { trackAdminEvent } from '@/lib/posthog'
 
 // POST /api/public/creator-capture — quick lead capture + auto-research
 // Used from mobileyes.live/creator (mobile lead capture at events)
@@ -127,6 +128,15 @@ export async function POST(request: Request) {
 
     // TODO: Save to Firestore as CreatorDossier when db is connected
     // For now, return the scraped data immediately
+
+    trackAdminEvent('creator_captured', {
+      platform: result.platform,
+      handle: result.handle,
+      context: result.context,
+      scraped: result.scraped,
+      tier: result.tier ?? null,
+      followerCount: result.followerCount ?? null,
+    })
 
     return NextResponse.json(result)
   } catch (err) {

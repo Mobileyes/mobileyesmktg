@@ -1,11 +1,21 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Link from 'next/link'
+import posthog from 'posthog-js'
 
 type CampaignType = 'creator' | 'ua' | 'both'
 
 export default function BrandsPage() {
+  const briefStartedFired = useRef(false)
+
+  const handleFieldFocus = () => {
+    if (!briefStartedFired.current) {
+      briefStartedFired.current = true
+      posthog.capture('brand_brief_started')
+    }
+  }
+
   const [formData, setFormData] = useState({
     contactName: '',
     companyName: '',
@@ -112,7 +122,7 @@ export default function BrandsPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-medium text-white mb-2">Your name *</label>
-                <input type="text" required value={formData.contactName} onChange={(e) => setFormData({ ...formData, contactName: e.target.value })} placeholder="Joel Kirk" className="w-full px-4 py-3 rounded-xl text-white placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-blue-500" style={{ backgroundColor: '#0B0F2E', border: '1px solid #1E2A5E' }} />
+                <input type="text" required value={formData.contactName} onChange={(e) => setFormData({ ...formData, contactName: e.target.value })} onFocus={handleFieldFocus} placeholder="Joel Kirk" className="w-full px-4 py-3 rounded-xl text-white placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-blue-500" style={{ backgroundColor: '#0B0F2E', border: '1px solid #1E2A5E' }} />
               </div>
               <div>
                 <label className="block text-sm font-medium text-white mb-2">Company / Brand *</label>

@@ -1,7 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Link from 'next/link'
+import posthog from 'posthog-js'
 
 export default function CreatorsPage() {
   const [formData, setFormData] = useState({
@@ -19,6 +20,14 @@ export default function CreatorsPage() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const applicationStartedFired = useRef(false)
+
+  const handleFieldFocus = () => {
+    if (!applicationStartedFired.current) {
+      applicationStartedFired.current = true
+      posthog.capture('creator_application_started')
+    }
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -124,7 +133,7 @@ export default function CreatorsPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-2">Full Name *</label>
-                <input type="text" required value={formData.fullName} onChange={(e) => setFormData({ ...formData, fullName: e.target.value })} className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow" />
+                <input type="text" required value={formData.fullName} onChange={(e) => setFormData({ ...formData, fullName: e.target.value })} onFocus={handleFieldFocus} className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-2">Email *</label>
