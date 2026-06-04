@@ -33,8 +33,8 @@ export async function POST(request: Request) {
     trackAdminEvent('admin_logged_in')
 
     return NextResponse.json({ success: true })
-  } catch (error: any) {
-    console.error('Session error:', error?.message)
+  } catch (error) {
+    console.error('Session error:', (error as Error)?.message)
     return NextResponse.json({ error: 'Failed to sign in' }, { status: 500 })
   }
 }

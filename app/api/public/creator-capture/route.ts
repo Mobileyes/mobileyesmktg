@@ -23,6 +23,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Could not detect platform from URL' }, { status: 400 })
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let result: any = {
       handle,
       platform,
