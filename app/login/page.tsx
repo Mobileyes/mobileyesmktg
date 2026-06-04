@@ -2,9 +2,10 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { MBIcon } from '@/components/brand/MBIcon'
 
 export default function LoginPage() {
-  const [email, setEmail] = useState('')
+  const [email, setEmail] = useState('admin@mobileyes.live')
   const [password, setPassword] = useState('')
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
@@ -31,27 +32,56 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-900 flex items-center justify-center px-6">
+    <div className="min-h-screen flex items-center justify-center px-6" style={{ background: '#0B0F2E' }}>
       <div className="w-full max-w-sm">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-white tracking-tight">MOBILEYES</h1>
-          <p className="text-slate-400 mt-2 text-sm">Admin Platform</p>
+        {/* Logo */}
+        <div className="text-center mb-10">
+          <MBIcon size={48} className="mx-auto mb-4" />
+          <h1 className="text-2xl font-extrabold text-white tracking-[0.03em]">MOBILEYES</h1>
+          <p className="text-sm mt-2" style={{ color: 'rgba(255,255,255,0.4)' }}>Admin Platform</p>
         </div>
-        <form onSubmit={handleSubmit} className="bg-white rounded-xl p-8 shadow-xl space-y-4">
-          <h2 className="text-lg font-semibold text-gray-900 text-center">Sign in to continue</h2>
-          {error && <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-sm text-red-700">{error}</div>}
+
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="space-y-5 p-8 rounded-2xl" style={{ backgroundColor: '#111633', border: '1px solid #1E2A5E' }}>
+          {error && (
+            <div className="p-3 rounded-lg text-sm text-red-300" style={{ backgroundColor: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.3)' }}>
+              {error}
+            </div>
+          )}
+
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="admin@mobileyes.live" />
+            <label className="block text-sm font-medium text-white mb-2">Email</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="w-full px-4 py-3 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              style={{ backgroundColor: '#0B0F2E', border: '1px solid #1E2A5E' }}
+            />
           </div>
+
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            <label className="block text-sm font-medium text-white mb-2">Password</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              autoFocus
+              className="w-full px-4 py-3 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              style={{ backgroundColor: '#0B0F2E', border: '1px solid #1E2A5E' }}
+            />
           </div>
-          <button type="submit" disabled={loading} className="w-full py-3 bg-slate-900 text-white rounded-lg font-medium hover:bg-slate-800 disabled:opacity-50">
+
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full py-3.5 text-white rounded-xl font-semibold hover:opacity-90 transition-opacity disabled:opacity-50"
+            style={{ backgroundColor: '#3B82F6' }}
+          >
             {loading ? 'Signing in...' : 'Sign In'}
           </button>
-          <p className="text-xs text-gray-400 text-center">Admin access only.</p>
         </form>
       </div>
     </div>
