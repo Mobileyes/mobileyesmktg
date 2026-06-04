@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import {
   DollarSign,
   TrendingUp,
@@ -17,10 +17,30 @@ export default function BillingPage() {
   const [activeTab, setActiveTab] = useState<
     'overview' | 'commissions' | 'creator-payments'
   >('overview')
-  const [timePeriod, setTimePeriod] = useState<TimePeriod>('this-month')
+  const [timePeriod, setTimePeriod] = useState<TimePeriod>('lifetime')
+  const [data, setData] = useState<any>(null)
+  const [isLoading, setIsLoading] = useState(true)
 
-  // Placeholder metrics — will be API-driven
-  const metrics = {
+  useEffect(() => {
+    fetchBilling()
+  }, [timePeriod])
+
+  const fetchBilling = async () => {
+    try {
+      const period = timePeriod === 'lifetime' ? 'all' : timePeriod
+      const response = await fetch(`/api/admin/billing?period=${period}`)
+      if (response.ok) {
+        const result = await response.json()
+        setData(result)
+      }
+    } catch (err) {
+      console.error('Failed to fetch billing:', err)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const metrics = data?.metrics ?? {
     grossBillings: 0,
     totalCommissions: 0,
     creatorPaymentsOut: 0,
