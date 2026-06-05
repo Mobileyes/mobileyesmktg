@@ -5,7 +5,7 @@ export default function HomePage() {
   return (
     <div style={{ background: '#0B0F2E' }}>
       {/* Hero */}
-      <section className="relative min-h-screen flex items-center overflow-hidden" style={{ background: '#0B0F2E' }}>
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden" style={{ background: '#0B0F2E' }}>
         {/* Subtle ring pattern background */}
         <div className="absolute inset-0 opacity-[0.03]">
           <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
@@ -19,29 +19,30 @@ export default function HomePage() {
           </svg>
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-6 py-32 w-full">
+        <div className="relative max-w-7xl mx-auto px-6 py-20 md:py-32 w-full">
           <div className="max-w-4xl">
             {/* Live indicator */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8" style={{ backgroundColor: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.2)' }}>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6" style={{ backgroundColor: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.2)' }}>
               <MBIcon size={16} />
               <span className="text-sm font-medium" style={{ color: '#EF4444' }}>Live streaming talent — Sydney, AU</span>
             </div>
 
-            <h1 className="text-6xl md:text-8xl font-extrabold tracking-tight leading-[0.9] mb-8 text-white" style={{ letterSpacing: '-1px' }}>
+            <h1 className="text-5xl md:text-8xl font-extrabold tracking-tight leading-[0.9] mb-6 text-white" style={{ letterSpacing: '-1px' }}>
               <span className="block">Represent.</span>
               <span className="block" style={{ color: '#3B82F6' }}>Perform.</span>
               <span className="block">Get paid.</span>
             </h1>
 
-            <p className="text-xl md:text-2xl max-w-2xl mb-12 leading-relaxed" style={{ color: 'rgba(255,255,255,0.7)' }}>
-              Creator representation that works. Better briefs. 4-day payment.
-              Selective campaigns across Australia and APAC.
+            <p className="text-lg md:text-2xl max-w-2xl mb-10 leading-relaxed" style={{ color: 'rgba(255,255,255,0.7)' }}>
+              Better briefs. 4-day payment. Real data. Creator representation
+              built for live streaming across Australia and APAC.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            {/* CTAs — Creator dominant, Brief subtle */}
+            <div className="flex flex-col sm:flex-row gap-3">
               <Link
                 href="/creators"
-                className="group px-8 py-4 text-white rounded-xl font-semibold hover:opacity-90 transition-all text-lg inline-flex items-center gap-2"
+                className="group px-8 py-4 text-white rounded-xl font-semibold hover:opacity-90 transition-all text-lg inline-flex items-center justify-center gap-2"
                 style={{ backgroundColor: '#3B82F6' }}
               >
                 Apply as Creator
@@ -49,91 +50,106 @@ export default function HomePage() {
               </Link>
               <Link
                 href="/brands"
-                className="px-8 py-4 text-white rounded-xl font-semibold hover:bg-white/5 transition-all text-lg"
-                style={{ border: '1px solid #1E2A5E' }}
+                className="px-8 py-4 text-sm font-medium text-center transition-all"
+                style={{ color: 'rgba(255,255,255,0.5)' }}
               >
-                Submit a Brief
+                or submit a brand brief →
               </Link>
             </div>
           </div>
 
-          {/* Stats strip */}
-          <div className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-8 pt-12" style={{ borderTop: '1px solid #1E2A5E' }}>
+          {/* Stats strip — tighter spacing on mobile */}
+          <div className="mt-12 md:mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 pt-8" style={{ borderTop: '1px solid #1E2A5E' }}>
             <div>
-              <p className="text-4xl font-bold text-white">4</p>
-              <p className="text-sm mt-1" style={{ color: 'rgba(255,255,255,0.5)' }}>Day payment guarantee</p>
+              <p className="text-3xl md:text-4xl font-bold text-white">4</p>
+              <p className="text-xs md:text-sm mt-1" style={{ color: 'rgba(255,255,255,0.5)' }}>Day payment guarantee</p>
             </div>
             <div>
-              <p className="text-4xl font-bold text-white">20+</p>
-              <p className="text-sm mt-1" style={{ color: 'rgba(255,255,255,0.5)' }}>Years in the industry</p>
+              <p className="text-3xl md:text-4xl font-bold text-white">20+</p>
+              <p className="text-xs md:text-sm mt-1" style={{ color: 'rgba(255,255,255,0.5)' }}>Years in the industry</p>
             </div>
             <div>
-              <p className="text-4xl font-bold text-white">AU</p>
-              <p className="text-sm mt-1" style={{ color: 'rgba(255,255,255,0.5)' }}>& APAC coverage</p>
+              <p className="text-3xl md:text-4xl font-bold text-white">AU</p>
+              <p className="text-xs md:text-sm mt-1" style={{ color: 'rgba(255,255,255,0.5)' }}>& APAC coverage</p>
             </div>
             <div>
-              <p className="text-4xl font-bold text-white">Live</p>
-              <p className="text-sm mt-1" style={{ color: 'rgba(255,255,255,0.5)' }}>Stream-first creators</p>
+              <p className="text-3xl md:text-4xl font-bold text-white">Live</p>
+              <p className="text-xs md:text-sm mt-1" style={{ color: 'rgba(255,255,255,0.5)' }}>Stream-first creators</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* What We Do */}
-      <section className="py-32 px-6" style={{ background: '#0B0F2E' }}>
+      {/* Trust strip — founder career logos */}
+      <section className="py-8 px-6" style={{ borderTop: '1px solid #1E2A5E', borderBottom: '1px solid #1E2A5E' }}>
+        <div className="max-w-5xl mx-auto">
+          <p className="text-center text-xs font-medium uppercase tracking-wider mb-4" style={{ color: 'rgba(255,255,255,0.3)' }}>Founded from inside the industry</p>
+          <div className="flex flex-wrap justify-center gap-6 md:gap-10 items-center">
+            {['IGN', 'King', 'Activision Blizzard', 'AppsFlyer', 'AWS'].map((company) => (
+              <span key={company} className="text-sm md:text-base font-semibold" style={{ color: 'rgba(255,255,255,0.4)' }}>{company}</span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* What We Do — tighter mobile cards */}
+      <section className="py-20 md:py-32 px-6" style={{ background: '#0B0F2E' }}>
         <div className="max-w-7xl mx-auto">
-          <div className="max-w-2xl mb-16">
-            <p className="font-semibold text-sm uppercase tracking-wider mb-3" style={{ color: '#3B82F6' }}>What we do</p>
-            <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight" style={{ letterSpacing: '-0.3px' }}>
+          <div className="max-w-2xl mb-10 md:mb-16">
+            <p className="font-semibold text-xs uppercase tracking-wider mb-3" style={{ color: '#3B82F6' }}>What we do</p>
+            <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight" style={{ letterSpacing: '-0.3px' }}>
               The agency model, rebuilt for live streaming creators.
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             {[
               { title: '4-Day Payment', desc: 'Content approved? Paid in 4 days. We carry the float. No chasing invoices while you stream.', icon: '⚡' },
               { title: 'Selective Briefs', desc: 'Not every campaign fits every creator. We match on audience, content style, and brand alignment.', icon: '🎯' },
-              { title: 'AU + APAC Reach', desc: 'Deep brand relationships across Australia, Vietnam, Thailand, and the broader APAC market. Local knowledge, regional scale.', icon: '🌏' },
+              { title: 'AU + APAC Reach', desc: 'Deep brand relationships across Australia, Vietnam, Thailand, and the broader APAC market.', icon: '🌏' },
             ].map((card) => (
-              <div key={card.title} className="p-8 rounded-2xl" style={{ backgroundColor: '#111633', border: '1px solid #1E2A5E' }}>
-                <span className="text-2xl mb-4 block">{card.icon}</span>
-                <h3 className="text-xl font-bold text-white mb-3">{card.title}</h3>
-                <p className="leading-relaxed" style={{ color: 'rgba(255,255,255,0.6)' }}>{card.desc}</p>
+              <div key={card.title} className="p-6 md:p-8 rounded-2xl" style={{ backgroundColor: '#111633', border: '1px solid #1E2A5E' }}>
+                <span className="text-2xl mb-3 block">{card.icon}</span>
+                <h3 className="text-lg font-bold text-white mb-2">{card.title}</h3>
+                <p className="text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.6)' }}>{card.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* For Creators — Process */}
-      <section className="py-32 px-6" style={{ background: '#080C24' }}>
+      {/* For Creators — Process (timeline style on mobile) */}
+      <section className="py-20 md:py-32 px-6" style={{ background: '#080C24' }}>
         <div className="max-w-7xl mx-auto">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <p className="font-semibold text-sm uppercase tracking-wider mb-3" style={{ color: '#3B82F6' }}>For creators</p>
-            <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
+          <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
+            <p className="font-semibold text-xs uppercase tracking-wider mb-3" style={{ color: '#3B82F6' }}>For creators</p>
+            <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight mb-4">
               Your content. Your audience. Our infrastructure.
             </h2>
-            <p className="text-xl" style={{ color: 'rgba(255,255,255,0.6)' }}>
+            <p className="text-base md:text-xl" style={{ color: 'rgba(255,255,255,0.6)' }}>
               We handle the business so you can focus on creating.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          {/* Timeline-style steps on mobile */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-3 md:gap-6">
             {[
               { num: '01', title: 'Apply', desc: 'Submit your profile. We review every application personally.' },
               { num: '02', title: 'Get Matched', desc: 'We send you briefs that fit your audience and content style.' },
               { num: '03', title: 'Create', desc: 'Deliver content on your terms. No scripts. Your voice.' },
               { num: '04', title: 'Get Paid', desc: '4 days from content approval. Direct to your account.' },
             ].map((step) => (
-              <div key={step.num} className="p-6 rounded-2xl" style={{ backgroundColor: '#0F1330', border: '1px solid #1E2A5E' }}>
-                <p className="font-mono text-sm mb-4" style={{ color: '#3B82F6' }}>{step.num}</p>
-                <h3 className="text-lg font-bold text-white mb-2">{step.title}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.5)' }}>{step.desc}</p>
+              <div key={step.num} className="flex md:block items-start gap-4 p-4 md:p-6 rounded-xl md:rounded-2xl" style={{ backgroundColor: '#0F1330', border: '1px solid #1E2A5E' }}>
+                <p className="font-mono text-sm md:mb-4 flex-shrink-0" style={{ color: '#3B82F6' }}>{step.num}</p>
+                <div>
+                  <h3 className="text-base md:text-lg font-bold text-white mb-1">{step.title}</h3>
+                  <p className="text-xs md:text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.5)' }}>{step.desc}</p>
+                </div>
               </div>
             ))}
           </div>
 
-          <div className="text-center mt-12">
+          <div className="text-center mt-10">
             <Link
               href="/creators"
               className="inline-flex items-center gap-2 px-8 py-4 text-white rounded-xl font-semibold text-lg"
@@ -147,40 +163,51 @@ export default function HomePage() {
       </section>
 
       {/* Platforms */}
-      <section className="py-20 px-6" style={{ background: '#0B0F2E', borderTop: '1px solid #1E2A5E' }}>
+      <section className="py-12 md:py-20 px-6" style={{ background: '#0B0F2E', borderTop: '1px solid #1E2A5E' }}>
         <div className="max-w-7xl mx-auto text-center">
-          <p className="text-sm font-medium uppercase tracking-wider mb-8" style={{ color: 'rgba(255,255,255,0.4)' }}>Platforms we represent across</p>
-          <div className="flex flex-wrap justify-center gap-8 md:gap-16 items-center">
+          <p className="text-xs font-medium uppercase tracking-wider mb-6" style={{ color: 'rgba(255,255,255,0.4)' }}>Platforms we represent across</p>
+          <div className="flex flex-wrap justify-center gap-6 md:gap-16 items-center">
             {['YouTube', 'Twitch', 'Kick', 'TikTok', 'Instagram'].map((platform) => (
-              <span key={platform} className="text-2xl font-bold" style={{ color: 'rgba(255,255,255,0.3)' }}>{platform}</span>
+              <span key={platform} className="text-lg md:text-2xl font-bold" style={{ color: 'rgba(255,255,255,0.3)' }}>{platform}</span>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-32 px-6 relative overflow-hidden" style={{ background: '#080C24' }}>
-        <div className="relative max-w-4xl mx-auto text-center">
-          <MBIcon size={64} className="mx-auto mb-8" />
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Ready to level up your streaming career?
+      {/* Final CTA — specific messaging, no generic "level up" */}
+      <section className="py-24 md:py-32 px-6 relative overflow-hidden" style={{ background: '#080C24' }}>
+        <div className="relative max-w-3xl mx-auto text-center">
+          <MBIcon size={44} className="mx-auto mb-6" />
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 leading-tight">
+            Get paid in 4 days, not 45.
           </h2>
-          <p className="text-xl mb-10 max-w-2xl mx-auto" style={{ color: 'rgba(255,255,255,0.6)' }}>
-            Whether you&apos;re a creator looking for representation or a brand looking for authentic live content — let&apos;s talk.
+          <p className="text-base md:text-xl mb-8 max-w-2xl mx-auto" style={{ color: 'rgba(255,255,255,0.6)' }}>
+            Better briefs. Real data. Selective campaigns. Whether you&apos;re a creator or a brand — we built this because the old model was broken.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/creators" className="px-8 py-4 text-white rounded-xl font-semibold text-lg" style={{ backgroundColor: '#3B82F6' }}>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <Link href="/creators" className="px-8 py-4 text-white rounded-xl font-semibold text-lg w-full sm:w-auto text-center" style={{ backgroundColor: '#3B82F6' }}>
               Creator Application
             </Link>
-            <Link href="/brands" className="px-8 py-4 text-white rounded-xl font-semibold text-lg" style={{ border: '1px solid #1E2A5E' }}>
+            <Link href="/brands" className="px-8 py-4 text-white rounded-xl font-semibold text-lg w-full sm:w-auto text-center" style={{ border: '1px solid #1E2A5E' }}>
               Brand Brief
             </Link>
           </div>
-          <p className="mt-8 text-sm" style={{ color: 'rgba(255,255,255,0.3)' }}>
+          <p className="mt-6 text-xs" style={{ color: 'rgba(255,255,255,0.3)' }}>
             admin@mobileyes.live · 2 business day response
           </p>
         </div>
       </section>
+
+      {/* Sticky mobile CTA — appears on scroll */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden p-3" style={{ background: 'linear-gradient(to top, #0B0F2E 80%, transparent)' }}>
+        <Link
+          href="/creators"
+          className="block w-full py-3.5 text-white rounded-xl font-semibold text-center text-sm"
+          style={{ backgroundColor: '#3B82F6' }}
+        >
+          Apply as Creator →
+        </Link>
+      </div>
     </div>
   )
 }
