@@ -2,26 +2,35 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Mobileyes Brand Video Brief</title>
+<title>Mobileyes Brand Video Brief v2</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 700px; margin: 40px auto; padding: 0 20px; color: #1e293b; line-height: 1.6; }
   h1 { font-size: 28px; font-weight: 800; margin-bottom: 4px; }
-  h2 { font-size: 18px; font-weight: 700; margin-top: 32px; border-bottom: 2px solid #EF4444; padding-bottom: 8px; }
+  h2 { font-size: 18px; font-weight: 700; margin-top: 36px; border-bottom: 2px solid #EF4444; padding-bottom: 8px; }
   h3 { font-size: 14px; font-weight: 700; margin-top: 20px; color: #3B82F6; text-transform: uppercase; letter-spacing: 0.05em; }
   .header { background: #0B0F2E; color: white; padding: 32px; margin: -40px -20px 32px; border-radius: 0 0 12px 12px; }
   .header h1 { color: white; font-size: 24px; }
   .header p { color: rgba(255,255,255,0.6); font-size: 12px; margin-top: 4px; }
   .red-dot { display: inline-block; width: 10px; height: 10px; background: #EF4444; border-radius: 50%; margin-right: 8px; }
+  .version { display: inline-block; background: #EF4444; color: white; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-left: 8px; }
   table { width: 100%; border-collapse: collapse; margin: 16px 0; }
   td { padding: 8px 12px; border: 1px solid #e2e8f0; font-size: 13px; vertical-align: top; }
   td:first-child { font-weight: 600; width: 140px; background: #f8fafc; }
-  .shot { background: #f8fafc; padding: 12px 16px; border-radius: 8px; margin: 8px 0; border-left: 3px solid #3B82F6; }
-  .shot strong { color: #0f172a; }
+  .shot { background: #f8fafc; padding: 16px; border-radius: 8px; margin: 10px 0; border-left: 3px solid #3B82F6; }
+  .shot strong { color: #0f172a; display: block; margin-bottom: 4px; }
+  .shot .camera { color: #7c3aed; font-size: 12px; font-weight: 600; margin-top: 6px; }
+  .shot .audio { color: #059669; font-size: 12px; font-weight: 600; margin-top: 2px; }
+  .shot .timing { color: #64748b; font-size: 11px; margin-top: 4px; }
   .shot em { color: #64748b; font-style: normal; font-size: 12px; }
-  .end-frame { background: #0B0F2E; color: white; padding: 24px; border-radius: 12px; margin: 16px 0; text-align: center; }
-  .end-frame .dot { display: inline-block; width: 16px; height: 16px; background: #EF4444; border-radius: 50%; margin-bottom: 8px; }
+  .end-frame { background: #0B0F2E; color: white; padding: 32px; border-radius: 12px; margin: 16px 0; text-align: center; }
+  .end-frame .dot { display: inline-block; width: 16px; height: 16px; background: #EF4444; border-radius: 50%; margin-bottom: 12px; animation: pulse 1.5s infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
   .messaging { background: #eff6ff; border: 1px solid #bfdbfe; padding: 16px; border-radius: 8px; margin: 12px 0; }
   .messaging strong { color: #1d4ed8; }
+  .warning { background: #fef3c7; border: 1px solid #fbbf24; padding: 12px 16px; border-radius: 8px; margin: 12px 0; font-size: 13px; }
+  .warning strong { color: #92400e; }
+  .tip { background: #f0fdf4; border: 1px solid #86efac; padding: 12px 16px; border-radius: 8px; margin: 12px 0; font-size: 13px; }
+  .tip strong { color: #166534; }
   ul { padding-left: 20px; }
   li { margin: 6px 0; font-size: 14px; }
   .footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid #e2e8f0; font-size: 11px; color: #94a3b8; }
@@ -32,111 +41,202 @@
 
 <div class="header">
   <span class="red-dot"></span><strong style="font-size: 14px; letter-spacing: 0.03em;">MOBILEYES</strong>
-  <h1 style="margin-top: 16px;">Brand Ident Video Brief</h1>
-  <p>v1.0 · June 2026 · Confidential</p>
+  <h1 style="margin-top: 16px;">Brand Ident Video Brief <span class="version">V2</span></h1>
+  <p>June 2026 · Confidential · Self-shot in-office production</p>
 </div>
 
 <h2>Overview</h2>
 <table>
   <tr><td>Duration</td><td>10 seconds</td></tr>
-  <tr><td>Aspect Ratios</td><td>16:9 (hero background) + 9:16 (TikTok/Reels cut)</td></tr>
-  <tr><td>Style</td><td>Kinetic, tactile, real. Not corporate. Not animated. REAL hands, real gear.</td></tr>
-  <tr><td>Colour Grade</td><td>Cool shadows (navy #0B0F2E feel), warm highlights on gear/hands</td></tr>
-  <tr><td>Audio</td><td>Subtle ambient — cable click, switch flip, fabric rustle. No music. Final beat: the RECORD beep.</td></tr>
-  <tr><td>Feeling</td><td>The hair-on-the-back-of-your-neck moment before going live. The ritual. The precision. The pulse.</td></tr>
+  <tr><td>Aspect Ratios</td><td>16:9 (hero/YouTube) + 9:16 (TikTok/Reels cut)</td></tr>
+  <tr><td>Style</td><td>Kinetic, tactile, real. REAL hands, real gear. Close-up. Shallow DOF. Quick cuts.</td></tr>
+  <tr><td>Colour Grade</td><td>Cool shadows (navy #0B0F2E feel), warm highlights on gear/hands. Slightly desaturated except for the red RECORD light.</td></tr>
+  <tr><td>Audio</td><td>Diegetic only — cable click, switch flip, fabric rustle, mechanism snap. No music. Final beat: RECORD beep.</td></tr>
+  <tr><td>Feeling</td><td>The hair-on-the-back-of-your-neck moment before going live. The ritual. The precision. The commercial pulse.</td></tr>
+  <tr><td>Location</td><td>Joel's office. Minimal background — dark/navy backdrop or shallow DOF to blur.</td></tr>
+  <tr><td>Talent</td><td>Joel's hands only. No face. No identity. Just the craft.</td></tr>
 </table>
 
-<h2>Shot List</h2>
-<p style="font-size: 13px; color: #64748b;">1-2 seconds each. Quick cuts. Shallow depth of field. Hands always in frame.</p>
+<h2>Production Setup</h2>
+<table>
+  <tr><td>Camera</td><td>iPhone (4K, 24fps or 30fps). Lock focus manually per shot.</td></tr>
+  <tr><td>Lighting</td><td>Two small lights: one key (angled, creates texture on metal/cables), one subtle fill. Dark background.</td></tr>
+  <tr><td>Background</td><td>Dark/minimal. Black or navy backdrop. Reflector screen behind for controlled light. Keep it simple — the shots are all close-up so background barely shows.</td></tr>
+  <tr><td>Shooting method</td><td>Each shot filmed separately (5-10 sec each, trim to 1.5s in edit). Get 3-4 takes per shot.</td></tr>
+  <tr><td>Angles</td><td>Bird's eye (looking down at hands) or 45° from side. Never straight-on — the angle makes gear look cinematic.</td></tr>
+  <tr><td>Edit software</td><td>CapCut Desktop (free) or iMovie. Hard cuts only — no transitions, no effects.</td></tr>
+</table>
+
+<div class="tip">
+  <strong>💡 Pro tip:</strong> Shoot your hands from ABOVE (bird's eye) for shots 1, 3, 5. Shoot from the SIDE at 45° for shots 2, 4, 6. This variety in angle creates visual rhythm without needing camera movement.
+</div>
+
+<h2>Shot List — Detailed</h2>
+<p style="font-size: 13px; color: #64748b;">6 shots. 1.5 seconds each. Hard cuts. Each shot is a self-contained action with a satisfying mechanical moment.</p>
 
 <div class="shot">
-  <strong>Shot 1:</strong> Hands plugging XLR cable into audio interface<br>
-  <em>Close-up. Satisfying click. Cable tension visible.</em>
+  <strong>SHOT 1: XLR Cable Plug-in</strong>
+  <em>Hands plugging XLR cable into audio interface. Close-up. Shallow depth of field.</em>
+  <div class="camera">📷 Angle: Bird's eye (looking down). Focus on the connector meeting the port.</div>
+  <div class="audio">🔊 Sound: Cable click/snap as it seats. Slight cable rustle.</div>
+  <div class="timing">⏱ Duration: 1.5 seconds. Start with cable approaching, cut on the click.</div>
 </div>
+
 <div class="shot">
-  <strong>Shot 2:</strong> Tripod legs clicking open<br>
-  <em>Mechanical snap sound. Floor level angle looking up.</em>
+  <strong>SHOT 2: Tripod Legs Opening</strong>
+  <em>Tripod legs clicking/snapping open. Floor-level angle looking up at the mechanism.</em>
+  <div class="camera">📷 Angle: Low, 45° from side. Camera at floor level looking up at the legs spreading.</div>
+  <div class="audio">🔊 Sound: Mechanical snap/click of leg locks. Metal on metal.</div>
+  <div class="timing">⏱ Duration: 1.5 seconds. Start with one leg extending, cut after all lock.</div>
 </div>
+
 <div class="shot">
-  <strong>Shot 3:</strong> Phone slotting into mount<br>
-  <em>Satisfying click of phone locking into place. Screen reflects.</em>
+  <strong>SHOT 3: Phone Slotting into Mount</strong>
+  <em>Phone being placed into a mount/clamp. Satisfying click of it locking into position.</em>
+  <div class="camera">📷 Angle: Bird's eye (looking down) or slightly angled. Focus on the phone edge meeting the clamp.</div>
+  <div class="audio">🔊 Sound: Clamp mechanism clicking closed. Solid, secure.</div>
+  <div class="timing">⏱ Duration: 1.5 seconds. Phone enters frame, seats, clamp closes. Cut on the lock.</div>
 </div>
+
 <div class="shot">
-  <strong>Shot 4:</strong> Ring light switching on<br>
-  <em>Bloom of light from dark. Face illumination implied but not shown.</em>
+  <strong>SHOT 4: Ring Light Switching On</strong>
+  <em>Finger flips switch — ring light blooms from dark. Light fills the frame.</em>
+  <div class="camera">📷 Angle: 45° from side. Show the ring light from slight angle so you see the shape. Dark before, illuminated after.</div>
+  <div class="audio">🔊 Sound: Subtle switch click, then silence as light fills (the visual IS the sound here).</div>
+  <div class="timing">⏱ Duration: 1.5 seconds. Dark → finger on switch → bloom of light. Cut at peak brightness.</div>
 </div>
+
 <div class="shot">
-  <strong>Shot 5:</strong> Shotgun mic being attached to camera hot shoe<br>
-  <em>Mechanical precision. Metal on metal.</em>
+  <strong>SHOT 5: Shotgun Mic Mounting</strong>
+  <em>Shotgun microphone being slid into camera hot shoe and locked down.</em>
+  <div class="camera">📷 Angle: Bird's eye or close side angle. Focus on the metal shoe mechanism.</div>
+  <div class="audio">🔊 Sound: Metal sliding into mount, thumbscrew tightening. Precision.</div>
+  <div class="timing">⏱ Duration: 1.5 seconds. Mic slides in, locks. Cut on the tighten.</div>
 </div>
+
 <div class="shot">
-  <strong>Shot 6:</strong> Finger pressing RECORD button — red LED illuminates<br>
-  <em>THE moment. Breath. Stillness. Then: red light ON. Hold 1.5 seconds.</em>
+  <strong>SHOT 6: THE RECORD BUTTON</strong>
+  <em>Index finger pressing RECORD. Red LED illuminates. THE moment. Hold.</em>
+  <div class="camera">📷 Angle: Close-up, 45° from side. Finger approaches button, presses, red light comes on. Slightly longer hold than other shots.</div>
+  <div class="audio">🔊 Sound: Button press (tactile click), then the classic RECORD BEEP. Then silence.</div>
+  <div class="timing">⏱ Duration: 2 seconds. Finger approaches (0.5s) → press + beep (0.5s) → red light holds (1s). This is the payoff moment.</div>
+</div>
+
+<div class="warning">
+  <strong>⚠️ Shot 6 is the hero moment.</strong> Everything builds to this. The red LED coming on IS the brand. Give it an extra half-second of hold time. The audience should feel the stillness after the beep — that's when you're LIVE.
 </div>
 
 <h2>End Frame</h2>
 <div class="end-frame">
   <div class="dot"></div><br>
-  <strong style="font-size: 18px; letter-spacing: 0.03em;">MOBILEYES</strong><br>
-  <span style="font-size: 13px; color: rgba(255,255,255,0.6);">Represent. Perform. Get paid.</span>
+  <strong style="font-size: 20px; letter-spacing: 0.03em;">MOBILEYES</strong><br><br>
+  <span style="font-size: 14px; color: rgba(255,255,255,0.7);">Get paid in 4 days, not 45.</span>
 </div>
-<p style="font-size: 13px;">2 seconds hold. Navy background (#0B0F2E). MBIcon fades in (red dot pulses once). Wordmark fades in below. Tagline last.</p>
 
-<h2>Key Messaging to Reinforce</h2>
+<h3>End Frame Sequence (2 seconds total):</h3>
+<table>
+  <tr><td>0.0 - 0.5s</td><td>Hard cut to navy (#0B0F2E) solid. Silence.</td></tr>
+  <tr><td>0.5 - 1.0s</td><td>Red dot fades in centre (single pulse). MBIcon feel.</td></tr>
+  <tr><td>1.0 - 1.5s</td><td>MOBILEYES wordmark fades in below dot. White. Tracked wide.</td></tr>
+  <tr><td>1.5 - 2.0s</td><td>Tagline fades in: "Get paid in 4 days, not 45." Hold.</td></tr>
+</table>
+
+<div class="tip">
+  <strong>💡 End frame in CapCut:</strong> Create a solid colour layer (#0B0F2E navy). Add white text "MOBILEYES" (bold, tracked wide). Add smaller text below for tagline. Use simple fade-in keyframes (0.3s each, staggered). For the red dot, use a small red circle shape with a pulse/scale keyframe.
+</div>
+
+<h2>Key Messaging</h2>
 <div class="messaging">
-  <strong>Primary message:</strong> "Get paid in 4 days, not 45."<br>
-  <strong>Supporting:</strong> Better briefs. Real data. Selective campaigns.<br>
-  <strong>Feeling:</strong> Professional. Commercial. The infrastructure that lets creators focus on the moment they press record.
+  <strong>Lead with:</strong> "Get paid in 4 days, not 45."<br>
+  <strong>Support:</strong> Better briefs. Real data. Selective campaigns.<br>
+  <strong>Tone:</strong> Commercial. Professional. The pulse before going live.<br>
+  <strong>NOT:</strong> "Level up" / "Join our community" / "Exciting opportunities" — these are dead phrases.
 </div>
 
-<h3>What this video says without words:</h3>
+<h3>What the video communicates without words:</h3>
 <ul>
-  <li>This is serious. Professional. Commercial-grade.</li>
-  <li>The preparation is real — cables, mounts, lights, mics.</li>
-  <li>The moment you go live is sacred. We protect it.</li>
-  <li>Mobileyes handles everything BEFORE and AFTER the red light.</li>
+  <li><strong>Professionalism</strong> — real gear, real preparation, real infrastructure</li>
+  <li><strong>Precision</strong> — every cable click, every mount lock = we handle the details</li>
+  <li><strong>The moment</strong> — everything builds to pressing RECORD. That's sacred. We protect it.</li>
+  <li><strong>Commercial intent</strong> — this isn't a hobby. This is a business. Treat creators like professionals.</li>
 </ul>
 
-<h2>Usage</h2>
+<h2>Edit Workflow</h2>
 <table>
-  <tr><td>Hero background</td><td>Muted autoplay loop (omit end frame). Subtle dark overlay for text readability.</td></tr>
-  <tr><td>TikTok/IG intro</td><td>Full 10 seconds with audio. Portrait 9:16 cut.</td></tr>
-  <tr><td>YouTube intro</td><td>Full 10 seconds with audio. Landscape 16:9.</td></tr>
-  <tr><td>Event presentations</td><td>Opening slide before Joel speaks.</td></tr>
-  <tr><td>Email GIF</td><td>2-3 second loop of the record button moment. For email signatures or outreach.</td></tr>
+  <tr><td>Step 1</td><td>Import all clips into CapCut Desktop (or iMovie)</td></tr>
+  <tr><td>Step 2</td><td>Select best take of each shot (sharpest focus, best timing)</td></tr>
+  <tr><td>Step 3</td><td>Trim each to ~1.5 seconds (Shot 6 gets 2 seconds)</td></tr>
+  <tr><td>Step 4</td><td>Arrange in order: 1 → 2 → 3 → 4 → 5 → 6 → End Frame</td></tr>
+  <tr><td>Step 5</td><td>Hard cuts between each. NO transitions, no fades between shots.</td></tr>
+  <tr><td>Step 6</td><td>Add ambient audio from original recordings (cable clicks etc.)</td></tr>
+  <tr><td>Step 7</td><td>Add RECORD beep on Shot 6 (search "record button beep" on Freesound.org)</td></tr>
+  <tr><td>Step 8</td><td>Create end frame (navy solid + text overlays with fade-in)</td></tr>
+  <tr><td>Step 9</td><td>Colour grade: cool shadows, warm highlights, desaturate slightly EXCEPT red</td></tr>
+  <tr><td>Step 10</td><td>Export: 1080p MP4 for web. Also export 9:16 vertical crop for TikTok/Reels.</td></tr>
 </table>
 
-<h2>Technical Specs</h2>
+<div class="warning">
+  <strong>⚠️ Do NOT use:</strong> AI video generators, stock footage, animated graphics, background music, face reveals, transitions between shots, or any green (#1DB954) anywhere.
+</div>
+
+<h2>Export Versions Needed</h2>
 <table>
-  <tr><td>Resolution</td><td>4K (3840×2160) master → export 1080p for web</td></tr>
-  <tr><td>Frame rate</td><td>24fps (cinematic) or 30fps (web standard)</td></tr>
-  <tr><td>Codec</td><td>H.265 for web, ProRes for archive</td></tr>
-  <tr><td>File size target</td><td>&lt;2MB for hero autoplay (compressed, no audio)</td></tr>
-  <tr><td>Colour space</td><td>sRGB for web, Rec.709 for broadcast</td></tr>
+  <tr><td>Hero (web)</td><td>1920×1080, MP4, &lt;2MB, no audio, loop-ready (omit end frame)</td></tr>
+  <tr><td>Full (landscape)</td><td>1920×1080, MP4, with audio, 10 seconds total</td></tr>
+  <tr><td>Full (portrait)</td><td>1080×1920, MP4, with audio, 10 seconds (TikTok/Reels cut)</td></tr>
+  <tr><td>GIF (email)</td><td>480px wide, 2-3 seconds, Shot 6 only (record button moment)</td></tr>
 </table>
 
-<h2>Brand Colour Reference</h2>
+<h2>Usage Matrix</h2>
 <table>
-  <tr><td>Navy background</td><td>#0B0F2E — all dark surfaces</td></tr>
-  <tr><td>REC red</td><td>#EF4444 — record light, icon core</td></tr>
-  <tr><td>Electric blue</td><td>#3B82F6 — CTA accent (not in video, only end frame text if needed)</td></tr>
-  <tr><td>White</td><td>#FFFFFF — wordmark only</td></tr>
+  <tr><td>Website hero</td><td>Muted autoplay loop (hero version, no end frame). Subtle dark overlay for text.</td></tr>
+  <tr><td>TikTok intro</td><td>Full 10s with audio. Portrait cut. Pin to profile.</td></tr>
+  <tr><td>Instagram Reels</td><td>Full 10s with audio. Portrait cut.</td></tr>
+  <tr><td>YouTube intro</td><td>Full 10s with audio. Landscape. First 3 seconds of every video.</td></tr>
+  <tr><td>Event presentations</td><td>Opening before Joel speaks. Landscape with audio.</td></tr>
+  <tr><td>Email signature GIF</td><td>Record button moment. Subtle, professional.</td></tr>
+  <tr><td>LinkedIn banner video</td><td>Hero version (loop, no audio) as background if supported.</td></tr>
+</table>
+
+<h2>Colour & Technical Reference</h2>
+<table>
+  <tr><td>Navy background</td><td>#0B0F2E — end frame, overlay tint</td></tr>
+  <tr><td>REC red</td><td>#EF4444 — the ONLY saturated colour in the grade. Everything else is cool/desaturated.</td></tr>
+  <tr><td>White</td><td>#FFFFFF — wordmark in end frame only</td></tr>
+  <tr><td>Resolution</td><td>Shoot 4K, deliver 1080p</td></tr>
+  <tr><td>Frame rate</td><td>24fps (cinematic) preferred. 30fps acceptable.</td></tr>
+  <tr><td>Codec</td><td>H.265 for web delivery</td></tr>
 </table>
 
 <h2>Do NOT Include</h2>
 <ul>
-  <li>Faces (this is about the GEAR and the MOMENT, not a person)</li>
-  <li>Gameplay footage (that's Gamefluence's territory)</li>
-  <li>Text overlays during the shots (let the visuals speak)</li>
-  <li>Background music (ambient sound design only)</li>
-  <li>Corporate stock footage of any kind</li>
-  <li>Green (#1DB954) anywhere</li>
+  <li>❌ Faces (this is about GEAR and the MOMENT, not a person)</li>
+  <li>❌ Gameplay footage (that's Gamefluence territory)</li>
+  <li>❌ Text overlays during action shots (let visuals speak)</li>
+  <li>❌ Background music (diegetic/ambient sound only)</li>
+  <li>❌ Corporate stock footage</li>
+  <li>❌ Transitions between shots (hard cuts only)</li>
+  <li>❌ AI-generated footage of any kind</li>
+  <li>❌ Green (#1DB954) anywhere</li>
+  <li>❌ "Level up", "exciting opportunities", or any generic agency language</li>
 </ul>
 
+<h2>Shoot Checklist</h2>
+<table>
+  <tr><td>☐</td><td>Dark/navy backdrop set up behind shooting area</td></tr>
+  <tr><td>☐</td><td>Two lights positioned (key at 45°, fill opposite side)</td></tr>
+  <tr><td>☐</td><td>Phone locked in 4K, manual focus</td></tr>
+  <tr><td>☐</td><td>Props ready: XLR cable + interface, tripod, phone mount, ring light, shotgun mic, camera with record button</td></tr>
+  <tr><td>☐</td><td>Record ambient sound (cable clicks, mechanism sounds) during each take</td></tr>
+  <tr><td>☐</td><td>3-4 takes per shot from designated angle</td></tr>
+  <tr><td>☐</td><td>Review on larger screen before teardown (check focus is sharp)</td></tr>
+</table>
+
 <div class="footer">
-  Mobileyes Brand Video Brief v1.0 · June 2026 · Confidential<br>
+  Mobileyes Brand Video Brief v2.0 · June 2026 · Confidential<br>
   Joel Kirk · Founder · Gamefluence Pty Ltd · ACN 696 199 461<br>
-  admin@mobileyes.live · mobileyes.live
+  admin@mobileyes.live · mobileyes.live<br><br>
+  <em>Export as PDF: File → Print → Save as PDF</em>
 </div>
 
 </body>
