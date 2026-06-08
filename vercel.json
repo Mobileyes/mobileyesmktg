@@ -10,7 +10,7 @@
     },
     {
       "path": "/api/admin/verifications/check",
-      "schedule": "*/15 * * * *"
+      "schedule": "0 10 * * *"
     },
     {
       "path": "/api/admin/verifications/payments",
