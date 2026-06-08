@@ -14,6 +14,7 @@ export const COLLECTIONS = {
   counters: 'counters',
   streamAnalytics: 'streamAnalytics',
   creatorProfiles: 'creatorProfiles',
+  contentVerifications: 'contentVerifications',
 } as const
 
 // Counter document IDs (for MBL ID generation)

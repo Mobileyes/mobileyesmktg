@@ -7,6 +7,14 @@
     {
       "path": "/api/admin/streams/check",
       "schedule": "0 12 * * *"
+    },
+    {
+      "path": "/api/admin/verifications/check",
+      "schedule": "*/15 * * * *"
+    },
+    {
+      "path": "/api/admin/verifications/payments",
+      "schedule": "0 9 * * *"
     }
   ],
   "redirects": [

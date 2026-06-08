@@ -7,10 +7,15 @@ import {
   ArrowLeft,
   Send,
   FileText,
-  DollarSign,
   UserPlus,
   CheckCircle,
   Clock,
+  ShieldCheck,
+  ExternalLink,
+  Image,
+  FileAudio,
+  Download,
+  XCircle,
 } from 'lucide-react'
 import { cn, getStatusColor, formatCurrency, formatDate } from '@/lib/utils'
 
@@ -31,12 +36,9 @@ export default function CampaignDetailPage() {
   const campaignId = params.id as string
 
   const [campaign, setCampaign] = useState<any>(null)
+  const [verifications, setVerifications] = useState<any[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [isSaving, setIsSaving] = useState(false)
-
-  useEffect(() => {
-    if (campaignId) fetchCampaign()
-  }, [campaignId])
 
   const fetchCampaign = async () => {
     try {
@@ -51,6 +53,25 @@ export default function CampaignDetailPage() {
       setIsLoading(false)
     }
   }
+
+  const fetchVerifications = async () => {
+    try {
+      const response = await fetch(`/api/admin/verifications?campaignId=${campaignId}`)
+      if (response.ok) {
+        const data = await response.json()
+        setVerifications(data)
+      }
+    } catch (err) {
+      console.error('Failed to fetch verifications:', err)
+    }
+  }
+
+  useEffect(() => {
+    if (campaignId) {
+      fetchCampaign()
+      fetchVerifications()
+    }
+  }, [campaignId])
 
   const updateStatus = async (newStatus: string) => {
     setIsSaving(true)
@@ -105,6 +126,66 @@ export default function CampaignDetailPage() {
       }
     } catch (err) {
       console.error('Failed to generate invoice:', err)
+    }
+  }
+
+  const handleApproveVerification = async (verificationId: string) => {
+    try {
+      const response = await fetch('/api/admin/verifications', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: verificationId, action: 'approve' }),
+      })
+      if (response.ok) {
+        await fetchVerifications()
+      }
+    } catch (err) {
+      console.error('Failed to approve verification:', err)
+    }
+  }
+
+  const handleRejectVerification = async (verificationId: string) => {
+    const notes = window.prompt('Rejection reason:')
+    if (!notes) return
+    try {
+      const response = await fetch('/api/admin/verifications', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: verificationId, action: 'reject', notes }),
+      })
+      if (response.ok) {
+        await fetchVerifications()
+      }
+    } catch (err) {
+      console.error('Failed to reject verification:', err)
+    }
+  }
+
+  const handleExportReport = async (format: 'csv' | 'json' | 'pdf') => {
+    try {
+      const response = await fetch(`/api/admin/campaigns/${campaignId}/report?format=${format}`)
+      if (!response.ok) return
+
+      if (format === 'csv') {
+        const blob = await response.blob()
+        const url = URL.createObjectURL(blob)
+        const a = document.createElement('a')
+        a.href = url
+        a.download = `campaign-report-${campaign?.mblId ?? campaignId}.csv`
+        a.click()
+        URL.revokeObjectURL(url)
+      } else {
+        const data = await response.json()
+        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' })
+        const url = URL.createObjectURL(blob)
+        const a = document.createElement('a')
+        a.href = url
+        a.download = `campaign-report-${campaign?.mblId ?? campaignId}.json`
+        a.click()
+        URL.revokeObjectURL(url)
+      }
+    } catch (err) {
+      console.error('Failed to export report:', err)
     }
   }
 
@@ -427,6 +508,209 @@ export default function CampaignDetailPage() {
                   ))}
                 </tbody>
               </table>
+            )}
+          </div>
+
+          {/* Integration Verification Queue */}
+          <div className="bg-white rounded-xl border border-gray-200 p-6">
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-green-600" />
+                <h3 className="text-sm font-semibold text-gray-900">
+                  Integration Verification
+                </h3>
+                {verifications.filter((v: any) => v.status === 'PENDING').length > 0 && (
+                  <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
+                    {verifications.filter((v: any) => v.status === 'PENDING').length} pending
+                  </span>
+                )}
+              </div>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => handleExportReport('csv')}
+                  className="flex items-center gap-1 px-2 py-1 text-xs text-gray-600 border border-gray-200 rounded hover:bg-gray-50"
+                >
+                  <Download className="w-3 h-3" />
+                  CSV
+                </button>
+                <button
+                  onClick={() => handleExportReport('json')}
+                  className="flex items-center gap-1 px-2 py-1 text-xs text-gray-600 border border-gray-200 rounded hover:bg-gray-50"
+                >
+                  <Download className="w-3 h-3" />
+                  JSON
+                </button>
+                <button
+                  onClick={() => handleExportReport('pdf')}
+                  className="flex items-center gap-1 px-2 py-1 text-xs text-blue-600 border border-blue-200 rounded hover:bg-blue-50"
+                >
+                  <FileText className="w-3 h-3" />
+                  Report
+                </button>
+              </div>
+            </div>
+
+            {verifications.length === 0 ? (
+              <div className="text-center py-8">
+                <ShieldCheck className="w-8 h-8 text-gray-300 mx-auto mb-2" />
+                <p className="text-sm text-gray-500">
+                  No verifications yet. Content will be auto-detected once creators publish.
+                </p>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                {verifications.map((v: any) => (
+                  <div
+                    key={v.id}
+                    className={cn(
+                      'border rounded-lg p-4',
+                      v.status === 'PENDING' && 'border-amber-200 bg-amber-50/30',
+                      v.status === 'APPROVED' && 'border-green-200 bg-green-50/30',
+                      v.status === 'REJECTED' && 'border-red-200 bg-red-50/30'
+                    )}
+                  >
+                    {/* Header */}
+                    <div className="flex items-start justify-between mb-3">
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <p className="text-sm font-medium text-gray-900">
+                            {v.creatorHandle}
+                          </p>
+                          <span className="text-xs text-gray-500">{v.platform}</span>
+                          <span
+                            className={cn(
+                              'inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium',
+                              v.status === 'PENDING' && 'bg-amber-100 text-amber-700',
+                              v.status === 'APPROVED' && 'bg-green-100 text-green-700',
+                              v.status === 'REJECTED' && 'bg-red-100 text-red-700'
+                            )}
+                          >
+                            {v.status}
+                          </span>
+                        </div>
+                        <a
+                          href={v.contentUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-xs text-blue-600 hover:underline flex items-center gap-1 mt-0.5"
+                        >
+                          {v.contentTitle ?? v.contentUrl}
+                          <ExternalLink className="w-3 h-3" />
+                        </a>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-xs text-gray-500">
+                          Detected {v.detectedAt ? formatDate(v.detectedAt) : '—'}
+                        </p>
+                        {v.viewCountAtDetection != null && (
+                          <p className="text-xs text-gray-600 font-medium">
+                            {v.viewCountAtDetection.toLocaleString()} views
+                          </p>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Evidence Grid */}
+                    <div className="grid grid-cols-2 gap-3 mb-3">
+                      {/* Screenshot */}
+                      <div className="bg-white rounded border border-gray-100 p-2">
+                        <div className="flex items-center gap-1 mb-1">
+                          <Image className="w-3 h-3 text-gray-400" />
+                          <span className="text-[10px] font-medium text-gray-500 uppercase">
+                            Screenshot
+                          </span>
+                        </div>
+                        {v.screenshotUrl ? (
+                          <a href={v.screenshotUrl} target="_blank" rel="noopener noreferrer">
+                            <img
+                              src={v.screenshotUrl}
+                              alt="Integration screenshot"
+                              className="w-full h-20 object-cover rounded"
+                            />
+                          </a>
+                        ) : (
+                          <p className="text-[10px] text-gray-400 italic">No screenshot captured</p>
+                        )}
+                      </div>
+
+                      {/* Transcript */}
+                      <div className="bg-white rounded border border-gray-100 p-2">
+                        <div className="flex items-center gap-1 mb-1">
+                          <FileAudio className="w-3 h-3 text-gray-400" />
+                          <span className="text-[10px] font-medium text-gray-500 uppercase">
+                            Transcript
+                          </span>
+                        </div>
+                        {v.transcriptExcerpt ? (
+                          <p className="text-[10px] text-gray-700 line-clamp-4 leading-relaxed">
+                            {v.transcriptExcerpt}
+                          </p>
+                        ) : (
+                          <p className="text-[10px] text-gray-400 italic">No transcript available</p>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Detection Tags */}
+                    <div className="flex flex-wrap gap-1.5 mb-3">
+                      {v.utmLinkDetected && (
+                        <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium bg-blue-50 text-blue-700">
+                          UTM ✓ {v.utmLinkLocation}
+                        </span>
+                      )}
+                      {v.promoCodeDetected && (
+                        <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium bg-purple-50 text-purple-700">
+                          Promo: {v.promoCode} ({v.promoCodeLocation})
+                        </span>
+                      )}
+                      {v.brandMentionDetected && (
+                        <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium bg-green-50 text-green-700">
+                          Brand ✓ {v.brandMentionMethod}
+                        </span>
+                      )}
+                      {v.talkingPointsMatched?.length > 0 && (
+                        <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium bg-emerald-50 text-emerald-700">
+                          Talking Points: {v.talkingPointsMatched.length}/{v.talkingPointsTotal}
+                        </span>
+                      )}
+                      {!v.utmLinkDetected && !v.promoCodeDetected && !v.brandMentionDetected && (
+                        <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium bg-red-50 text-red-700">
+                          No attribution detected
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Actions */}
+                    {v.status === 'PENDING' && (
+                      <div className="flex items-center gap-2 pt-2 border-t border-gray-100">
+                        <button
+                          onClick={() => handleApproveVerification(v.id)}
+                          className="flex items-center gap-1 px-3 py-1.5 bg-green-600 text-white rounded text-xs font-medium hover:bg-green-700"
+                        >
+                          <CheckCircle className="w-3 h-3" />
+                          Approve → Start 4-Day Clock
+                        </button>
+                        <button
+                          onClick={() => handleRejectVerification(v.id)}
+                          className="flex items-center gap-1 px-3 py-1.5 border border-red-200 text-red-600 rounded text-xs font-medium hover:bg-red-50"
+                        >
+                          <XCircle className="w-3 h-3" />
+                          Reject
+                        </button>
+                      </div>
+                    )}
+
+                    {v.status === 'APPROVED' && v.paymentDueAt && (
+                      <div className="flex items-center gap-2 pt-2 border-t border-gray-100">
+                        <Clock className="w-3 h-3 text-green-600" />
+                        <span className="text-xs text-green-700">
+                          Payment due {formatDate(v.paymentDueAt)}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
             )}
           </div>
         </div>
