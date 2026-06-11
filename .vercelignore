@@ -1,0 +1,8 @@
+Mobileyes_Brand_Asset_Kit/
+Video assets/
+scripts/
+*.docx
+*.pdf
+spec.txt
+firebase-service-account.json
+CREDENTIALS.md
