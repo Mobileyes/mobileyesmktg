@@ -100,10 +100,11 @@ export default function HomePage() {
               </Link>
               <Link
                 href="/brands"
-                className="px-8 py-4 text-sm font-medium text-center transition-all rounded-xl"
-                style={{ color: 'rgba(255,255,255,0.6)', border: '1px solid rgba(255,255,255,0.15)' }}
+                className="group px-8 py-4 text-white rounded-xl font-semibold hover:opacity-90 transition-all text-lg inline-flex items-center justify-center gap-2"
+                style={{ backgroundColor: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.3)', backdropFilter: 'blur(4px)' }}
               >
-                Submit a brand brief →
+                Submit a Brand Brief
+                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
               </Link>
             </div>
           </div>
@@ -131,12 +132,12 @@ export default function HomePage() {
       </section>
 
       {/* Trust strip */}
-      <section className="py-8 px-6" style={{ borderTop: '1px solid #1E2A5E', borderBottom: '1px solid #1E2A5E' }}>
+      <section className="py-10 px-6" style={{ borderTop: '1px solid rgba(255,255,255,0.08)', borderBottom: '1px solid rgba(255,255,255,0.08)', background: 'rgba(0,0,0,0.2)' }}>
         <div className="max-w-5xl mx-auto">
-          <p className="text-center text-xs font-medium uppercase tracking-wider mb-4" style={{ color: 'rgba(255,255,255,0.3)' }}>Founded from inside the industry</p>
-          <div className="flex flex-wrap justify-center gap-6 md:gap-10 items-center">
+          <p className="text-center text-[10px] font-semibold uppercase tracking-[0.15em] mb-6" style={{ color: 'rgba(255,255,255,0.35)' }}>Founded by 20 years across</p>
+          <div className="flex flex-wrap justify-center gap-8 md:gap-14 items-center">
             {['IGN', 'King', 'Activision Blizzard', 'AppsFlyer', 'AWS'].map((company) => (
-              <span key={company} className="text-sm md:text-base font-semibold" style={{ color: 'rgba(255,255,255,0.4)' }}>{company}</span>
+              <span key={company} className="text-base md:text-xl font-bold tracking-tight" style={{ color: 'rgba(255,255,255,0.55)' }}>{company}</span>
             ))}
           </div>
         </div>
