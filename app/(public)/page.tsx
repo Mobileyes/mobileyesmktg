@@ -1,28 +1,78 @@
+'use client'
+
+import { useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { MBIcon } from '@/components/brand/MBIcon'
 
 export default function HomePage() {
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReducedMotion) {
+      video.pause()
+      return
+    }
+
+    const mobileQuery = window.matchMedia('(max-width: 767px)')
+
+    function setVideoSource(isMobile: boolean) {
+      if (!video) return
+      const src = isMobile
+        ? '/video/Mobileyes_Web_9x16_MobileHeroLoop_Muted_NoCard.mp4'
+        : '/video/Mobileyes_Web_16x9_HeroLoop_Muted_NoCard.mp4'
+      const poster = isMobile
+        ? '/img/Web_Poster_9x16.jpg'
+        : '/img/Web_Poster_16x9.jpg'
+
+      if (video.src !== window.location.origin + src) {
+        video.src = src
+        video.poster = poster
+        video.load()
+        video.play().catch(() => {})
+      }
+    }
+
+    setVideoSource(mobileQuery.matches)
+    const handler = (e: MediaQueryListEvent) => setVideoSource(e.matches)
+    mobileQuery.addEventListener('change', handler)
+    return () => mobileQuery.removeEventListener('change', handler)
+  }, [])
+
   return (
     <div style={{ background: '#0B0F2E' }}>
-      {/* Hero */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden" style={{ background: '#0B0F2E' }}>
-        {/* Subtle ring pattern background */}
-        <div className="absolute inset-0 opacity-[0.03]">
-          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="rings" x="0" y="0" width="120" height="120" patternUnits="userSpaceOnUse">
-                <circle cx="60" cy="60" r="40" fill="none" stroke="#EF4444" strokeWidth="0.5" strokeDasharray="4 8" />
-                <circle cx="60" cy="60" r="25" fill="none" stroke="#F97316" strokeWidth="0.3" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#rings)" />
-          </svg>
-        </div>
+      {/* Hero — Video Background */}
+      <section className="relative min-h-[100svh] md:min-h-[90vh] flex items-end md:items-center overflow-hidden" style={{ background: '#0B0F2E' }}>
+        {/* Video */}
+        <video
+          ref={videoRef}
+          className="absolute inset-0 w-full h-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster="/img/Web_Poster_16x9.jpg"
+          src="/video/Mobileyes_Web_16x9_HeroLoop_Muted_NoCard.mp4"
+          style={{ zIndex: 0 }}
+        />
 
-        <div className="relative max-w-7xl mx-auto px-6 py-20 md:py-32 w-full">
+        {/* Scrim */}
+        <div
+          className="absolute inset-0"
+          style={{
+            zIndex: 1,
+            background: 'linear-gradient(180deg, rgba(11,15,46,0.4) 0%, rgba(11,15,46,0.6) 40%, rgba(11,15,46,0.85) 75%, #0B0F2E 100%)',
+          }}
+        />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 py-16 md:py-32 w-full">
           <div className="max-w-4xl">
             {/* Live indicator */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6" style={{ backgroundColor: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.2)' }}>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6" style={{ backgroundColor: 'rgba(26, 0, 8, 0.7)', border: '1px solid rgba(239, 68, 68, 0.4)', backdropFilter: 'blur(8px)' }}>
               <MBIcon size={16} />
               <span className="text-sm font-medium" style={{ color: '#EF4444' }}>Live streaming talent — Sydney, AU</span>
             </div>
@@ -33,12 +83,12 @@ export default function HomePage() {
               <span className="block">Get paid.</span>
             </h1>
 
-            <p className="text-lg md:text-2xl max-w-2xl mb-10 leading-relaxed" style={{ color: 'rgba(255,255,255,0.7)' }}>
+            <p className="text-lg md:text-2xl max-w-2xl mb-10 leading-relaxed" style={{ color: 'rgba(255,255,255,0.8)' }}>
               Better briefs. 4-day payment. Real data. Creator representation
               built for live streaming across Australia and APAC.
             </p>
 
-            {/* CTAs — Creator dominant, Brief subtle */}
+            {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-3">
               <Link
                 href="/creators"
@@ -50,16 +100,16 @@ export default function HomePage() {
               </Link>
               <Link
                 href="/brands"
-                className="px-8 py-4 text-sm font-medium text-center transition-all"
-                style={{ color: 'rgba(255,255,255,0.5)' }}
+                className="px-8 py-4 text-sm font-medium text-center transition-all rounded-xl"
+                style={{ color: 'rgba(255,255,255,0.6)', border: '1px solid rgba(255,255,255,0.15)' }}
               >
-                or submit a brand brief →
+                Submit a brand brief →
               </Link>
             </div>
           </div>
 
-          {/* Stats strip — tighter spacing on mobile */}
-          <div className="mt-12 md:mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 pt-8" style={{ borderTop: '1px solid #1E2A5E' }}>
+          {/* Stats strip */}
+          <div className="mt-12 md:mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 pt-8" style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}>
             <div>
               <p className="text-3xl md:text-4xl font-bold text-white">4</p>
               <p className="text-xs md:text-sm mt-1" style={{ color: 'rgba(255,255,255,0.5)' }}>Day payment guarantee</p>
@@ -80,7 +130,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Trust strip — founder career logos */}
+      {/* Trust strip */}
       <section className="py-8 px-6" style={{ borderTop: '1px solid #1E2A5E', borderBottom: '1px solid #1E2A5E' }}>
         <div className="max-w-5xl mx-auto">
           <p className="text-center text-xs font-medium uppercase tracking-wider mb-4" style={{ color: 'rgba(255,255,255,0.3)' }}>Founded from inside the industry</p>
@@ -92,7 +142,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* What We Do — tighter mobile cards */}
+      {/* What We Do */}
       <section className="py-20 md:py-32 px-6" style={{ background: '#0B0F2E' }}>
         <div className="max-w-7xl mx-auto">
           <div className="max-w-2xl mb-10 md:mb-16">
@@ -118,7 +168,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* For Creators — Process (timeline style on mobile) */}
+      {/* For Creators — Process */}
       <section className="py-20 md:py-32 px-6" style={{ background: '#080C24' }}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
@@ -131,7 +181,6 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Timeline-style steps on mobile */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-3 md:gap-6">
             {[
               { num: '01', title: 'Apply', desc: 'Submit your profile. We review every application personally.' },
@@ -174,7 +223,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Final CTA — specific messaging, no generic "level up" */}
+      {/* Final CTA */}
       <section className="py-24 md:py-32 px-6 relative overflow-hidden" style={{ background: '#080C24' }}>
         <div className="relative max-w-3xl mx-auto text-center">
           <MBIcon size={44} className="mx-auto mb-6" />
@@ -197,17 +246,6 @@ export default function HomePage() {
           </p>
         </div>
       </section>
-
-      {/* Sticky mobile CTA — appears on scroll */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden p-3" style={{ background: 'linear-gradient(to top, #0B0F2E 80%, transparent)' }}>
-        <Link
-          href="/creators"
-          className="block w-full py-3.5 text-white rounded-xl font-semibold text-center text-sm"
-          style={{ backgroundColor: '#3B82F6' }}
-        >
-          Apply as Creator →
-        </Link>
-      </div>
     </div>
   )
 }
