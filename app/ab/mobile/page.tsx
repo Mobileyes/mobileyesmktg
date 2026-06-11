@@ -33,7 +33,7 @@ export default function MobileLandingPage() {
   return (
     <div className="min-h-screen" style={{ background: '#0B0F2E' }}>
       {/* Full-viewport Video Hero */}
-      <section className="relative h-screen flex flex-col justify-end overflow-hidden">
+      <section className="relative min-h-[100svh] flex flex-col justify-end overflow-hidden">
         {/* Video — fills entire screen */}
         <video
           ref={videoRef}
@@ -58,13 +58,13 @@ export default function MobileLandingPage() {
         />
 
         {/* Top bar — logo + pill */}
-        <div className="absolute top-0 left-0 right-0 z-20 px-5 pt-14 pb-4 flex items-center justify-between">
+        <div className="absolute top-0 left-0 right-0 z-20 px-5 pt-14 pb-4 flex items-center justify-between" style={{ background: 'linear-gradient(180deg, rgba(11,15,46,0.7) 0%, transparent 100%)' }}>
           <div className="flex items-center gap-2">
             <MBIcon size={20} />
             <span className="text-white font-extrabold text-sm tracking-wide">MOBILEYES</span>
           </div>
-          <div className="px-3 py-1 rounded-full" style={{ backgroundColor: 'rgba(239, 68, 68, 0.12)', border: '1px solid rgba(239, 68, 68, 0.3)' }}>
-            <span className="text-[11px] font-medium" style={{ color: '#EF4444' }}>● LIVE</span>
+          <div className="px-3 py-1.5 rounded-full" style={{ backgroundColor: 'rgba(26, 0, 8, 0.8)', border: '1px solid rgba(239, 68, 68, 0.5)', backdropFilter: 'blur(8px)' }}>
+            <span className="text-[11px] font-semibold" style={{ color: '#EF4444' }}>● LIVE</span>
           </div>
         </div>
 
@@ -170,6 +170,9 @@ export default function MobileLandingPage() {
           </div>
         </div>
       </section>
+
+      {/* Bottom spacer — clears the sticky CTA */}
+      <div className="h-28" />
 
       {/* Sticky bottom CTA */}
       <div className="fixed bottom-0 left-0 right-0 z-50 px-5 pb-8 pt-4" style={{ background: 'linear-gradient(180deg, transparent 0%, #0B0F2E 40%)' }}>
