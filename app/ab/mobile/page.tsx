@@ -171,6 +171,28 @@ export default function MobileLandingPage() {
         </div>
       </section>
 
+      {/* Bottom CTA */}
+      <section className="px-5 py-10 pb-16">
+        <p className="text-[13px] text-center mb-5" style={{ color: 'rgba(255,255,255,0.5)' }}>
+          Ready to get started?
+        </p>
+        <Link
+          href="/creators"
+          className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl font-semibold text-white text-[16px] mb-3"
+          style={{ backgroundColor: '#3B82F6' }}
+        >
+          Apply as Creator
+          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+        </Link>
+        <Link
+          href="/brands"
+          className="flex items-center justify-center w-full py-3.5 rounded-2xl font-medium text-[14px]"
+          style={{ color: 'rgba(255,255,255,0.6)', border: '1px solid rgba(255,255,255,0.12)' }}
+        >
+          Submit a brand brief
+        </Link>
+      </section>
+
       {/* Bottom spacer */}
       <div className="h-12" />
     </div>
