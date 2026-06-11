@@ -25,7 +25,14 @@ export async function POST(request: Request) {
 
     const data = parsed.data
 
-    // 1. Save to Firestore
+    // 1. Save to Firestore (include UTM attribution)
+    const utmSource = body.utm_source ?? null
+    const utmMedium = body.utm_medium ?? null
+    const utmCampaign = body.utm_campaign ?? null
+    const attributionNote = utmSource
+      ? `[Attribution: ${utmSource}/${utmMedium}/${utmCampaign}]`
+      : '[Attribution: direct]'
+
     const creator = await createCreator({
       fullName: data.fullName,
       email: data.email,
@@ -39,7 +46,7 @@ export async function POST(request: Request) {
       gamingGenres: data.gamingGenres,
       rateCard: null,
       status: 'APPLICANT',
-      notes: data.whyJoin ?? null,
+      notes: `${attributionNote} ${data.whyJoin ?? ''}`.trim(),
     })
 
     // 2. Send notification to admin@mobileyes.live (lands in Google Workspace)
@@ -73,12 +80,15 @@ export async function POST(request: Request) {
       // Don't fail the request if email fails — data is saved in Firestore
     }
 
-    // 3. Track event
+    // 3. Track event with attribution
     trackAdminEvent('creator_application_submitted', {
       mblId: creator.mblId,
       platform: data.platform,
       audienceLocation: data.audienceLocation,
       followerCount: data.followerCount,
+      utm_source: utmSource,
+      utm_medium: utmMedium,
+      utm_campaign: utmCampaign,
     })
 
     return NextResponse.json({ success: true, id: creator.id }, { status: 201 })

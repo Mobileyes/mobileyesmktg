@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import posthog from 'posthog-js'
 
@@ -18,9 +18,24 @@ export default function CreatorsPage() {
     gamingGenres: [] as string[],
     whyJoin: '',
   })
+  const [utmParams, setUtmParams] = useState<Record<string, string>>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const applicationStartedFired = useRef(false)
+
+  // Capture UTM params from URL on page load
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const utms: Record<string, string> = {}
+    for (const key of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term']) {
+      const val = params.get(key)
+      if (val) utms[key] = val
+    }
+    if (Object.keys(utms).length > 0) {
+      setUtmParams(utms)
+      posthog.capture('creator_page_visit', utms)
+    }
+  }, [])
 
   const handleFieldFocus = () => {
     if (!applicationStartedFired.current) {
@@ -36,7 +51,7 @@ export default function CreatorsPage() {
       const res = await fetch('/api/public/apply', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, ...utmParams }),
       })
       if (res.ok) {
         setSubmitted(true)
