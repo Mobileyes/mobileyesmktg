@@ -171,20 +171,8 @@ export default function MobileLandingPage() {
         </div>
       </section>
 
-      {/* Bottom spacer — clears the sticky CTA */}
-      <div className="h-28" />
-
-      {/* Sticky bottom CTA */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 px-5 pb-8 pt-4" style={{ background: 'linear-gradient(180deg, transparent 0%, #0B0F2E 40%)' }}>
-        <Link
-          href="/creators"
-          className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl font-semibold text-white text-[15px]"
-          style={{ backgroundColor: '#3B82F6', boxShadow: '0 4px 24px rgba(59, 130, 246, 0.4)' }}
-        >
-          Apply as Creator
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-        </Link>
-      </div>
+      {/* Bottom spacer */}
+      <div className="h-12" />
     </div>
   )
 }
