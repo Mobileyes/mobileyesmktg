@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1050" height="650" viewBox="0 0 1050 650">
+  <!-- Background: #1A0008 warm dark (RED system) -->
+  <rect width="1050" height="650" fill="#1A0008"/>
+  
+  <!-- MBIcon top-left: red core + dashed ring -->
+  <circle cx="72" cy="72" r="22" fill="none" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="4 6" opacity="0.5"/>
+  <circle cx="72" cy="72" r="14" fill="none" stroke="#F97316" stroke-width="1" opacity="0.4"/>
+  <circle cx="72" cy="72" r="8" fill="#EF4444"/>
+  
+  <!-- MOBILEYES wordmark -->
+  <text x="104" y="79" font-family="Inter, -apple-system, sans-serif" font-size="20" font-weight="800" fill="#FFFFFF" letter-spacing="0.6">MOBILEYES</text>
+  
+  <!-- Name -->
+  <text x="72" y="290" font-family="Inter, -apple-system, sans-serif" font-size="38" font-weight="800" fill="#FFFFFF">Joel Kirk</text>
+  
+  <!-- Title -->
+  <text x="72" y="328" font-family="Inter, -apple-system, sans-serif" font-size="16" font-weight="400" fill="rgba(255,255,255,0.55)">Founder</text>
+  
+  <!-- Contact block -->
+  <text x="72" y="440" font-family="Inter, -apple-system, sans-serif" font-size="14" font-weight="400" fill="rgba(255,255,255,0.7)">joel@mobileyes.live</text>
+  <text x="72" y="466" font-family="Inter, -apple-system, sans-serif" font-size="14" font-weight="400" fill="rgba(255,255,255,0.7)">mobileyes.live</text>
+  <text x="72" y="492" font-family="Inter, -apple-system, sans-serif" font-size="14" font-weight="400" fill="rgba(255,255,255,0.7)">Sydney, Australia</text>
+  
+  <!-- Stacked tagline -->
+  <text x="72" y="572" font-family="Inter, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#FFFFFF">Represent.</text>
+  <text x="170" y="572" font-family="Inter, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#EF4444">Perform.</text>
+  <text x="255" y="572" font-family="Inter, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#FFFFFF">Get paid.</text>
+  
+  <!-- Social -->
+  <text x="72" y="604" font-family="Inter, -apple-system, sans-serif" font-size="11" font-weight="400" fill="rgba(255,255,255,0.35)">@mobileyes.live</text>
+</svg>
