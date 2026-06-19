@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1050" height="1050" viewBox="0 0 1050 1050">
+  <!-- Transparent background — prints on black shirt -->
+  
+  <!-- MBIcon centred -->
+  <circle cx="525" cy="380" r="55" fill="none" stroke="#EF4444" stroke-width="2.5" stroke-dasharray="6 9" opacity="0.6"/>
+  <circle cx="525" cy="380" r="36" fill="none" stroke="#F97316" stroke-width="1.5" opacity="0.4"/>
+  <circle cx="525" cy="380" r="20" fill="#EF4444"/>
+  
+  <!-- MOBILEYES wordmark centred below icon -->
+  <text x="525" y="490" font-family="Inter, -apple-system, sans-serif" font-size="42" font-weight="800" fill="#FFFFFF" letter-spacing="1.2" text-anchor="middle">MOBILEYES</text>
+</svg>
