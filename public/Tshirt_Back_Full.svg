@@ -1,24 +1,33 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="3600" height="4200" viewBox="0 0 3600 4200">
-  <!-- Transparent background — prints on black shirt -->
+  <!-- Black backdrop for preview (simulates black shirt) -->
+  <rect width="3600" height="4200" fill="#0a0a0a"/>
   
-  <!-- MBIcon top centre (large) -->
-  <circle cx="1800" cy="650" r="120" fill="none" stroke="#EF4444" stroke-width="4" stroke-dasharray="8 12" opacity="0.5"/>
-  <circle cx="1800" cy="650" r="80" fill="none" stroke="#F97316" stroke-width="2.5" opacity="0.35"/>
-  <circle cx="1800" cy="650" r="44" fill="#EF4444"/>
+  <!-- MBIcon top centre -->
+  <circle cx="1800" cy="550" r="100" fill="none" stroke="#EF4444" stroke-width="3.5" stroke-dasharray="7 10" opacity="0.5"/>
+  <circle cx="1800" cy="550" r="66" fill="none" stroke="#F97316" stroke-width="2" opacity="0.35"/>
+  <circle cx="1800" cy="550" r="36" fill="#EF4444"/>
   
   <!-- MOBILEYES wordmark -->
-  <text x="1800" y="880" font-family="Inter, -apple-system, sans-serif" font-size="80" font-weight="800" fill="#FFFFFF" letter-spacing="2.5" text-anchor="middle">MOBILEYES</text>
+  <text x="1800" y="760" font-family="Inter, -apple-system, sans-serif" font-size="72" font-weight="800" fill="#FFFFFF" letter-spacing="2" text-anchor="middle">MOBILEYES</text>
   
-  <!-- Stacked words -->
-  <text x="1800" y="1300" font-family="Inter, -apple-system, sans-serif" font-size="200" font-weight="800" fill="#FFFFFF" text-anchor="middle">Represent.</text>
-  <text x="1800" y="1560" font-family="Inter, -apple-system, sans-serif" font-size="200" font-weight="800" fill="#EF4444" text-anchor="middle">Perform.</text>
-  <text x="1800" y="1820" font-family="Inter, -apple-system, sans-serif" font-size="200" font-weight="800" fill="#FFFFFF" text-anchor="middle">Get paid.</text>
+  <!-- Stacked words - large and bold -->
+  <text x="1800" y="1200" font-family="Inter, -apple-system, sans-serif" font-size="220" font-weight="800" fill="#FFFFFF" text-anchor="middle">Represent.</text>
+  <text x="1800" y="1480" font-family="Inter, -apple-system, sans-serif" font-size="220" font-weight="800" fill="#EF4444" text-anchor="middle">Perform.</text>
+  <text x="1800" y="1760" font-family="Inter, -apple-system, sans-serif" font-size="220" font-weight="800" fill="#FFFFFF" text-anchor="middle">Get paid.</text>
+  
+  <!-- Divider line -->
+  <line x1="1500" y1="2100" x2="2100" y2="2100" stroke="#EF4444" stroke-width="3" opacity="0.4"/>
   
   <!-- "Get paid to play" above QR -->
-  <text x="1800" y="2950" font-family="Inter, -apple-system, sans-serif" font-size="52" font-weight="600" fill="#EF4444" text-anchor="middle">Get paid to play</text>
+  <text x="1800" y="2350" font-family="Inter, -apple-system, sans-serif" font-size="56" font-weight="700" fill="#EF4444" text-anchor="middle">Get paid to play</text>
   
-  <!-- QR Code (scaled up for shirt print) -->
-  <g transform="translate(1375, 3000) scale(20.7)">
-    <path stroke="#FFFFFF" stroke-width="1" d="M0 0.5h7m1 0h1m1 0h2m2 0h1m1 0h3m4 0h1m1 0h3m3 0h1m2 0h7M0 1.5h1m5 0h1m5 0h1m4 0h1m1 0h1m5 0h2m1 0h1m1 0h3m1 0h1m5 0h1M0 2.5h1m1 0h3m1 0h1m2 0h1m1 0h5m5 0h1m2 0h1m2 0h1m1 0h3m2 0h1m1 0h3m1 0h1M0 3.5h1m1 0h3m1 0h1m1 0h1m4 0h6m1 0h3m4 0h4m1 0h1m1 0h1m1 0h3m1 0h1M0 4.5h1m1 0h3m1 0h1m1 0h1m4 0h4m1 0h1m2 0h3m1 0h1m1 0h3m1 0h1m2 0h1m1 0h3m1 0h1M0 5.5h1m5 0h1m1 0h5m2 0h1m1 0h3m2 0h1m1 0h2m5 0h1m2 0h1m5 0h1M0 6.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M8 7.5h5m4 0h2m1 0h3m1 0h1m1 0h1m1 0h3m1 0h1M0 8.5h1m3 0h1m1 0h3m1 0h3m1 0h1m1 0h2m1 0h4m1 0h1m4 0h1m2 0h6m2 0h1M0 9.5h1m1 0h2m3 0h6m1 0h3m6 0h1m1 0h1m1 0h4m3 0h4m1 0h2M3 10.5h1m1 0h2m2 0h3m1 0h6m1 0h2m1 0h1m1 0h1m1 0h2m1 0h1m1 0h3m5 0h1M0 11.5h1m1 0h3m2 0h2m1 0h2m2 0h1m2 0h1m1 0h3m2 0h1m1 0h2m1 0h4m1 0h1m2 0h1m2 0h1M3 12.5h1m1 0h2m2 0h2m1 0h2m3 0h1m3 0h4m2 0h3m2 0h2m1 0h1m3 0h2M0 13.5h5m2 0h5m2 0h2m1 0h4m4 0h2m2 0h1m4 0h1m1 0h1m1 0h1m1 0h1M3 14.5h8m4 0h1m1 0h1m2 0h1m1 0h1m2 0h4m1 0h1m2 0h2m1 0h1m3 0h1M0 15.5h2m1 0h3m2 0h1m1 0h1m1 0h1m3 0h3m2 0h1m2 0h1m4 0h4m2 0h1m1 0h1m2 0h1M5 16.5h2m1 0h1m3 0h1m1 0h1m1 0h2m1 0h5m3 0h1m1 0h1m1 0h1m3 0h1m1 0h1m1 0h2M0 17.5h1m1 0h1m1 0h1m4 0h2m1 0h4m2 0h1m2 0h1m3 0h1m1 0h4m2 0h4m1 0h3M4 18.5h4m2 0h1m1 0h3m1 0h2m5 0h2m2 0h2m1 0h1m1 0h1m2 0h1m1 0h1m2 0h1M0 19.5h1m2 0h1m7 0h1m1 0h2m2 0h2m3 0h4m1 0h1m1 0h2m4 0h1m1 0h1m2 0h1M0 20.5h2m2 0h3m1 0h2m4 0h1m3 0h2m2 0h2m1 0h1m2 0h2m1 0h3m3 0h1M4 21.5h1m3 0h3m1 0h1m3 0h1m4 0h1m1 0h1m2 0h5m2 0h6m1 0h1M1 22.5h4m1 0h4m1 0h3m1 0h2m4 0h4m2 0h1m2 0h1m4 0h1m1 0h2m1 0h1M0 23.5h2m2 0h1m2 0h1m1 0h1m2 0h2m1 0h3m1 0h3m1 0h2m1 0h2m1 0h2m1 0h1m1 0h2m1 0h1m2 0h1M0 24.5h2m2 0h1m1 0h1m3 0h4m3 0h1m1 0h4m1 0h1m4 0h1m1 0h2m2 0h1m3 0h2M0 25.5h1m1 0h2m7 0h1m1 0h1m3 0h2m1 0h9m1 0h1m1 0h5m1 0h3M3 26.5h2m1 0h1m2 0h2m3 0h2m1 0h2m1 0h1m2 0h2m1 0h2m4 0h1m6 0h2M2 27.5h4m1 0h1m1 0h1m1 0h2m4 0h2m1 0h3m3 0h8m1 0h3m1 0h1M0 28.5h2m1 0h6m1 0h2m3 0h2m2 0h4m1 0h1m1 0h2m1 0h1m3 0h1m1 0h1m3 0h2M0 29.5h1m1 0h1m2 0h1m1 0h1m1 0h2m1 0h1m3 0h1m2 0h1m2 0h1m1 0h2m1 0h2m1 0h1m3 0h3m3 0h1M2 30.5h1m3 0h3m1 0h1m3 0h1m3 0h2m1 0h3m2 0h2m4 0h2m1 0h4m1 0h1M2 31.5h2m1 0h1m1 0h1m1 0h1m3 0h9m1 0h1m2 0h2m1 0h5m1 0h1m1 0h1M0 32.5h3m3 0h2m1 0h4m1 0h1m1 0h2m3 0h2m1 0h1m4 0h1m2 0h5m2 0h2M8 33.5h1m2 0h1m1 0h3m1 0h2m4 0h1m3 0h4m1 0h1m3 0h1m1 0h1m1 0h1M0 34.5h7m1 0h4m2 0h1m1 0h1m1 0h1m1 0h4m1 0h1m1 0h1m3 0h2m1 0h1m1 0h1m3 0h1M0 35.5h1m5 0h1m3 0h1m1 0h1m2 0h2m3 0h2m1 0h2m4 0h1m1 0h2m3 0h2m2 0h1M0 36.5h1m1 0h3m1 0h1m1 0h1m1 0h2m4 0h1m3 0h1m3 0h1m2 0h3m1 0h7m1 0h1M0 37.5h1m1 0h3m1 0h1m2 0h1m2 0h2m1 0h1m2 0h1m1 0h1m1 0h2m1 0h4m3 0h1m2 0h1m2 0h2M0 38.5h1m1 0h3m1 0h1m2 0h2m1 0h2m2 0h1m1 0h1m4 0h2m1 0h2m3 0h3m3 0h1m2 0h1M0 39.5h1m5 0h1m4 0h1m5 0h1m2 0h5m1 0h1m2 0h1m1 0h2m1 0h2m1 0h1m1 0h2M0 40.5h7m1 0h2m1 0h1m1 0h1m3 0h1m1 0h5m3 0h1m1 0h1m2 0h2m1 0h2m2 0h1"/>
+  <!-- QR Code - WHITE on black, large and visible -->
+  <!-- Using filled rectangles to make QR very visible on black -->
+  <rect x="1395" y="2450" width="810" height="810" fill="#FFFFFF" rx="20"/>
+  <g transform="translate(1415, 2470) scale(19)">
+    <path stroke="#0a0a0a" stroke-width="1" d="M0 0.5h7m1 0h1m1 0h2m2 0h1m1 0h3m4 0h1m1 0h3m3 0h1m2 0h7M0 1.5h1m5 0h1m5 0h1m4 0h1m1 0h1m5 0h2m1 0h1m1 0h3m1 0h1m5 0h1M0 2.5h1m1 0h3m1 0h1m2 0h1m1 0h5m5 0h1m2 0h1m2 0h1m1 0h3m2 0h1m1 0h3m1 0h1M0 3.5h1m1 0h3m1 0h1m1 0h1m4 0h6m1 0h3m4 0h4m1 0h1m1 0h1m1 0h3m1 0h1M0 4.5h1m1 0h3m1 0h1m1 0h1m4 0h4m1 0h1m2 0h3m1 0h1m1 0h3m1 0h1m2 0h1m1 0h3m1 0h1M0 5.5h1m5 0h1m1 0h5m2 0h1m1 0h3m2 0h1m1 0h2m5 0h1m2 0h1m5 0h1M0 6.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M8 7.5h5m4 0h2m1 0h3m1 0h1m1 0h1m1 0h3m1 0h1M0 8.5h1m3 0h1m1 0h3m1 0h3m1 0h1m1 0h2m1 0h4m1 0h1m4 0h1m2 0h6m2 0h1M0 9.5h1m1 0h2m3 0h6m1 0h3m6 0h1m1 0h1m1 0h4m3 0h4m1 0h2M3 10.5h1m1 0h2m2 0h3m1 0h6m1 0h2m1 0h1m1 0h1m1 0h2m1 0h1m1 0h3m5 0h1M0 11.5h1m1 0h3m2 0h2m1 0h2m2 0h1m2 0h1m1 0h3m2 0h1m1 0h2m1 0h4m1 0h1m2 0h1m2 0h1M3 12.5h1m1 0h2m2 0h2m1 0h2m3 0h1m3 0h4m2 0h3m2 0h2m1 0h1m3 0h2M0 13.5h5m2 0h5m2 0h2m1 0h4m4 0h2m2 0h1m4 0h1m1 0h1m1 0h1m1 0h1M3 14.5h8m4 0h1m1 0h1m2 0h1m1 0h1m2 0h4m1 0h1m2 0h2m1 0h1m3 0h1M0 15.5h2m1 0h3m2 0h1m1 0h1m1 0h1m3 0h3m2 0h1m2 0h1m4 0h4m2 0h1m1 0h1m2 0h1M5 16.5h2m1 0h1m3 0h1m1 0h1m1 0h2m1 0h5m3 0h1m1 0h1m1 0h1m3 0h1m1 0h1m1 0h2M0 17.5h1m1 0h1m1 0h1m4 0h2m1 0h4m2 0h1m2 0h1m3 0h1m1 0h4m2 0h4m1 0h3M4 18.5h4m2 0h1m1 0h3m1 0h2m5 0h2m2 0h2m1 0h1m1 0h1m2 0h1m1 0h1m2 0h1M0 19.5h1m2 0h1m7 0h1m1 0h2m2 0h2m3 0h4m1 0h1m1 0h2m4 0h1m1 0h1m2 0h1M0 20.5h2m2 0h3m1 0h2m4 0h1m3 0h2m2 0h2m1 0h1m2 0h2m1 0h3m3 0h1M4 21.5h1m3 0h3m1 0h1m3 0h1m4 0h1m1 0h1m2 0h5m2 0h6m1 0h1M1 22.5h4m1 0h4m1 0h3m1 0h2m4 0h4m2 0h1m2 0h1m4 0h1m1 0h2m1 0h1M0 23.5h2m2 0h1m2 0h1m1 0h1m2 0h2m1 0h3m1 0h3m1 0h2m1 0h2m1 0h2m1 0h1m1 0h2m1 0h1m2 0h1M0 24.5h2m2 0h1m1 0h1m3 0h4m3 0h1m1 0h4m1 0h1m4 0h1m1 0h2m2 0h1m3 0h2M0 25.5h1m1 0h2m7 0h1m1 0h1m3 0h2m1 0h9m1 0h1m1 0h5m1 0h3M3 26.5h2m1 0h1m2 0h2m3 0h2m1 0h2m1 0h1m2 0h2m1 0h2m4 0h1m6 0h2M2 27.5h4m1 0h1m1 0h1m1 0h2m4 0h2m1 0h3m3 0h8m1 0h3m1 0h1M0 28.5h2m1 0h6m1 0h2m3 0h2m2 0h4m1 0h1m1 0h2m1 0h1m3 0h1m1 0h1m3 0h2M0 29.5h1m1 0h1m2 0h1m1 0h1m1 0h2m1 0h1m3 0h1m2 0h1m2 0h1m1 0h2m1 0h2m1 0h1m3 0h3m3 0h1M2 30.5h1m3 0h3m1 0h1m3 0h1m3 0h2m1 0h3m2 0h2m4 0h2m1 0h4m1 0h1M2 31.5h2m1 0h1m1 0h1m1 0h1m3 0h9m1 0h1m2 0h2m1 0h5m1 0h1m1 0h1M0 32.5h3m3 0h2m1 0h4m1 0h1m1 0h2m3 0h2m1 0h1m4 0h1m2 0h5m2 0h2M8 33.5h1m2 0h1m1 0h3m1 0h2m4 0h1m3 0h4m1 0h1m3 0h1m1 0h1m1 0h1M0 34.5h7m1 0h4m2 0h1m1 0h1m1 0h1m1 0h4m1 0h1m1 0h1m3 0h2m1 0h1m1 0h1m3 0h1M0 35.5h1m5 0h1m3 0h1m1 0h1m2 0h2m3 0h2m1 0h2m4 0h1m1 0h2m3 0h2m2 0h1M0 36.5h1m1 0h3m1 0h1m1 0h1m1 0h2m4 0h1m3 0h1m3 0h1m2 0h3m1 0h7m1 0h1M0 37.5h1m1 0h3m1 0h1m2 0h1m2 0h2m1 0h1m2 0h1m1 0h1m1 0h2m1 0h4m3 0h1m2 0h1m2 0h2M0 38.5h1m1 0h3m1 0h1m2 0h2m1 0h2m2 0h1m1 0h1m4 0h2m1 0h2m3 0h3m3 0h1m2 0h1M0 39.5h1m5 0h1m4 0h1m5 0h1m2 0h5m1 0h1m2 0h1m1 0h2m1 0h2m1 0h1m1 0h2M0 40.5h7m1 0h2m1 0h1m1 0h1m3 0h1m1 0h5m3 0h1m1 0h1m2 0h2m1 0h2m2 0h1"/>
   </g>
+  
+  <!-- Small URL below QR -->
+  <text x="1800" y="3380" font-family="Inter, -apple-system, sans-serif" font-size="36" font-weight="400" fill="rgba(255,255,255,0.5)" text-anchor="middle">mobileyes.live/creators</text>
 </svg>
