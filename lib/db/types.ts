@@ -7,12 +7,14 @@
 // ─── CREATOR ───────────────────────────────────────────
 export type CreatorStatus = 'APPLICANT' | 'ACTIVE' | 'PAUSED' | 'INACTIVE'
 
+export type BrandSafetyTier = 'A_SFW' | 'B_SUGGESTIVE' | 'C_EXPLICIT' | null
+
 export interface Creator {
   id: string
   mblId: string // MBL-CR-00001
   fullName: string
   email: string
-  platform: string // TikTok, YouTube, Twitch, Kick, Instagram
+  platform: string // TikTok, YouTube, Twitch, Kick, Instagram, OnlyFans
   handleUrl: string
   followerCount: number
   avgViews: number | null
@@ -23,6 +25,12 @@ export interface Creator {
   rateCard: Record<string, number> | null // { tiktok: 1200, youtube: 2500 }
   status: CreatorStatus
   notes: string | null
+  // Brand safety (OF addendum)
+  ofPresence?: boolean
+  ofTier?: BrandSafetyTier
+  ofHandle?: string | null
+  ofDisclosed?: boolean
+  brandSafetyNotes?: string | null
   createdAt: string // ISO date
   updatedAt: string // ISO date
 }
