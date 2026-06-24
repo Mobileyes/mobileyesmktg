@@ -1,4 +1,16 @@
 import Link from 'next/link'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'News & Insights — Mobileyes | Gaming Creator Marketing Intelligence',
+  description: 'Creator economy insights, APAC gaming market intelligence, and platform strategy from Joel Kirk — 20 years across IGN, King, Activision Blizzard, AppsFlyer, and AWS.',
+  keywords: ['gaming creator marketing', 'APAC gaming', 'streaming creators', 'creator economy Australia', 'influencer marketing insights', 'live streaming brand partnerships'],
+  openGraph: {
+    title: 'News & Insights — Mobileyes',
+    description: 'Industry intelligence from the inside. Creator economy, APAC markets, platform strategy.',
+    url: 'https://mobileyes.live/news',
+  },
+}
 
 const articles = [
   {

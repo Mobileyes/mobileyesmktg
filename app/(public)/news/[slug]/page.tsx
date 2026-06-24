@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import type { Metadata } from 'next'
 
 // Article content database
 const articles: Record<string, { title: string; date: string; category: string; content: string }> = {
@@ -95,6 +96,33 @@ If you are a brand looking to reach gaming audiences authentically — or a crea
 *Joel Kirk is the founder of Mobileyes, a live video gaming talent agency based in Sydney, Australia. Previously at IGN, King, Activision Blizzard, AppsFlyer, and AWS.*
     `,
   },
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const article = articles[slug]
+  if (!article) return { title: 'Article Not Found' }
+
+  const excerpt = article.content.split('\n').filter(l => l.trim() && !l.startsWith('#')).slice(0, 2).join(' ').slice(0, 160)
+
+  return {
+    title: `${article.title} — Mobileyes`,
+    description: excerpt,
+    keywords: [article.category, 'gaming', 'creator marketing', 'streaming', 'Australia', 'APAC', 'Mobileyes', 'Joel Kirk'],
+    openGraph: {
+      title: article.title,
+      description: excerpt,
+      url: `https://mobileyes.live/news/${slug}`,
+      type: 'article',
+      publishedTime: article.date,
+      authors: ['Joel Kirk'],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: article.title,
+      description: excerpt,
+    },
+  }
 }
 
 export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
