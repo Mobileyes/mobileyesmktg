@@ -11,35 +11,76 @@ export default function HomePage() {
     const video = videoRef.current
     if (!video) return
 
+    // 1. Respect prefers-reduced-motion — show poster only
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (prefersReducedMotion) {
+      video.pause()
+      video.removeAttribute('autoplay')
+      return
+    }
+
+    // 2. Data-saver detection — fall back to poster + metadata only
+    const connection = (navigator as unknown as { connection?: { saveData?: boolean } }).connection
+    if (connection?.saveData) {
+      video.preload = 'metadata'
       video.pause()
       return
     }
 
+    // 3. Responsive source switching (mobile 9:16 / desktop 16:9)
     const mobileQuery = window.matchMedia('(max-width: 767px)')
 
     function setVideoSource(isMobile: boolean) {
       if (!video) return
-      const src = isMobile
-        ? '/video/Mobileyes_Web_9x16_MobileHeroLoop_Muted_NoCard.mp4'
-        : '/video/Mobileyes_Web_16x9_HeroLoop_Muted_NoCard.mp4'
+      const base = isMobile
+        ? '/video/Mobileyes_Web_9x16_MobileHeroLoop_Muted_NoCard'
+        : '/video/Mobileyes_Web_16x9_HeroLoop_Muted_NoCard'
       const poster = isMobile
         ? '/img/Web_Poster_9x16.jpg'
         : '/img/Web_Poster_16x9.jpg'
 
-      if (video.src !== window.location.origin + src) {
-        video.src = src
-        video.poster = poster
-        video.load()
-        video.play().catch(() => {})
+      // Codec-proof: try WebM (VP9) first, fall back to MP4 (H.264)
+      // If only MP4 exists (current state), canPlayType returns '' for webm and uses mp4
+      const webmSrc = `${base}.webm`
+      const mp4Src = `${base}.mp4`
+
+      const canWebm = video.canPlayType('video/webm; codecs="vp9"')
+      const src = canWebm === 'probably' || canWebm === 'maybe' ? webmSrc : mp4Src
+
+      // Only reload if source actually changed
+      const currentSrc = video.currentSrc || video.src
+      if (currentSrc && currentSrc.endsWith(src.split('/').pop()!)) return
+
+      video.poster = poster
+      video.src = src
+
+      // Fallback: if WebM fails to load, switch to MP4
+      video.onerror = () => {
+        if (video.src.endsWith('.webm')) {
+          video.src = mp4Src
+          video.load()
+          video.play().catch(() => {})
+        }
       }
+
+      video.load()
+      video.play().catch(() => {})
     }
 
     setVideoSource(mobileQuery.matches)
+
+    // Listen for viewport changes (rotation, resize)
     const handler = (e: MediaQueryListEvent) => setVideoSource(e.matches)
     mobileQuery.addEventListener('change', handler)
-    return () => mobileQuery.removeEventListener('change', handler)
+
+    // Also listen for orientation change (tablets)
+    const orientationHandler = () => setVideoSource(mobileQuery.matches)
+    window.addEventListener('orientationchange', orientationHandler)
+
+    return () => {
+      mobileQuery.removeEventListener('change', handler)
+      window.removeEventListener('orientationchange', orientationHandler)
+    }
   }, [])
 
   return (
@@ -60,12 +101,12 @@ export default function HomePage() {
           style={{ zIndex: 0 }}
         />
 
-        {/* Scrim */}
+        {/* Scrim — matches spec: fades video into page navy, doesn't kill the red */}
         <div
           className="absolute inset-0"
           style={{
             zIndex: 1,
-            background: 'linear-gradient(180deg, rgba(11,15,46,0.4) 0%, rgba(11,15,46,0.6) 40%, rgba(11,15,46,0.85) 75%, #0B0F2E 100%)',
+            background: 'linear-gradient(180deg, rgba(11,15,46,0.55) 0%, rgba(11,15,46,0.75) 70%, #0B0F2E 100%)',
           }}
         />
 
