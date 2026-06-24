@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mobileyes — Hero Loop Video Polish Spec</title>
+<style>
+body { font-family: -apple-system, sans-serif; max-width: 700px; margin: 40px auto; padding: 0 20px; color: #1e293b; line-height: 1.7; background: #fafafa; }
+.container { background: white; padding: 32px; border-radius: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+h1 { font-size: 22px; font-weight: 800; margin-bottom: 4px; }
+h2 { font-size: 16px; font-weight: 700; margin-top: 28px; border-bottom: 2px solid #EF4444; padding-bottom: 6px; }
+h3 { font-size: 14px; font-weight: 700; color: #3b82f6; margin-top: 20px; }
+table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 12px; }
+th, td { padding: 8px 10px; border: 1px solid #e2e8f0; text-align: left; }
+th { background: #f8fafc; font-weight: 600; font-size: 11px; text-transform: uppercase; }
+.code { background: #1e293b; color: #e2e8f0; padding: 14px; border-radius: 8px; font-family: monospace; font-size: 12px; margin: 10px 0; white-space: pre-wrap; }
+.red { color: #dc2626; font-weight: 700; }
+.blue { color: #2563eb; }
+.tip { background: #f0fdf4; border: 1px solid #86efac; padding: 12px; border-radius: 8px; font-size: 12px; margin: 12px 0; }
+.warning { background: #fef3c7; border: 1px solid #fbbf24; padding: 12px; border-radius: 8px; font-size: 12px; margin: 12px 0; }
+.header { background: #1A0008; color: white; padding: 24px; margin: -32px -32px 24px; border-radius: 16px 16px 0 0; }
+.header h1 { color: white; }
+.header p { color: rgba(255,255,255,0.5); font-size: 11px; }
+ul { padding-left: 18px; }
+li { margin: 5px 0; font-size: 13px; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 700; background: #fef2f2; color: #dc2626; }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<strong style="font-size: 12px; letter-spacing: 0.05em;">MOBILEYES</strong>
+<h1 style="margin-top: 8px; color: white;">Hero Loop — Video Polish Spec</h1>
+<p>One-pager. What to change, what to keep. CapCut edit guide.</p>
+</div>
+
+<h2>🎯 The Brief</h2>
+<p style="font-size: 14px;">The current 5.4s loop feels <span class="red">too slow between actions</span>. Shots hold too long after the satisfying moment. The dead space between cuts makes it feel amateur. Fix: tighten timing, add subtle polish, keep the exact same footage and grade. <strong>No reshoots. No new footage. Just a cleaner edit of what exists.</strong></p>
+
+<h2>📐 Current vs Target</h2>
+<table>
+<tr><th>Spec</th><th>Current</th><th>Target</th></tr>
+<tr><td>Total duration</td><td>5.4 seconds</td><td><strong>3.8–4.2 seconds</strong></td></tr>
+<tr><td>Shots</td><td>4 (tripod, mic, light, record)</td><td>4 (same, tighter)</td></tr>
+<tr><td>Avg shot length</td><td>~1.35s</td><td><strong>~0.85–1.0s</strong></td></tr>
+<tr><td>Record button hold</td><td>~1.35s</td><td><strong>1.0s</strong> (still the longest)</td></tr>
+<tr><td>Grade</td><td>Red-isolated B&W</td><td>Same (no change)</td></tr>
+<tr><td>Audio</td><td>None (muted loop)</td><td>None</td></tr>
+</table>
+
+<h2>✂️ Shot-by-Shot Trim Guide</h2>
+<p style="font-size: 12px; color: #64748b;">Source timestamps from the original footage. Open in CapCut, find these frames.</p>
+
+<table>
+<tr><th>#</th><th>Shot</th><th>What to Cut</th><th>New Duration</th><th>Rule</th></tr>
+<tr><td>1</td><td>Tripod drop</td><td>Remove the first 0.3s (legs in air before lock). Start at the moment legs HIT and lock.</td><td><strong>0.85s</strong></td><td>Cut INTO the action. No anticipation.</td></tr>
+<tr><td>2</td><td>Mic slide</td><td>Remove the last 0.2s (hold after it seats). End the FRAME the mic clicks into place.</td><td><strong>0.8s</strong></td><td>Cut OUT at the peak. No hold.</td></tr>
+<tr><td>3</td><td>Light on</td><td>Remove the first 0.2s (finger approaching switch). Start with finger already ON the switch, mid-flip.</td><td><strong>0.8s</strong></td><td>Start mid-motion. Light bloom = cut.</td></tr>
+<tr><td>4</td><td>Record press</td><td>Keep the full press moment but trim the tail. Hold on red LED for 0.4s max after it illuminates.</td><td><strong>1.0s</strong></td><td>Hero shot. Gets 0.2s extra. Still the payoff.</td></tr>
+</table>
+
+<div class="tip">
+<strong>💡 The principle:</strong> Every frame should contain MOVEMENT or a PAYOFF MOMENT. If a frame has neither — it's dead weight. Cut it.
+</div>
+
+<h2>🎨 Polish Passes (subtle, not dramatic)</h2>
+
+<h3>1. Speed Ramping (optional — high polish)</h3>
+<p style="font-size: 13px;">If a shot still feels slow after trimming, add a subtle 120% speed ramp in the MIDDLE of the action (the fast part), then ease back to 100% at the payoff moment. This makes the mechanical action feel snappier while the satisfying click/lock still lands at normal speed.</p>
+<table>
+<tr><th>Shot</th><th>Speed Ramp</th></tr>
+<tr><td>Tripod</td><td>100% → 115% (legs falling) → 100% (lock click)</td></tr>
+<tr><td>Mic</td><td>100% → 120% (sliding in) → 100% (seat)</td></tr>
+<tr><td>Light</td><td>No ramp. The bloom IS the payoff.</td></tr>
+<tr><td>Record</td><td>No ramp. Real-time press. Sacred.</td></tr>
+</table>
+
+<h3>2. Black Flash Between Cuts (2–3 frames)</h3>
+<p style="font-size: 13px;">Add 2–3 frames (0.06–0.1s) of pure black between each shot. This creates a subtle "blink" rhythm that makes the cuts feel intentional and punchy rather than jarring. It mimics a camera shutter closing between actions.</p>
+<div class="code">Shot 1 → [2 frames black] → Shot 2 → [2 frames black] → Shot 3 → [3 frames black] → Shot 4</div>
+<p style="font-size: 11px; color: #64748b;">The extra frame before the record shot creates a micro-beat of tension. Like a breath before the payoff.</p>
+
+<h3>3. Grade Polish</h3>
+<p style="font-size: 13px;">Keep the exact same red-isolated B&W. Add only:</p>
+<ul>
+<li><strong>Sharpen +5–10</strong> — makes the metal and cable textures pop</li>
+<li><strong>Vignette 10–15%</strong> — subtle darkening of corners, draws eye to centre action</li>
+<li><strong>Grain 3–5%</strong> — adds organic film texture, removes the "phone video" feel</li>
+</ul>
+
+<div class="warning">
+<strong>⚠️ Do NOT add:</strong> Glow effects, lens flares, motion blur, zoom transitions, or any filter that makes it look "edited." The goal is to look like it was shot by a professional, not edited by one.
+</div>
+
+<h3>4. Loop Point</h3>
+<p style="font-size: 13px;">The last frame of Shot 4 (record LED lit, still) should cut HARD back to the first frame of Shot 1 (tripod legs mid-drop). This creates the illusion of continuous preparation: record → reset → build → record. The loop should feel infinite, not cyclical.</p>
+
+<h2>📱 Mobile Version (9:16) Differences</h2>
+<table>
+<tr><th>Spec</th><th>Mobile</th></tr>
+<tr><td>Ratio</td><td>1080 × 1920 (9:16)</td></tr>
+<tr><td>Reframe</td><td>Centre each action. Tripod legs centred vertically. Mic/light/record all centred.</td></tr>
+<tr><td>Duration</td><td>Same as desktop (3.8–4.2s)</td></tr>
+<tr><td>Grade</td><td>Identical</td></tr>
+<tr><td>Additional</td><td>Ensure no critical action is cropped by the notch/dynamic island area (keep action in centre 70% of frame)</td></tr>
+</table>
+
+<h2>📦 Export</h2>
+<table>
+<tr><th>File</th><th>Specs</th></tr>
+<tr><td>Mobileyes_Web_16x9_HeroLoop_Muted_NoCard.mp4</td><td>1920×1080, 30fps, H.265, no audio, < 3MB</td></tr>
+<tr><td>Mobileyes_Web_9x16_MobileHeroLoop_Muted_NoCard.mp4</td><td>1080×1920, 30fps, H.265, no audio, < 3MB</td></tr>
+</table>
+
+<div class="tip">
+<strong>💡 File naming:</strong> Use the EXACT same filenames as above. Drop them into <code>public/video/</code> to replace the current versions. The site will serve the new cuts immediately on next deploy — no code change needed.
+</div>
+
+<h2>✅ Quality Checklist Before Export</h2>
+<table>
+<tr><td>☐</td><td>No frame holds longer than 1.0s (except Shot 4 at exactly 1.0s)</td></tr>
+<tr><td>☐</td><td>Every shot starts MID-ACTION (no stillness at head)</td></tr>
+<tr><td>☐</td><td>Every shot cuts at the PEAK MOMENT (click/lock/bloom/press)</td></tr>
+<tr><td>☐</td><td>Black flash frames between each cut (2–3 frames)</td></tr>
+<tr><td>☐</td><td>Loop point is seamless (last frame → first frame feels continuous)</td></tr>
+<tr><td>☐</td><td>Grade is consistent across all 4 shots (no brightness jumps)</td></tr>
+<tr><td>☐</td><td>Red channel is the ONLY saturated colour (everything else is true B&W)</td></tr>
+<tr><td>☐</td><td>No audio track embedded (muted export)</td></tr>
+<tr><td>☐</td><td>File size < 3MB per file (hero loops need to load fast)</td></tr>
+<tr><td>☐</td><td>9:16 version: all action visible within centre 70% of frame</td></tr>
+</table>
+
+<h2>🚫 What NOT to Change</h2>
+<ul>
+<li>❌ Don't change the shot order (tripod → mic → light → record)</li>
+<li>❌ Don't change the colour grade formula</li>
+<li>❌ Don't add music or sound effects</li>
+<li>❌ Don't add any text overlays or graphics</li>
+<li>❌ Don't add transitions between shots (hard cuts + black flash only)</li>
+<li>❌ Don't crop or zoom beyond what's needed for 9:16 reframe</li>
+<li>❌ Don't add an end card (the page IS the end card)</li>
+</ul>
+
+<div style="margin-top: 28px; padding: 16px; background: #0B0F2E; border-radius: 8px; color: white;">
+<strong style="font-size: 12px; color: #EF4444;">SUMMARY:</strong>
+<p style="font-size: 14px; margin-top: 8px;">Same footage. Same grade. Same 4 shots. Just TIGHTER. Cut into action, cut at peak, 2-frame black flashes between, subtle film grain. Total loop: ~4 seconds of pure mechanical precision. No dead air. No amateur holds. Professional.</p>
+</div>
+
+<div style="margin-top: 20px; font-size: 10px; color: #94a3b8;">
+Mobileyes · Video Polish Spec v1 · June 2026
+</div>
+</div>
+</body>
+</html>
