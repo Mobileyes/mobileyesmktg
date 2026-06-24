@@ -87,27 +87,38 @@ export default function AboutPage() {
               <h2 className="text-4xl font-bold text-white mb-6">Joel Kirk</h2>
               <div className="space-y-4 leading-relaxed text-lg" style={{ color: 'rgba(255,255,255,0.7)' }}>
                 <p>
-                  20 years across gaming, media, and performance marketing. The kind of career where you see the same problems repeat at every level — and eventually decide to fix them yourself.
+                  20 years across gaming, media, social networks, and performance marketing. The kind of career where you see the same problems repeat at every level — and eventually decide to fix them yourself.
                 </p>
                 <p>
-                  Started in gaming media at IGN. Moved into mobile gaming marketing at King. Ran influencer and UA campaigns at Activision Blizzard. Built attribution frameworks at AppsFlyer. Led gaming partnerships at AWS.
+                  Started in gaming media and social networking at <strong className="text-white">IGN</strong> and <strong className="text-white">Myspace</strong> in the mid-2000s — before &ldquo;creator economy&rdquo; was a term. Built the global <a href="https://www.inmobi.com/blog/doing-mobile-video-right-vlog-part-3" target="_blank" rel="noopener" className="text-blue-400 hover:underline">&ldquo;Doing Mobile Video Right&rdquo;</a> go-to-market at <strong className="text-white">InMobi</strong> from New York to the world.
+                </p>
+                <p>
+                  Moved into mobile gaming marketing at <strong className="text-white">King</strong>. Ran influencer and UA campaigns at <strong className="text-white">Activision Blizzard</strong> — and oversaw marketing through the combination of three of the largest gaming brands in history into one entity.
+                </p>
+                <p>
+                  Built attribution frameworks at <strong className="text-white">AppsFlyer</strong> — including the <a href="https://www.thedrum.com/industryinsights/2022/09/19/how-halfbrick-increased-user-acquisition-98-midst-competitive-gaming" target="_blank" rel="noopener" className="text-blue-400 hover:underline">Halfbrick Studios case study</a> (98% UA growth through efficient attribution, published in The Drum).
+                </p>
+                <p>
+                  Led gaming partnerships at <strong className="text-white">AWS</strong>: multi-contract deals across Amazon Prime Gaming, mobile campaigns on Amazon Fire devices for streaming platform Kick, leveraged Twitch tech infrastructure to help build Kick&apos;s early technology and creator operations, worked directly with Kick leadership at DreamHack, and upgraded Easygo&apos;s global database (parent company of Kick and Stake) to real-time analytics for superior gaming performance.
                 </p>
                 <p>
                   At every stage, the same pattern: great creators being underserved by agencies that didn&apos;t understand the content, the audience, or the economics.
                 </p>
-                <p>
+                <p className="text-white font-medium">
                   Mobileyes is the agency I wished existed when I was booking creators from the brand side. Professional briefs. Fast payment. Real data. Selective representation.
                 </p>
               </div>
               
               {/* Career timeline */}
-              <div className="mt-10 grid grid-cols-2 md:grid-cols-3 gap-4">
+              <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3">
                 {[
-                  { company: 'IGN', role: 'Gaming Media' },
+                  { company: 'IGN / Myspace', role: 'Gaming Media & Social' },
+                  { company: 'InMobi', role: 'Mobile Video GTM (Global)' },
                   { company: 'King', role: 'Mobile Gaming' },
                   { company: 'Activision Blizzard', role: 'Influencer & UA' },
-                  { company: 'AppsFlyer', role: 'Attribution' },
+                  { company: 'AppsFlyer', role: 'Attribution & Analytics' },
                   { company: 'AWS', role: 'Gaming Partnerships' },
+                  { company: 'Kick / Easygo', role: 'Platform & Creator Ops' },
                   { company: 'Mobileyes', role: 'Founder' },
                 ].map((item) => (
                   <div key={item.company} className="p-4 rounded-xl" style={{ backgroundColor: '#0B0F2E', border: '1px solid #1E2A5E' }}>

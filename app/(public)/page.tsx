@@ -136,7 +136,7 @@ export default function HomePage() {
         <div className="max-w-5xl mx-auto">
           <p className="text-center text-[10px] font-semibold uppercase tracking-[0.15em] mb-6" style={{ color: 'rgba(255,255,255,0.35)' }}>Founded by 20 years across</p>
           <div className="flex flex-wrap justify-center gap-8 md:gap-14 items-center">
-            {['IGN', 'King', 'Activision Blizzard', 'AppsFlyer', 'AWS'].map((company) => (
+            {['IGN', 'Myspace', 'InMobi', 'King', 'Activision Blizzard', 'AppsFlyer', 'AWS'].map((company) => (
               <span key={company} className="text-base md:text-xl font-bold tracking-tight" style={{ color: 'rgba(255,255,255,0.55)' }}>{company}</span>
             ))}
           </div>
@@ -217,7 +217,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto text-center">
           <p className="text-xs font-medium uppercase tracking-wider mb-6" style={{ color: 'rgba(255,255,255,0.4)' }}>Platforms we represent across</p>
           <div className="flex flex-wrap justify-center gap-6 md:gap-16 items-center">
-            {['YouTube', 'Twitch', 'Kick', 'TikTok', 'Instagram'].map((platform) => (
+            {['YouTube', 'Twitch', 'Kick', 'TikTok', 'Instagram', 'OnlyFans'].map((platform) => (
               <span key={platform} className="text-lg md:text-2xl font-bold" style={{ color: 'rgba(255,255,255,0.3)' }}>{platform}</span>
             ))}
           </div>
