@@ -1,8 +1,64 @@
 import Link from 'next/link'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'About Mobileyes — Joel Kirk | 20 Years Gaming, Media & Creator Marketing',
+  description:
+    'Founded by Joel Kirk. Career spanning IGN, Myspace, InMobi, King, Activision Blizzard, AppsFlyer, and AWS. Live streaming talent agency representing creators across YouTube, Twitch, Kick, TikTok, Instagram and OnlyFans in Australia and APAC.',
+  keywords: [
+    'Joel Kirk', 'Mobileyes', 'gaming talent agency', 'creator marketing',
+    'streaming creators Australia', 'influencer agency Sydney',
+    'Twitch talent management', 'Kick creators', 'OnlyFans management',
+    'IGN', 'Activision Blizzard', 'AppsFlyer', 'AWS gaming',
+    'live streaming agency APAC', 'creator economy Australia',
+  ],
+  openGraph: {
+    title: 'About Mobileyes — Joel Kirk | 20 Years in Gaming & Creator Marketing',
+    description: 'From IGN and Myspace to AWS and Kick. Joel Kirk built Mobileyes because the talent agency model was broken.',
+    url: 'https://mobileyes.live/about',
+    type: 'profile',
+  },
+}
 
 export default function AboutPage() {
   return (
     <div>
+      {/* Structured Data — Person + Organization */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'ProfilePage',
+            mainEntity: {
+              '@type': 'Person',
+              name: 'Joel Kirk',
+              jobTitle: 'Founder',
+              worksFor: {
+                '@type': 'Organization',
+                name: 'Mobileyes',
+                url: 'https://mobileyes.live',
+                description: 'Live streaming talent agency — Sydney, Australia',
+              },
+              knowsAbout: ['Gaming', 'Creator Marketing', 'Live Streaming', 'Influencer Marketing', 'Performance Marketing', 'Mobile Video', 'Attribution'],
+              alumniOf: [
+                { '@type': 'Organization', name: 'IGN' },
+                { '@type': 'Organization', name: 'Myspace' },
+                { '@type': 'Organization', name: 'InMobi' },
+                { '@type': 'Organization', name: 'King' },
+                { '@type': 'Organization', name: 'Activision Blizzard' },
+                { '@type': 'Organization', name: 'AppsFlyer' },
+                { '@type': 'Organization', name: 'Amazon Web Services (AWS)' },
+              ],
+              url: 'https://mobileyes.live/about',
+              sameAs: [
+                'https://www.tiktok.com/@mobileyes.live',
+                'https://www.linkedin.com/in/joelamoskirk',
+              ],
+            },
+          }),
+        }}
+      />
       {/* Hero */}
       <section className="text-white py-32 px-6 relative overflow-hidden" style={{ background: '#0B0F2E' }}>
         <div className="relative max-w-5xl mx-auto">
