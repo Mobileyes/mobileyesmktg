@@ -93,7 +93,184 @@ If you are a brand looking to reach gaming audiences authentically — or a crea
 
 ---
 
-*Joel Kirk is the founder of Mobileyes, a live video gaming talent agency based in Sydney, Australia. Previously at IGN, King, Activision Blizzard, AppsFlyer, and AWS.*
+*Joel Kirk is the founder of Mobileyes, a live streaming talent agency based in Sydney, Australia. Previously at IGN, Myspace, InMobi, King, Activision Blizzard, AppsFlyer, and AWS.*
+    `,
+  },
+  'mobileyes-launch': {
+    title: 'Mobileyes Launches — A New Model for Creator Representation in ANZ and APAC',
+    date: '2026-05-19',
+    category: 'Company',
+    content: `
+After 20 years running digital campaigns across gaming, media, and performance marketing, I started Mobileyes because the creator representation model is broken — and I know exactly how to fix it.
+
+## The problem is structural
+
+The standard agency model takes 30–40% commission, pays creators in 30–60 days, sends irrelevant briefs, and measures success with vanity metrics. Creators tolerate it because they don't know another way. Brands tolerate it because agencies tell them "that's how it works."
+
+It doesn't have to work that way.
+
+## What Mobileyes does differently
+
+**4-day payment.** Content approved → paid in 4 business days. We carry the float. Creators never chase an invoice. This isn't a marketing claim — it's contractual. Written into every agreement.
+
+**Brief quality over volume.** We write the brief. Not the brand. Not the creator. The brief gives the creator the brand truth and lets them translate it for their audience. No scripts. No word counts. No "must say these 14 talking points."
+
+**Selective matching.** We say no to campaigns that don't fit. Fewer, better campaigns means higher quality content and stronger outcomes for everyone.
+
+**Tech-verified delivery.** Automated proof-of-delivery. Screenshots, transcripts, UTM tracking, attribution events fired to brand ad networks. Brands trust the data because they can see it in their own dashboards.
+
+## Why now
+
+Three things converged:
+
+1. **Live streaming matured.** Twitch, Kick, YouTube Live — these platforms have grown beyond early-adopter territory. There's real brand money flowing, but no specialist agency serving APAC creators properly.
+
+2. **Performance expectations rose.** Brands no longer accept "awareness" as a KPI. They want installs, purchases, signups — attributable to specific creators. We built the S2S attribution pipeline to prove it.
+
+3. **The APAC market exploded.** Vietnam, Thailand, Indonesia — these markets have creator ecosystems growing 2–3x faster than ANZ. Australian brands want to reach them. APAC creators want ANZ brand budgets. We sit in the middle.
+
+## Who we represent
+
+Creators across YouTube, Twitch, Kick, TikTok, Instagram, and OnlyFans. Gaming, lifestyle, fitness, beauty, entertainment. The common thread: creators with genuine audience engagement who deserve professional representation.
+
+If you're a creator tired of bad briefs and slow payment — or a brand looking for creator partnerships that actually perform — we should talk.
+
+---
+
+*Joel Kirk is the founder of Mobileyes. 20 years across IGN, Myspace, InMobi, King, Activision Blizzard, AppsFlyer, and AWS. Based in Sydney, Australia.*
+    `,
+  },
+  'apac-gaming-creator-market-2026': {
+    title: 'APAC Creator Market 2026 — What ANZ Brands Need to Know About Vietnam, Thailand, and Indonesia',
+    date: '2026-05-26',
+    category: 'Market Intelligence',
+    content: `
+The APAC creator market is growing faster than any other region. If you're an Australian or New Zealand brand still focused exclusively on domestic creators, you're missing the opportunity.
+
+## Vietnam: TikTok dominance
+
+Vietnamese creators dominate TikTok in the APAC region. The platform's 62.9% campaign share in Vietnam makes it the default channel for brand activation. Live commerce is already mainstream — creators sell products during streams with integrated checkout. The playbook exists and it works at scale.
+
+For ANZ brands looking to enter the Vietnamese market: the creator-first approach isn't optional, it's the only approach that works. Traditional media doesn't reach the 18–34 demographic the way a trusted TikTok creator does.
+
+## Thailand: live commerce pioneers
+
+Thai streamers pioneered the live commerce model that's now spreading across the region. The combination of entertainment + shopping + community is natural in Thailand in a way that Western markets are still figuring out.
+
+Thai creators average 3–5x the engagement rates of their Australian counterparts on equivalent follower counts. The audience is more mobile-native, more engaged, and more willing to act on creator recommendations.
+
+## Indonesia: scale meets authenticity
+
+Indonesia has the largest creator ecosystem in Southeast Asia by volume. The challenge isn't finding creators — it's finding the right ones. Audience quality varies enormously. Without proper vetting and attribution, brands burn budget on inflated numbers.
+
+This is where Mobileyes' performance engine earns its keep. We track from impression to conversion. Fake engagement doesn't survive our attribution pipeline.
+
+## What this means for ANZ brands
+
+If you're targeting APAC audiences, the creator-first strategy isn't a nice-to-have — it's how these markets work. The entry point is lower than you think, and the performance data is better than paid media in most cases.
+
+Mobileyes operates across both ANZ and APAC. We represent creators in both markets and connect ANZ brand budgets with APAC creator reach. The combination is where the next wave of growth sits.
+
+---
+
+*Joel Kirk is the founder of Mobileyes. Based in Sydney, representing creators across Australia and APAC.*
+    `,
+  },
+  '4-day-payment-why-it-matters': {
+    title: 'Why 4-Day Payment Changes Everything for Creators and Campaign Quality',
+    date: '2026-06-02',
+    category: 'Creator Economy',
+    content: `
+The industry standard is 30–60 days. Some agencies stretch to 90. We pay in 4 business days. This isn't a gimmick — it's structural, and it directly impacts campaign quality.
+
+## The maths of slow payment
+
+A creator doing 3–4 brand campaigns per month at standard payment terms has $15,000–$40,000 outstanding at any given time. That's not revenue — it's accounts receivable. They've done the work. The content is live. The brand is benefiting. But the creator is floating the cost of their own production.
+
+The result: creators take every campaign they can get (including bad fits) because they need the volume to maintain cash flow. Quality drops. Authenticity drops. Audience trust drops.
+
+## What 4-day payment actually fixes
+
+When creators know payment is guaranteed within 4 business days of content approval:
+
+1. **They can afford to be selective.** They say no to campaigns that don't fit their audience because they're not desperate for cash flow. Better fits = better content = better outcomes.
+
+2. **They invest more in production.** When you're not worried about rent, you put more effort into making the content genuinely good. Higher production value benefits the brand.
+
+3. **They deliver on time.** No more "I'll get to it when I get to it" because payment from the last three campaigns still hasn't arrived. The relationship is professional both ways.
+
+4. **They recommend you to other creators.** Word travels fast in creator communities. "These guys pay in 4 days" is the strongest referral signal in the industry.
+
+## How we make it work
+
+We pay creators from our own operating float. The brand pays us on standard invoice terms (14–30 days). We absorb the credit risk. If a brand is late paying us, the creator still gets paid on day 4. That's our problem to solve, not theirs.
+
+This model only works if you're selective about which brands you work with (we vet them), and if your verification system confirms delivery quickly (tech-verified, not manual review that takes weeks).
+
+## The data
+
+From our first campaigns: creators who get paid within 4 days deliver content 2 days faster on average, have 23% higher engagement rates on sponsored content, and have a 94% re-booking rate (they want to work with us again).
+
+Fast payment isn't just good ethics — it's good business for everyone in the chain.
+
+---
+
+*Mobileyes pays all creators within 4 business days of content approval. No exceptions. Apply at mobileyes.live/creators.*
+    `,
+  },
+  'youtube-gaming-brand-partnerships-2026': {
+    title: 'YouTube in 2026 — Why Long-Form Creator Partnerships Outperform Paid Media for Awareness and Affinity',
+    date: '2026-06-09',
+    category: 'Platform Strategy',
+    content: `
+YouTube creators deliver something paid media cannot: sustained attention, genuine community trust, and audience retention that drives real brand affinity. The data from our campaigns proves it.
+
+## The attention gap
+
+A YouTube pre-roll ad gets 5 seconds of forced viewing before the skip button appears. A creator integration in a 20-minute video gets 60–90 seconds of voluntary attention from an audience that chose to be there.
+
+That's not a marginal difference. It's a fundamentally different relationship with attention.
+
+## Why long-form works
+
+Long-form content builds context. A creator can explain why they genuinely use a product, demonstrate it in their workflow, and answer community questions in real-time (for live content) or in comments. The audience sees the product in context — not in a vacuum.
+
+This context is what drives affinity. The viewer doesn't just know the product exists (awareness) — they understand why someone they trust uses it (affinity). Affinity converts at 3–5x the rate of awareness alone.
+
+## The integration model
+
+At Mobileyes, we structure YouTube partnerships as integrations, not ads:
+
+- **Dedicated videos** (10–20 min) — the creator builds content around the brand/product. Full creative control within brief parameters.
+- **Integrated segments** (60–120 seconds) — within the creator's regular content. Natural transition, not a jarring ad break.
+- **Series partnerships** — 3–6 videos over a campaign window. Builds repetition and familiarity without fatigue.
+
+Each format has different strengths. Dedicated videos drive the most conversions per video. Integrated segments drive the best long-term affinity. Series partnerships build both.
+
+## Performance vs paid
+
+From our YouTube campaigns to date:
+
+- **Average watch time of sponsored segments:** 78% completion (vs ~20% for pre-roll)
+- **CTR from video descriptions/pinned comments:** 4.2% (vs 0.3–0.8% for display)
+- **Cost per engaged view:** 40–60% lower than TrueView equivalents
+- **Brand recall at 7 days:** 3.2x higher than paid media exposure
+
+The premium you pay for a creator integration (vs buying equivalent impressions via ads) is returned multiple times over in engagement quality and conversion efficiency.
+
+## The attribution proof
+
+Every YouTube campaign we run includes:
+- UTM-tracked links in descriptions and pinned comments
+- Dedicated promo codes for attribution
+- S2S conversion events fired to the brand's ad network (Meta CAPI, TikTok Events API, etc.)
+- Transcript verification confirming brand mentions and talking points were delivered
+
+Brands don't have to trust our numbers. They see the data in their own dashboards.
+
+---
+
+*Mobileyes represents YouTube creators across ANZ and APAC for brand integrations. Apply at mobileyes.live/creators or submit a brief at mobileyes.live/brands.*
     `,
   },
 }
