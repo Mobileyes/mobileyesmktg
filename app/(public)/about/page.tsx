@@ -183,12 +183,28 @@ export default function AboutPage() {
                   </div>
                 ))}
               </div>
+
+              {/* Career photos */}
+              <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3">
+                {[
+                  { src: '/joel-ny.jpg', caption: 'New York — InMobi' },
+                  { src: '/joel-king.jpg', caption: 'King — GDC' },
+                  { src: '/joel-gdc-aws.jpg', caption: 'GDC — AWS Gaming' },
+                  { src: '/joel-gdc-igea.jpg', caption: 'IGEA Australia exhibition at GDC (AWS sponsored)' },
+                ].map((photo) => (
+                  <div key={photo.src} className="relative rounded-xl overflow-hidden aspect-[4/3]">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={photo.src} alt={photo.caption} className="w-full h-full object-cover" />
+                    <div className="absolute bottom-0 left-0 right-0 px-3 py-2" style={{ background: 'linear-gradient(transparent, rgba(0,0,0,0.8))' }}>
+                      <p className="text-[10px] text-white font-medium">{photo.caption}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
-
-      {/* Team — Sarah & Heidi placeholders */}
       <section className="py-24 px-6" style={{ background: '#0B0F2E' }}>
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-white mb-12">The Team</h2>
