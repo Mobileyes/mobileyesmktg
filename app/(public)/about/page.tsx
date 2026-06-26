@@ -64,11 +64,11 @@ export default function AboutPage() {
         <div className="relative max-w-5xl mx-auto">
           <p className="font-semibold text-sm uppercase tracking-wider mb-4" style={{ color: '#3B82F6' }}>About Mobileyes</p>
           <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6">
-            Built by someone who sat on both sides of the table.
+            20 years of digital campaigns. Now on the creator&apos;s side.
           </h1>
           <p className="text-xl max-w-3xl" style={{ color: 'rgba(255,255,255,0.7)' }}>
-            20 years in the industry. Every major publisher. Every type of campaign. 
-            We started Mobileyes because the model was broken and we knew exactly how to fix it.
+            Two decades running digital campaigns across gaming, media, and performance marketing — from IGN to AWS.
+            We saw what was broken in creator representation. Mobileyes is the fix.
           </p>
         </div>
       </section>

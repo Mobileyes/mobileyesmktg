@@ -2,9 +2,9 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'News & Insights — Mobileyes | Gaming Creator Marketing Intelligence',
-  description: 'Creator economy insights, APAC gaming market intelligence, and platform strategy from Joel Kirk — 20 years across IGN, King, Activision Blizzard, AppsFlyer, and AWS.',
-  keywords: ['gaming creator marketing', 'APAC gaming', 'streaming creators', 'creator economy Australia', 'influencer marketing insights', 'live streaming brand partnerships'],
+  title: 'News & Insights — Mobileyes | Creator Marketing Intelligence',
+  description: 'Creator economy insights, APAC market intelligence, and platform strategy from Joel Kirk — 20 years across IGN, King, Activision Blizzard, AppsFlyer, and AWS.',
+  keywords: ['creator marketing', 'APAC creators', 'streaming creators', 'creator economy Australia', 'influencer marketing insights', 'live streaming brand partnerships', 'OnlyFans management'],
   openGraph: {
     title: 'News & Insights — Mobileyes',
     description: 'Industry intelligence from the inside. Creator economy, APAC markets, platform strategy.',
@@ -23,7 +23,7 @@ const articles = [
   },
   {
     slug: 'mobileyes-launch',
-    title: 'Mobileyes Launches — A New Model for Gaming Creator Representation in ANZ and APAC',
+    title: 'Mobileyes Launches — A New Model for Creator Representation in ANZ and APAC',
     excerpt: 'After 20 years across IGN, King, Activision Blizzard, AppsFlyer, and AWS, Joel Kirk launches Mobileyes to fix the three things that matter most in creator representation: brief quality, payment speed, and campaign-creator match.',
     date: '2026-05-19',
     category: 'Company',
@@ -31,8 +31,8 @@ const articles = [
   },
   {
     slug: 'apac-gaming-creator-market-2026',
-    title: 'APAC Gaming Creator Market 2026 — What ANZ Brands Need to Know About Vietnam, Thailand, and Indonesia',
-    excerpt: 'The APAC gaming creator market is growing faster than any other region. Vietnamese creators dominate TikTok gaming. Thai streamers are pioneering live commerce. Here is what Australian and New Zealand brands should understand.',
+    title: 'APAC Creator Market 2026 — What ANZ Brands Need to Know About Vietnam, Thailand, and Indonesia',
+    excerpt: 'The APAC creator market is growing faster than any other region. Vietnamese creators dominate TikTok. Thai streamers are pioneering live commerce. Here is what Australian and New Zealand brands should understand.',
     date: '2026-05-26',
     category: 'Market Intelligence',
     featured: false,
