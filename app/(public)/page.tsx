@@ -172,16 +172,26 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Trust strip */}
-      <section className="py-10 px-6" style={{ borderTop: '1px solid rgba(255,255,255,0.08)', borderBottom: '1px solid rgba(255,255,255,0.08)', background: 'rgba(0,0,0,0.2)' }}>
-        <div className="max-w-5xl mx-auto">
-          <p className="text-center text-[10px] font-semibold uppercase tracking-[0.15em] mb-6" style={{ color: 'rgba(255,255,255,0.35)' }}>Founded by 20 years across</p>
-          <div className="flex flex-wrap justify-center gap-8 md:gap-14 items-center">
-            {['Myspace', 'IGN', 'Fairfax', 'InMobi', 'King', 'Activision Blizzard', 'AppsFlyer', 'AWS'].map((company) => (
-              <span key={company} className="text-base md:text-xl font-bold tracking-tight" style={{ color: 'rgba(255,255,255,0.55)' }}>{company}</span>
+      {/* Trust strip — scrolling marquee */}
+      <section className="py-10 px-6 overflow-hidden" style={{ borderTop: '1px solid rgba(255,255,255,0.08)', borderBottom: '1px solid rgba(255,255,255,0.08)', background: 'rgba(0,0,0,0.2)' }}>
+        <p className="text-center text-[10px] font-semibold uppercase tracking-[0.15em] mb-6" style={{ color: 'rgba(255,255,255,0.35)' }}>Founded by 20 years across</p>
+        <div className="relative">
+          <div className="flex animate-[marquee_20s_linear_infinite] whitespace-nowrap">
+            {[...Array(2)].map((_, i) => (
+              <div key={i} className="flex gap-10 md:gap-16 items-center px-8">
+                {['Myspace', 'IGN', 'Fairfax', 'InMobi', 'King', 'Activision Blizzard', 'AppsFlyer', 'AWS'].map((company) => (
+                  <span key={`${company}-${i}`} className="text-base md:text-xl font-bold tracking-tight flex-shrink-0" style={{ color: 'rgba(255,255,255,0.55)' }}>{company}</span>
+                ))}
+              </div>
             ))}
           </div>
         </div>
+        <style jsx>{`
+          @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+        `}</style>
       </section>
 
       {/* What We Do */}
