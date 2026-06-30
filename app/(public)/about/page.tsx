@@ -155,7 +155,7 @@ export default function AboutPage() {
                   Built attribution frameworks at <strong className="text-white">AppsFlyer</strong> — including the <a href="https://www.thedrum.com/industryinsights/2022/09/19/how-halfbrick-increased-user-acquisition-98-midst-competitive-gaming" target="_blank" rel="noopener" className="text-blue-400 hover:underline">Halfbrick Studios case study</a> (98% UA growth through efficient media buying and attribution for a gaming brand with over a billion downloads, published in The Drum).
                 </p>
                 <p>
-                  Led gaming partnerships at <strong className="text-white">AWS</strong>: multi-contract deals across Amazon Prime Gaming, mobile campaigns on Amazon Fire devices for streaming platform Kick, leveraged Twitch tech infrastructure to help build Kick&apos;s early technology and creator operations, worked directly with Kick leadership at DreamHack, and upgraded Easygo&apos;s global database (parent company of Kick and Stake) to real-time analytics for superior gaming performance.
+                  Led gaming partnerships at <strong className="text-white">AWS</strong>: multi-contract deals across Amazon Prime Gaming, mobile campaigns on Amazon Fire devices for streaming platform Kick, leveraged Twitch tech infrastructure to help build Kick&apos;s early technology and creator operations, worked directly with Kick leadership at DreamHack, and leveraged AI and data at AWS to improve efficiency for Easygo (parent company of Kick and Stake) — delivering a 95% query performance improvement across their global gaming data platform.
                 </p>
                 <p>
                   At every stage, the same pattern: great creators being underserved by agencies that didn&apos;t understand the content, the audience, or the economics.
@@ -168,13 +168,15 @@ export default function AboutPage() {
               {/* Career timeline */}
               <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3">
                 {[
-                  { company: 'IGN / Myspace', role: 'Gaming Media & Social' },
-                  { company: 'InMobi', role: 'Mobile Video GTM (Global)' },
-                  { company: 'King', role: 'Mobile Gaming' },
-                  { company: 'Activision Blizzard', role: 'Influencer & UA' },
-                  { company: 'AppsFlyer', role: 'Attribution & Analytics' },
-                  { company: 'AWS', role: 'Gaming Partnerships' },
-                  { company: 'Kick / Easygo', role: 'Platform & Creator Ops' },
+                  { company: 'Fox / Myspace', role: 'Social Media Sales' },
+                  { company: 'IGN', role: 'Gaming Media' },
+                  { company: 'Fairfax Media', role: 'Digital Advertising' },
+                  { company: 'InMobi', role: 'Mobile Video GTM (NY)' },
+                  { company: 'King', role: 'Mobile Gaming (NY)' },
+                  { company: 'Activision Blizzard', role: 'Marketing & IAB' },
+                  { company: 'Fabulate', role: 'Agency Growth' },
+                  { company: 'AppsFlyer', role: 'Attribution & Growth' },
+                  { company: 'AWS', role: 'Gaming & AI Partnerships' },
                   { company: 'Mobileyes', role: 'Founder' },
                 ].map((item) => (
                   <div key={item.company} className="p-4 rounded-xl" style={{ backgroundColor: '#0B0F2E', border: '1px solid #1E2A5E' }}>

@@ -177,7 +177,7 @@ export default function HomePage() {
         <div className="max-w-5xl mx-auto">
           <p className="text-center text-[10px] font-semibold uppercase tracking-[0.15em] mb-6" style={{ color: 'rgba(255,255,255,0.35)' }}>Founded by 20 years across</p>
           <div className="flex flex-wrap justify-center gap-8 md:gap-14 items-center">
-            {['IGN', 'Myspace', 'InMobi', 'King', 'Activision Blizzard', 'AppsFlyer', 'AWS'].map((company) => (
+            {['Myspace', 'IGN', 'Fairfax', 'InMobi', 'King', 'Activision Blizzard', 'AppsFlyer', 'AWS'].map((company) => (
               <span key={company} className="text-base md:text-xl font-bold tracking-tight" style={{ color: 'rgba(255,255,255,0.55)' }}>{company}</span>
             ))}
           </div>
