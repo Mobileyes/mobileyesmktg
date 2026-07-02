@@ -97,18 +97,14 @@ export default function CreatorsPage() {
           </p>
 
           {/* Key stats */}
-          <div className="grid grid-cols-3 gap-6 max-w-lg">
+          <div className="grid grid-cols-2 gap-6 max-w-sm">
             <div className="text-center p-4 rounded-xl" style={{ backgroundColor: '#111633', border: '1px solid #1E2A5E' }}>
               <p className="text-3xl font-bold" style={{ color: '#3B82F6' }}>4</p>
               <p className="text-xs mt-1" style={{ color: 'rgba(255,255,255,0.5)' }}>Day payment</p>
             </div>
-            <div className="text-center p-4 bg-slate-800/50 rounded-xl border border-slate-700/50">
-              <p className="text-3xl font-bold text-green-400">25%</p>
-              <p className="text-slate-400 text-xs mt-1">Commission</p>
-            </div>
-            <div className="text-center p-4 bg-slate-800/50 rounded-xl border border-slate-700/50">
-              <p className="text-3xl font-bold text-purple-400">APAC</p>
-              <p className="text-slate-400 text-xs mt-1">Campaigns</p>
+            <div className="text-center p-4 rounded-xl" style={{ backgroundColor: '#111633', border: '1px solid #1E2A5E' }}>
+              <p className="text-3xl font-bold" style={{ color: '#3B82F6' }}>APAC</p>
+              <p className="text-xs mt-1" style={{ color: 'rgba(255,255,255,0.5)' }}>Campaigns</p>
             </div>
           </div>
         </div>
