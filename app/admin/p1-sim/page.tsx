@@ -25,6 +25,7 @@ const SIM_RACING_BRANDS = [
 ]
 
 const SIM_RACING_CREATORS = [
+  { name: 'JacobTaborOz', platform: 'YouTube', followers: 'Growing', niche: 'Flight Sim (DCS) / Military Aviation', note: '🟢 SIGNED — Pilot campaign active. 11yr Air Force avionics tech. Authentic expert content. Port Stephens NSW. Non-exclusive, 20% commission. Affiliate model. Rig rundown video in production with P1.' },
   { name: 'Jimmy Broadbent', platform: 'YouTube', followers: '850K', niche: 'Sim Racing / Comedy', note: 'UK-based. Biggest sim racing YouTuber. Would be a dream signing.' },
   { name: 'Boosted Media', platform: 'YouTube', followers: '280K', niche: 'Sim Racing Hardware Reviews', note: 'Australian! Hardware review focused. Perfect for P1/Fanatec campaigns.' },
   { name: 'Dan Suzuki', platform: 'YouTube', followers: '200K', niche: 'Sim Racing / F1', note: 'F1 + sim racing crossover. Good for broader racing audience.' },
@@ -89,13 +90,14 @@ export default function P1SimDashboard() {
         <div className="space-y-6">
           <div className="bg-white rounded-xl border border-red-200 p-6">
             <h3 className="text-sm font-semibold text-red-900 mb-2 flex items-center gap-2"><Zap className="w-4 h-4" />Immediate Action — P1 Sim Rigs</h3>
-            <p className="text-sm text-gray-700 mb-3">Neil has a direct connection to P1 and an influencer ready to go. We need to:</p>
+            <p className="text-sm text-gray-700 mb-3">Neil has a direct connection to P1. JacobTaborOz (flight sim / DCS) is signed — pilot campaign in motion.</p>
             <ol className="space-y-2 text-sm text-gray-600">
-              <li className="flex items-start gap-2"><span className="font-bold text-red-600 mt-0.5">1.</span>Set up creator management agreement with the influencer</li>
-              <li className="flex items-start gap-2"><span className="font-bold text-red-600 mt-0.5">2.</span>Create UTM tracking links for P1&apos;s Shopify store</li>
-              <li className="flex items-start gap-2"><span className="font-bold text-red-600 mt-0.5">3.</span>Generate unique promo code (e.g. CREATOR-P1-2026)</li>
-              <li className="flex items-start gap-2"><span className="font-bold text-red-600 mt-0.5">4.</span>Set up conversion webhook from P1&apos;s store → our platform</li>
-              <li className="flex items-start gap-2"><span className="font-bold text-red-600 mt-0.5">5.</span>Brief the creator and launch first campaign</li>
+              <li className="flex items-start gap-2"><span className="font-bold text-green-600 mt-0.5">✓</span>Creator identified &amp; signed: JacobTaborOz (DCS / flight sim, YouTube)</li>
+              <li className="flex items-start gap-2"><span className="font-bold text-green-600 mt-0.5">✓</span>Agreement: Non-exclusive, 20% commission, affiliate model</li>
+              <li className="flex items-start gap-2"><span className="font-bold text-red-600 mt-0.5">3.</span>Brief Neil: Confirm rig spec (flight sim configuration) for Jacob</li>
+              <li className="flex items-start gap-2"><span className="font-bold text-red-600 mt-0.5">4.</span>P1 creates promo code JACOB-P1 in Shopify</li>
+              <li className="flex items-start gap-2"><span className="font-bold text-red-600 mt-0.5">5.</span>Set up conversion webhook from P1&apos;s store → our platform</li>
+              <li className="flex items-start gap-2"><span className="font-bold text-red-600 mt-0.5">6.</span>Ship rig to Jacob (Port Stephens, NSW) — he records at own pace</li>
             </ol>
           </div>
 
@@ -240,10 +242,12 @@ export default function P1SimDashboard() {
           <div className="bg-white rounded-xl border border-gray-200 p-6">
             <h3 className="text-sm font-semibold text-gray-900 mb-3">Neil Action Items</h3>
             <ul className="space-y-2 text-sm text-gray-600">
-              <li>☐ Confirm the influencer details (handle, platform, audience size)</li>
-              <li>☐ Intro to P1 marketing contact</li>
-              <li>☐ Confirm if Neil wants to come down to Sydney to plan this</li>
-              <li>☐ Discuss commission structure (our cut vs Neil&apos;s referral)</li>
+              <li>☐ Confirm the rig spec — flight sim optimized configuration for Jacob (DCS / HOTAS / MFDs)</li>
+              <li>☐ Confirm shipping details to Port Stephens, NSW</li>
+              <li>☐ Create promo code JACOB-P1 in P1 Shopify</li>
+              <li>☐ (Optional) Set up Shopify webhook to POST conversions to our endpoint</li>
+              <li>☐ Discuss if Neil wants a referral cut or just the P1 sales uplift</li>
+              <li>☐ Confirm content schedule expectations (Jacob produces 1 video per 1-2 months)</li>
             </ul>
           </div>
         </div>

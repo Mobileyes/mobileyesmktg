@@ -11,6 +11,7 @@ import {
   Megaphone,
   FileText,
   Save,
+  CheckCircle,
 } from 'lucide-react'
 import { cn, getStatusColor, formatCurrency, formatDate } from '@/lib/utils'
 
@@ -29,7 +30,7 @@ const PLACEHOLDER_CREATOR = {
   contentNiche: ['Gaming', 'Entertainment'],
   gamingGenres: ['FPS', 'Battle Royale'],
   rateCard: { tiktok: 1200, youtube: 2500, twitch: 800 },
-  status: 'ACTIVE' as const,
+  status: 'ACTIVE' as 'APPLICANT' | 'ACTIVE' | 'PAUSED' | 'INACTIVE',
   notes: '',
   totalCampaigns: 0,
   totalEarned: 0,
@@ -57,6 +58,35 @@ export default function CreatorProfilePage() {
     JSON.stringify(creator.rateCard, null, 2)
   )
   const [isSaving, setIsSaving] = useState(false)
+  const [isOnboarding, setIsOnboarding] = useState(false)
+
+  const handleOnboard = async () => {
+    setIsOnboarding(true)
+    try {
+      const tags = prompt('Tags (comma-separated, e.g. SIGNED, FLIGHT-SIM, DCS):')
+      const source = prompt('Source (e.g. DIRECT, REFERRAL-NEIL):') || 'DIRECT'
+      const res = await fetch(`/api/admin/creators/${creator.id}/onboard`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          commissionPct: 20,
+          source,
+          tags: tags ? tags.split(',').map(t => t.trim()) : ['SIGNED'],
+        }),
+      })
+      if (res.ok) {
+        alert('Creator onboarded! Welcome email sent.')
+        window.location.reload()
+      } else {
+        const data = await res.json()
+        alert(`Error: ${data.error}`)
+      }
+    } catch (err) {
+      alert('Onboarding failed')
+    } finally {
+      setIsOnboarding(false)
+    }
+  }
 
   const handleSaveNotes = async () => {
     setIsSaving(true)
@@ -99,6 +129,16 @@ export default function CreatorProfilePage() {
           </p>
         </div>
         <div className="flex items-center gap-2">
+          {creator.status === 'APPLICANT' && (
+            <button
+              onClick={handleOnboard}
+              disabled={isOnboarding}
+              className="flex items-center gap-2 px-3 py-2 bg-green-600 text-white rounded-lg text-sm font-medium hover:bg-green-700 disabled:opacity-50"
+            >
+              <CheckCircle className="w-4 h-4" />
+              {isOnboarding ? 'Onboarding...' : 'Onboard Creator'}
+            </button>
+          )}
           <button className="flex items-center gap-2 px-3 py-2 border border-gray-200 rounded-lg text-sm hover:bg-gray-50">
             <Send className="w-4 h-4" />
             Send Brief

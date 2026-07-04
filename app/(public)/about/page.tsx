@@ -139,7 +139,7 @@ export default function AboutPage() {
             
             {/* Bio */}
             <div className="lg:col-span-3">
-              <p className="font-semibold text-sm uppercase tracking-wider mb-3" style={{ color: '#3B82F6' }}>Founder</p>
+              <p className="font-semibold text-sm uppercase tracking-wider mb-3" style={{ color: '#3B82F6' }}>Our Team</p>
               <h2 className="text-4xl font-bold text-white mb-6">Joel Kirk</h2>
               <div className="space-y-4 leading-relaxed text-lg" style={{ color: 'rgba(255,255,255,0.7)' }}>
                 <p>

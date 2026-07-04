@@ -16,7 +16,6 @@ export default function CreatorsPage() {
     audienceLocation: '',
     contentNiche: [] as string[],
     gamingGenres: [] as string[],
-    whyJoin: '',
   })
   const [utmParams, setUtmParams] = useState<Record<string, string>>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -218,6 +217,7 @@ export default function CreatorsPage() {
               </div>
             </div>
 
+            {formData.contentNiche.includes('Gaming') && (
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-3">Gaming Genres</label>
               <div className="flex flex-wrap gap-2">
@@ -229,11 +229,9 @@ export default function CreatorsPage() {
                 ))}
               </div>
             </div>
+            )}
 
-            <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">Why Mobileyes?</label>
-              <textarea rows={4} placeholder="What are you looking for in representation?" value={formData.whyJoin} onChange={(e) => setFormData({ ...formData, whyJoin: e.target.value })} className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow resize-none" />
-            </div>
+
 
             <button type="submit" disabled={isSubmitting} className="w-full py-4 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-500 transition-colors disabled:opacity-50 text-lg">
               {isSubmitting ? 'Submitting...' : 'Submit Application'}
