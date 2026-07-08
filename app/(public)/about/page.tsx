@@ -183,13 +183,17 @@ export default function AboutPage() {
                   </div>
                 </div>
                 <p>
-                  Moved into mobile gaming marketing at <strong className="text-white">King</strong>. Ran influencer and UA campaigns at <strong className="text-white">Activision Blizzard</strong> — including work on <a href="https://www.activisionblizzardmedia.com/insights/blogs/2023/11/iab-uk-gaming-upfronts-2023-recap" target="_blank" rel="noopener" className="text-blue-400 hover:underline">IAB Gaming Upfronts</a> with brands like Nestle and KitKat across Candy Crush, delivering <a href="https://www.iabuk.com/member-content/capturing-focus-driving-results-why-gaming-matters-more-ever" target="_blank" rel="noopener" className="text-blue-400 hover:underline">99% viewability and 100% eyes-on attention</a> — and oversaw marketing through the combination of three of the largest gaming brands in history into one entity.
+                  Moved into mobile gaming marketing at <strong className="text-white">King</strong>. Launched <a href="https://www.youtube.com/watch?v=lp9I0ZJiJLo" target="_blank" rel="noopener" className="text-blue-400 hover:underline">Candy Crush Friends Saga</a> with influencers including Emily Ratajkowski and Vanessa Hudgens — combining celebrity UA with performance marketing to drive over 10 million installs. Broke a <a href="https://www.prnewswire.com/news-releases/candy-crush-friends-saga-is-here-and-its-sweeter-than-ever-300729168.html" target="_blank" rel="noopener" className="text-blue-400 hover:underline">Guinness World Record for largest live mobile gameplay</a> at Brookfield Place, NYC. Ran influencer and UA campaigns at <strong className="text-white">Activision Blizzard</strong> — including work on <a href="https://www.activisionblizzardmedia.com/insights/blogs/2023/11/iab-uk-gaming-upfronts-2023-recap" target="_blank" rel="noopener" className="text-blue-400 hover:underline">IAB Gaming Upfronts</a> with brands like Nestle and KitKat across Candy Crush, delivering <a href="https://www.iabuk.com/member-content/capturing-focus-driving-results-why-gaming-matters-more-ever" target="_blank" rel="noopener" className="text-blue-400 hover:underline">99% viewability and 100% eyes-on attention</a> — and oversaw marketing through the combination of three of the largest gaming brands in history into one entity.
                 </p>
 
                 {/* IAB Video Efficacy Stats — Visual Proof */}
                 <div className="my-6 p-5 rounded-xl" style={{ background: 'rgba(59,130,246,0.06)', border: '1px solid rgba(59,130,246,0.15)' }}>
-                  <p className="text-[10px] font-semibold uppercase tracking-widest mb-3" style={{ color: '#60A5FA' }}>IAB UK · Video Ad Efficacy · Candy Crush × Nestle/KitKat</p>
-                  <div className="grid grid-cols-3 gap-4">
+                  <p className="text-[10px] font-semibold uppercase tracking-widest mb-3" style={{ color: '#60A5FA' }}>King + Activision Blizzard · Campaign Performance</p>
+                  <div className="grid grid-cols-4 gap-3">
+                    <div className="text-center">
+                      <p className="text-3xl font-bold text-white">10M+</p>
+                      <p className="text-xs mt-1" style={{ color: 'rgba(255,255,255,0.5)' }}>Installs (Friends Saga launch)</p>
+                    </div>
                     <div className="text-center">
                       <p className="text-3xl font-bold text-white">99%</p>
                       <p className="text-xs mt-1" style={{ color: 'rgba(255,255,255,0.5)' }}>Viewability</p>
@@ -204,7 +208,7 @@ export default function AboutPage() {
                     </div>
                   </div>
                   <p className="text-[10px] mt-3 text-center" style={{ color: 'rgba(255,255,255,0.4)' }}>
-                    Source: <a href="https://www.iabuk.com/member-content/capturing-focus-driving-results-why-gaming-matters-more-ever" target="_blank" rel="noopener" className="text-blue-400 hover:underline">IAB UK &ldquo;Capturing Focus&rdquo;</a> · Eye-tracking research across rewarded video in gaming environments
+                    Sources: <a href="https://www.iabuk.com/member-content/capturing-focus-driving-results-why-gaming-matters-more-ever" target="_blank" rel="noopener" className="text-blue-400 hover:underline">IAB UK &ldquo;Capturing Focus&rdquo;</a> · <a href="https://www.youtube.com/watch?v=lp9I0ZJiJLo" target="_blank" rel="noopener" className="text-blue-400 hover:underline">Candy Crush Friends Saga NYC Launch</a> · <a href="https://www.prnewswire.com/news-releases/candy-crush-friends-saga-is-here-and-its-sweeter-than-ever-300729168.html" target="_blank" rel="noopener" className="text-blue-400 hover:underline">PR Newswire</a>
                   </p>
                 </div>
                 <p>
