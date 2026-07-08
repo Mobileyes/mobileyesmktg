@@ -148,9 +148,37 @@ export default function AboutPage() {
                 <p>
                   Started in gaming media and social networking at <strong className="text-white">IGN</strong> and <strong className="text-white">Myspace</strong> in the mid-2000s — before &ldquo;creator economy&rdquo; was a term. Built the global <a href="https://www.inmobi.com/blog/doing-mobile-video-right-vlog-part-3" target="_blank" rel="noopener" className="text-blue-400 hover:underline">&ldquo;Doing Mobile Video Right&rdquo;</a> go-to-market at <strong className="text-white">InMobi</strong> from New York to the world. Contributed to the <a href="https://www.iab.com/guidelines/opt-in-value-exchange-advertising-playbook-for-brands/" target="_blank" rel="noopener" className="text-blue-400 hover:underline">IAB Opt-In Value Exchange Advertising Playbook</a> — the industry standard for rewarded video advertising.
                 </p>
+
+                {/* IAB Playbook Quote */}
+                <blockquote className="my-6 pl-5 py-4 rounded-r-xl" style={{ borderLeft: '3px solid #3B82F6', background: 'rgba(59,130,246,0.04)' }}>
+                  <p className="text-base italic text-white/90">&ldquo;Value exchange lies within the core customer experience and advertisers should look for experiences that are rewarding for users and by doing so, will have a direct impact on the media performance with brands.&rdquo;</p>
+                  <p className="text-xs mt-2" style={{ color: 'rgba(255,255,255,0.4)' }}>— Joel Kirk, Senior Marketing Manager, Activision Blizzard Media · <a href="https://www.iab.com/guidelines/opt-in-value-exchange-advertising-playbook-for-brands/" target="_blank" rel="noopener" className="text-blue-400 hover:underline">IAB Opt-In Value Exchange Advertising Playbook for Brands</a></p>
+                </blockquote>
                 <p>
                   Moved into mobile gaming marketing at <strong className="text-white">King</strong>. Ran influencer and UA campaigns at <strong className="text-white">Activision Blizzard</strong> — including work on <a href="https://www.activisionblizzardmedia.com/insights/blogs/2023/11/iab-uk-gaming-upfronts-2023-recap" target="_blank" rel="noopener" className="text-blue-400 hover:underline">IAB Gaming Upfronts</a> with brands like Nestle and KitKat across Candy Crush, delivering <a href="https://www.iabuk.com/member-content/capturing-focus-driving-results-why-gaming-matters-more-ever" target="_blank" rel="noopener" className="text-blue-400 hover:underline">99% viewability and 100% eyes-on attention</a> — and oversaw marketing through the combination of three of the largest gaming brands in history into one entity.
                 </p>
+
+                {/* IAB Video Efficacy Stats — Visual Proof */}
+                <div className="my-6 p-5 rounded-xl" style={{ background: 'rgba(59,130,246,0.06)', border: '1px solid rgba(59,130,246,0.15)' }}>
+                  <p className="text-[10px] font-semibold uppercase tracking-widest mb-3" style={{ color: '#60A5FA' }}>IAB UK · Video Ad Efficacy · Candy Crush × Nestle/KitKat</p>
+                  <div className="grid grid-cols-3 gap-4">
+                    <div className="text-center">
+                      <p className="text-3xl font-bold text-white">99%</p>
+                      <p className="text-xs mt-1" style={{ color: 'rgba(255,255,255,0.5)' }}>Viewability</p>
+                    </div>
+                    <div className="text-center">
+                      <p className="text-3xl font-bold text-white">100%</p>
+                      <p className="text-xs mt-1" style={{ color: 'rgba(255,255,255,0.5)' }}>Eyes-on attention</p>
+                    </div>
+                    <div className="text-center">
+                      <p className="text-3xl font-bold text-white">2.3x</p>
+                      <p className="text-xs mt-1" style={{ color: 'rgba(255,255,255,0.5)' }}>Purchase intent</p>
+                    </div>
+                  </div>
+                  <p className="text-[10px] mt-3 text-center" style={{ color: 'rgba(255,255,255,0.4)' }}>
+                    Source: <a href="https://www.iabuk.com/member-content/capturing-focus-driving-results-why-gaming-matters-more-ever" target="_blank" rel="noopener" className="text-blue-400 hover:underline">IAB UK &ldquo;Capturing Focus&rdquo;</a> · Eye-tracking research across rewarded video in gaming environments
+                  </p>
+                </div>
                 <p>
                   Built attribution frameworks at <strong className="text-white">AppsFlyer</strong> — including the <a href="https://www.thedrum.com/industryinsights/2022/09/19/how-halfbrick-increased-user-acquisition-98-midst-competitive-gaming" target="_blank" rel="noopener" className="text-blue-400 hover:underline">Halfbrick Studios case study</a> (98% UA growth through efficient media buying and attribution for a gaming brand with over a billion downloads, published in The Drum). Partnered with <a href="https://www.bandt.com.au/appsflyer-princess-polly-talk-about-how-using-e-commerce-connectivity-can-secure-results/" target="_blank" rel="noopener" className="text-blue-400 hover:underline">Princess Polly&apos;s Kim Zorn</a> on e-commerce attribution strategy — driving LTV through OneLink influencer conversions and proving that real people outperform fake influence. Published as a <a href="https://open.spotify.com/show/home-screen-advantage" target="_blank" rel="noopener" className="text-blue-400 hover:underline">B&amp;T feature and podcast</a> on how Australian brands use performance media and creator networks to expand internationally beyond legacy channels.
                 </p>
