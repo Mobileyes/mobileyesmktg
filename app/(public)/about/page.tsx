@@ -154,6 +154,34 @@ export default function AboutPage() {
                   <p className="text-base italic text-white/90">&ldquo;Value exchange lies within the core customer experience and advertisers should look for experiences that are rewarding for users and by doing so, will have a direct impact on the media performance with brands.&rdquo;</p>
                   <p className="text-xs mt-2" style={{ color: 'rgba(255,255,255,0.4)' }}>— Joel Kirk, Senior Marketing Manager, Activision Blizzard Media · <a href="https://www.iab.com/guidelines/opt-in-value-exchange-advertising-playbook-for-brands/" target="_blank" rel="noopener" className="text-blue-400 hover:underline">IAB Opt-In Value Exchange Advertising Playbook for Brands</a></p>
                 </blockquote>
+
+                {/* InMobi Mobile Video Series — Trust Credentials */}
+                <div className="my-6 p-5 rounded-xl" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
+                  <p className="text-[10px] font-semibold uppercase tracking-widest mb-3" style={{ color: '#60A5FA' }}>InMobi · &ldquo;Doing Mobile Video Right&rdquo; Global Series</p>
+                  <p className="text-sm mb-3" style={{ color: 'rgba(255,255,255,0.6)' }}>
+                    Authored and presented the global go-to-market for mobile video advertising — covering programmatic buying, viewability measurement, and performance metrics that became the standard for mobile-first video campaigns worldwide.
+                  </p>
+                  <div className="grid grid-cols-3 gap-3 mb-4">
+                    <div className="text-center p-3 rounded-lg" style={{ background: 'rgba(59,130,246,0.08)' }}>
+                      <p className="text-2xl font-bold text-white">47%</p>
+                      <p className="text-[10px]" style={{ color: 'rgba(255,255,255,0.5)' }}>Higher CTR (landscape)</p>
+                    </div>
+                    <div className="text-center p-3 rounded-lg" style={{ background: 'rgba(59,130,246,0.08)' }}>
+                      <p className="text-2xl font-bold text-white">22%</p>
+                      <p className="text-[10px]" style={{ color: 'rgba(255,255,255,0.5)' }}>Higher VCR (short-form)</p>
+                    </div>
+                    <div className="text-center p-3 rounded-lg" style={{ background: 'rgba(59,130,246,0.08)' }}>
+                      <p className="text-2xl font-bold text-white">50%</p>
+                      <p className="text-[10px]" style={{ color: 'rgba(255,255,255,0.5)' }}>Lower CPA (video vs interstitial)</p>
+                    </div>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    <a href="https://www.inmobi.com/blog/doing-mobile-video-right-vlog-part-1-programmatic-with-kayla-wilson" target="_blank" rel="noopener" className="text-[10px] px-2.5 py-1 rounded-md font-medium" style={{ background: 'rgba(59,130,246,0.1)', color: '#60A5FA' }}>Part 1: Programmatic</a>
+                    <a href="https://www.inmobi.com/blog/doing-mobile-video-right-vlog-part-3" target="_blank" rel="noopener" className="text-[10px] px-2.5 py-1 rounded-md font-medium" style={{ background: 'rgba(59,130,246,0.1)', color: '#60A5FA' }}>Part 3: Value Exchange</a>
+                    <a href="https://www.inmobi.com/blog/why-the-right-mobile-video-advertising-metrics-make-all-the-difference" target="_blank" rel="noopener" className="text-[10px] px-2.5 py-1 rounded-md font-medium" style={{ background: 'rgba(59,130,246,0.1)', color: '#60A5FA' }}>Video Metrics Guide</a>
+                    <a href="https://www.inmobi.com/blog/2017/09/19/metrics-that-matter-the-new-viewability-standards-for-mobile-video" target="_blank" rel="noopener" className="text-[10px] px-2.5 py-1 rounded-md font-medium" style={{ background: 'rgba(59,130,246,0.1)', color: '#60A5FA' }}>Viewability Standards</a>
+                  </div>
+                </div>
                 <p>
                   Moved into mobile gaming marketing at <strong className="text-white">King</strong>. Ran influencer and UA campaigns at <strong className="text-white">Activision Blizzard</strong> — including work on <a href="https://www.activisionblizzardmedia.com/insights/blogs/2023/11/iab-uk-gaming-upfronts-2023-recap" target="_blank" rel="noopener" className="text-blue-400 hover:underline">IAB Gaming Upfronts</a> with brands like Nestle and KitKat across Candy Crush, delivering <a href="https://www.iabuk.com/member-content/capturing-focus-driving-results-why-gaming-matters-more-ever" target="_blank" rel="noopener" className="text-blue-400 hover:underline">99% viewability and 100% eyes-on attention</a> — and oversaw marketing through the combination of three of the largest gaming brands in history into one entity.
                 </p>
