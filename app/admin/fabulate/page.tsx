@@ -32,8 +32,8 @@ const FABULATE_CREATORS: FabulateCreator[] = [
   {
     name: 'Claudia Rose',
     email: 'comfortbottle@gmail.com',
-    tiktok: 'https://www.tiktok.com/@claudia',
-    instagram: 'https://www.instagram.com/claudiarose',
+    tiktok: 'https://www.tiktok.com/search?q=claudia+rose+australia+lifestyle',
+    instagram: 'https://www.google.com/search?q=site:instagram.com+%22claudia+rose%22+australia+lifestyle',
     niche: 'Lifestyle / Family',
     estimatedFollowers: 'TBD — research needed',
     status: 'TO_RESEARCH',
@@ -43,7 +43,7 @@ const FABULATE_CREATORS: FabulateCreator[] = [
     name: 'Tamara Holland',
     email: 'tamaradavisholland@gmail.com',
     tiktok: null,
-    instagram: 'https://www.instagram.com/tamaradavisholland',
+    instagram: 'https://www.instagram.com/tamaradavisholland/',
     niche: 'Lifestyle / Fashion',
     estimatedFollowers: 'TBD — research needed',
     status: 'TO_RESEARCH',
@@ -53,8 +53,8 @@ const FABULATE_CREATORS: FabulateCreator[] = [
     name: 'Rojin Torabi',
     email: 'roj@theroject.com',
     tiktok: null,
-    instagram: 'https://www.instagram.com/rojintorabi',
-    niche: 'Lifestyle / Content',
+    instagram: 'https://www.instagram.com/theroject/',
+    niche: 'Lifestyle / Content (theroject.com)',
     estimatedFollowers: 'TBD — research needed',
     status: 'TO_RESEARCH',
     outreachDraft: '',
@@ -62,9 +62,9 @@ const FABULATE_CREATORS: FabulateCreator[] = [
   {
     name: 'Michael Pantaleone',
     email: 'cast@thecastpatrol.com.au',
-    tiktok: 'https://www.tiktok.com/@thecastpatrol',
-    instagram: null,
-    niche: 'Entertainment / Comedy',
+    tiktok: 'https://www.tiktok.com/search?q=thecastpatrol',
+    instagram: 'https://www.google.com/search?q=site:instagram.com+%22thecastpatrol%22',
+    niche: 'Entertainment / Comedy (thecastpatrol.com.au)',
     estimatedFollowers: 'TBD — research needed',
     status: 'TO_RESEARCH',
     outreachDraft: '',
@@ -72,8 +72,8 @@ const FABULATE_CREATORS: FabulateCreator[] = [
   {
     name: 'Jasmin Deang',
     email: 'jasmin.deang@gmail.com',
-    tiktok: 'https://www.tiktok.com/@jasmin.dg__',
-    instagram: 'https://www.instagram.com/jasmin.dg_',
+    tiktok: 'https://www.tiktok.com/search?q=jasmin.dg__',
+    instagram: 'https://www.instagram.com/jasmin.dg_/',
     niche: 'Lifestyle / Beauty',
     estimatedFollowers: 'TBD — research needed',
     status: 'TO_RESEARCH',
@@ -82,8 +82,8 @@ const FABULATE_CREATORS: FabulateCreator[] = [
   {
     name: 'Lily Noonan',
     email: 'lily.noonan97@gmail.com',
-    tiktok: 'https://www.tiktok.com/@lily',
-    instagram: null,
+    tiktok: 'https://www.tiktok.com/search?q=lily+noonan+australia',
+    instagram: 'https://www.google.com/search?q=%22lily+noonan%22+instagram+australia+creator',
     niche: 'Lifestyle',
     estimatedFollowers: 'TBD — research needed',
     status: 'TO_RESEARCH',
@@ -93,7 +93,7 @@ const FABULATE_CREATORS: FabulateCreator[] = [
     name: 'Eliza Boyd',
     email: 'elizaanneboyd@gmail.com',
     tiktok: null,
-    instagram: 'https://www.instagram.com/elizaanneboyd',
+    instagram: 'https://www.instagram.com/elizaanneboyd/',
     niche: 'Lifestyle / Fashion',
     estimatedFollowers: 'TBD — research needed',
     status: 'TO_RESEARCH',
@@ -103,7 +103,7 @@ const FABULATE_CREATORS: FabulateCreator[] = [
     name: 'Aaron Boundy',
     email: 'aaronboundy10@gmail.com',
     tiktok: null,
-    instagram: 'https://www.instagram.com/aaronboundy',
+    instagram: 'https://www.instagram.com/aaronboundy/',
     niche: 'Lifestyle / Fitness',
     estimatedFollowers: 'TBD — research needed',
     status: 'TO_RESEARCH',
@@ -113,8 +113,8 @@ const FABULATE_CREATORS: FabulateCreator[] = [
     name: 'Jess Donaldson',
     email: 'jessicarose1901@gmail.com',
     tiktok: null,
-    instagram: 'https://www.instagram.com/charliefrankie_cockerspaniels',
-    niche: 'Pets / Family',
+    instagram: 'https://www.google.com/search?q=%22charlie+frankie+sonny%22+cocker+spaniels+instagram',
+    niche: 'Pets / Family (Cocker Spaniels)',
     estimatedFollowers: 'TBD — research needed',
     status: 'TO_RESEARCH',
     outreachDraft: '',
@@ -123,7 +123,7 @@ const FABULATE_CREATORS: FabulateCreator[] = [
     name: 'Katianna Velos',
     email: 'kjvelos@outlook.com',
     tiktok: null,
-    instagram: 'https://www.instagram.com/katvel',
+    instagram: 'https://www.google.com/search?q=site:instagram.com+katvel+katianna',
     niche: 'Lifestyle / Fashion',
     estimatedFollowers: 'TBD — research needed',
     status: 'TO_RESEARCH',
@@ -132,9 +132,9 @@ const FABULATE_CREATORS: FabulateCreator[] = [
   {
     name: 'Amber De Luca Tao',
     email: 'contact@wordsbyamber.com',
-    tiktok: 'https://www.tiktok.com/@shoe_____gal',
-    instagram: null,
-    niche: 'Fashion / Shoes / Content Writing',
+    tiktok: 'https://www.tiktok.com/search?q=shoe_____gal',
+    instagram: 'https://www.google.com/search?q=%22wordsbyamber%22+OR+%22amber+de+luca+tao%22+instagram',
+    niche: 'Fashion / Shoes / Content Writing (wordsbyamber.com)',
     estimatedFollowers: 'TBD — research needed',
     status: 'TO_RESEARCH',
     outreachDraft: '',
@@ -143,7 +143,7 @@ const FABULATE_CREATORS: FabulateCreator[] = [
     name: 'Violet Scully',
     email: 'violetscully12@gmail.com',
     tiktok: null,
-    instagram: 'https://www.instagram.com/violetscully',
+    instagram: 'https://www.google.com/search?q=site:instagram.com+%22violet+scully%22+australia',
     niche: 'Lifestyle',
     estimatedFollowers: 'TBD — research needed',
     status: 'TO_RESEARCH',
@@ -152,8 +152,8 @@ const FABULATE_CREATORS: FabulateCreator[] = [
   {
     name: 'Isabella McGavin',
     email: 'isabella.mcgavin@gmail.com',
-    tiktok: 'https://www.tiktok.com/@isabella.mcgavin',
-    instagram: null,
+    tiktok: 'https://www.tiktok.com/search?q=isabella.mcgavin',
+    instagram: 'https://www.google.com/search?q=site:instagram.com+%22isabella+mcgavin%22',
     niche: 'Lifestyle / Beauty',
     estimatedFollowers: 'TBD — research needed',
     status: 'TO_RESEARCH',
@@ -163,7 +163,7 @@ const FABULATE_CREATORS: FabulateCreator[] = [
     name: 'Samantha Walker',
     email: 'my3ratbagz@gmail.com',
     tiktok: null,
-    instagram: 'https://www.instagram.com/iamsamaustralia',
+    instagram: 'https://www.google.com/search?q=%22my3ratbagz%22+OR+%22i+am+sam+australia%22+instagram+mum',
     niche: 'Parenting / Family / Mummy',
     estimatedFollowers: 'TBD — research needed',
     status: 'TO_RESEARCH',
@@ -172,8 +172,8 @@ const FABULATE_CREATORS: FabulateCreator[] = [
   {
     name: 'Gemma Stack',
     email: 'stackgemmattv@gmail.com',
-    tiktok: 'https://www.tiktok.com/@stackgemma',
-    instagram: 'https://www.instagram.com/gemmastack',
+    tiktok: 'https://www.tiktok.com/search?q=stackgemma',
+    instagram: 'https://www.instagram.com/gemmastack/',
     niche: 'Lifestyle / Entertainment',
     estimatedFollowers: 'TBD — research needed',
     status: 'TO_RESEARCH',
@@ -183,7 +183,7 @@ const FABULATE_CREATORS: FabulateCreator[] = [
     name: 'Krystel Seach',
     email: 'collabwithkrystel@gmail.com',
     tiktok: null,
-    instagram: 'https://www.instagram.com/krystel',
+    instagram: 'https://www.google.com/search?q=%22collabwithkrystel%22+OR+%22krystel+seach%22+instagram+australia',
     niche: 'Lifestyle / Fashion / Collabs',
     estimatedFollowers: 'TBD — research needed',
     status: 'TO_RESEARCH',
@@ -192,8 +192,8 @@ const FABULATE_CREATORS: FabulateCreator[] = [
   {
     name: 'Joyce Arizala',
     email: 'joycevillareal94@gmail.com',
-    tiktok: 'https://www.tiktok.com/@joycearizala',
-    instagram: 'https://www.instagram.com/joycearizala.ugc',
+    tiktok: 'https://www.tiktok.com/search?q=joyce+arizala',
+    instagram: 'https://www.google.com/search?q=site:instagram.com+%22joycearizala%22+ugc',
     niche: 'UGC / Lifestyle',
     estimatedFollowers: 'TBD — research needed',
     status: 'TO_RESEARCH',
@@ -335,12 +335,12 @@ admin@mobileyes.live`)
                   <div className="flex items-center gap-2">
                     {creator.tiktok && (
                       <a href={creator.tiktok} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="px-2 py-1 rounded text-[10px] font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 flex items-center gap-1">
-                        TikTok <ExternalLink className="w-2.5 h-2.5" />
+                        Find TikTok <ExternalLink className="w-2.5 h-2.5" />
                       </a>
                     )}
                     {creator.instagram && (
                       <a href={creator.instagram} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="px-2 py-1 rounded text-[10px] font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 flex items-center gap-1">
-                        IG <ExternalLink className="w-2.5 h-2.5" />
+                        Find IG <ExternalLink className="w-2.5 h-2.5" />
                       </a>
                     )}
                   </div>
