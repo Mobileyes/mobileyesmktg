@@ -215,16 +215,18 @@ function getStatusConfig(status: CreatorStatus) {
 export default function FabulatePipelinePage() {
   const [selectedCreator, setSelectedCreator] = useState<FabulateCreator | null>(null)
   const [outreachMessage, setOutreachMessage] = useState('')
+  const [personalNote, setPersonalNote] = useState('')
   const [sending, setSending] = useState(false)
   const [sent, setSent] = useState(false)
 
   const handleSelectCreator = (creator: FabulateCreator) => {
     setSelectedCreator(creator)
     setSent(false)
-    // Auto-generate outreach
+    setPersonalNote('')
+    // Auto-generate outreach — personalisation note gets inserted when editing
     setOutreachMessage(`Hi ${creator.name.split(' ')[0]},
 
-I came across your content and wanted to reach out.
+[INSERT PERSONAL NOTE — reference specific content you liked, a brand collab that looked great, or why their audience is a fit]
 
 I'm Joel, founder of Mobileyes — a talent agency representing creators for brand campaigns across Australia and APAC.
 
@@ -234,7 +236,7 @@ What makes us different:
 • Full campaign analytics — you see exactly how your content performed
 • No lock-in — non-exclusive, work with us when it suits you
 
-We're currently working with brands in lifestyle, fashion, beauty, and family — and your content caught our attention as a great fit.
+We're currently working with brands in lifestyle, fashion, beauty, and family — and your content stood out as a strong fit for what our brands are looking for.
 
 Would you be open to a quick chat about what representation looks like?
 
@@ -389,6 +391,18 @@ admin@mobileyes.live`)
                 </div>
               </div>
 
+              <div className="mb-3">
+                <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-1">Personalisation Notes</p>
+                <p className="text-[10px] text-gray-400 mb-1">Reference something specific — a piece of content you loved, a brand collab that looked great, or why their audience is a fit.</p>
+                <textarea
+                  value={personalNote}
+                  onChange={(e) => setPersonalNote(e.target.value)}
+                  rows={3}
+                  placeholder="e.g. Loved your recent Bonds collab — the styling was natural and your audience engaged like crazy. That's exactly what our brands look for..."
+                  className="w-full px-3 py-2 border border-amber-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-amber-400 resize-none bg-amber-50/50"
+                />
+              </div>
+
               <div className="mb-4">
                 <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-1">Message</p>
                 <textarea
@@ -399,14 +413,19 @@ admin@mobileyes.live`)
                 />
               </div>
 
-              <button
-                onClick={handleSend}
-                disabled={sending || sent}
-                className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-blue-600 text-white rounded-lg font-medium text-sm hover:bg-blue-700 disabled:opacity-50 transition-colors"
-              >
-                <Send className="w-4 h-4" />
-                {sending ? 'Sending...' : sent ? 'Sent ✓' : 'Send Outreach Email'}
-              </button>
+              <div className="flex gap-2">
+                <button
+                  onClick={handleSend}
+                  disabled={sending || sent || !personalNote.trim()}
+                  className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-blue-600 text-white rounded-lg font-medium text-sm hover:bg-blue-700 disabled:opacity-50 transition-colors"
+                >
+                  <Send className="w-4 h-4" />
+                  {sending ? 'Sending...' : sent ? 'Sent ✓' : 'Review & Send'}
+                </button>
+              </div>
+              {!personalNote.trim() && (
+                <p className="text-[10px] text-amber-600 mt-2 text-center">⚠️ Add a personalisation note before sending — reference their content or a collab you liked</p>
+              )}
             </div>
           ) : (
             <div className="bg-white rounded-xl border border-gray-200 p-8 text-center">
