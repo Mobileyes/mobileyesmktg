@@ -32,6 +32,7 @@ const navItems = [
   { href: '/admin/trends', label: 'Market Trends', icon: TrendingUp },
   { href: '/admin/p1-sim', label: 'P1 Sim Racing', icon: Car },
   { href: '/admin/campaigns/roadburn', label: 'Roadburn (Tim)', icon: Car },
+  { href: '/admin/campaigns/fabulate', label: 'Fabulate (Nathan)', icon: Users },
   { href: '/admin/brands', label: 'Brand Intel', icon: Search },
   { href: '/admin/billing', label: 'Billing', icon: DollarSign },
   { href: '/admin/analytics', label: 'Analytics', icon: BarChart3 },
