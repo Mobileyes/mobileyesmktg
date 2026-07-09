@@ -225,19 +225,32 @@ export default function FabulatePipelinePage() {
     setPersonalNote('')
     // Auto-generate outreach personalised to their niche
     const nicheIntro = creator.niche.includes('UGC') ? 'your UGC portfolio' :
+      creator.niche.includes('Gaming') && creator.niche.includes('FPS') ? 'your FPS gameplay content' :
+      creator.niche.includes('Gaming') && creator.niche.includes('Racing') ? 'your racing/drift gaming content' :
+      creator.niche.includes('Gaming') && creator.niche.includes('Mobile') ? 'your mobile gaming content' :
+      creator.niche.includes('Gaming') && creator.niche.includes('Streaming') ? 'your streams — solid community engagement' :
+      creator.niche.includes('Gaming') ? 'your gaming content' :
+      creator.niche.includes('Esports') ? 'your esports content' :
       creator.niche.includes('Parenting') || creator.niche.includes('Family') ? 'your family content' :
       creator.niche.includes('Fashion') || creator.niche.includes('Shoes') ? 'your fashion content' :
       creator.niche.includes('Beauty') ? 'your beauty content' :
       creator.niche.includes('Pets') ? 'your pet content — love the Cockers' :
       creator.niche.includes('Comedy') || creator.niche.includes('Entertainment') ? 'your content — really entertaining stuff' :
       creator.niche.includes('Fitness') ? 'your fitness content' :
+      creator.niche.includes('Tech') ? 'your tech content' :
       'your content'
 
-    const brandExamples = creator.niche.includes('Fashion') || creator.niche.includes('Shoes') ? 'fashion, retail, and lifestyle brands' :
+    const brandExamples = creator.niche.includes('Gaming') && creator.niche.includes('Racing') ? 'gaming hardware brands and racing game studios (think sim rigs, controllers, and mobile racing titles)' :
+      creator.niche.includes('Gaming') && creator.niche.includes('FPS') ? 'gaming peripherals, energy drinks, and FPS game publishers' :
+      creator.niche.includes('Gaming') && creator.niche.includes('Mobile') ? 'mobile game studios running UA campaigns — they need authentic gameplay content that drives installs' :
+      creator.niche.includes('Gaming') && creator.niche.includes('Streaming') ? 'gaming brands, hardware companies, and game studios looking for live integration campaigns' :
+      creator.niche.includes('Gaming') || creator.niche.includes('Esports') ? 'gaming studios, hardware brands, and publishers looking for creator campaigns across APAC' :
+      creator.niche.includes('Fashion') || creator.niche.includes('Shoes') ? 'fashion, retail, and lifestyle brands' :
       creator.niche.includes('Beauty') ? 'beauty, skincare, and wellness brands' :
       creator.niche.includes('Parenting') || creator.niche.includes('Family') || creator.niche.includes('Pets') ? 'family, FMCG, and lifestyle brands' :
       creator.niche.includes('UGC') ? 'e-commerce and direct-to-consumer brands' :
       creator.niche.includes('Fitness') ? 'health, fitness, and activewear brands' :
+      creator.niche.includes('Tech') ? 'tech, SaaS, and consumer electronics brands' :
       'lifestyle and consumer brands'
 
     setOutreachMessage(`Hi ${creator.name.split(' ')[0]},
