@@ -223,22 +223,40 @@ export default function FabulatePipelinePage() {
     setSelectedCreator(creator)
     setSent(false)
     setPersonalNote('')
-    // Auto-generate outreach — personalisation note gets inserted when editing
+    // Auto-generate outreach personalised to their niche
+    const nicheIntro = creator.niche.includes('UGC') ? 'your UGC portfolio' :
+      creator.niche.includes('Parenting') || creator.niche.includes('Family') ? 'your family content' :
+      creator.niche.includes('Fashion') || creator.niche.includes('Shoes') ? 'your fashion content' :
+      creator.niche.includes('Beauty') ? 'your beauty content' :
+      creator.niche.includes('Pets') ? 'your pet content — love the Cockers' :
+      creator.niche.includes('Comedy') || creator.niche.includes('Entertainment') ? 'your content — really entertaining stuff' :
+      creator.niche.includes('Fitness') ? 'your fitness content' :
+      'your content'
+
+    const brandExamples = creator.niche.includes('Fashion') || creator.niche.includes('Shoes') ? 'fashion, retail, and lifestyle brands' :
+      creator.niche.includes('Beauty') ? 'beauty, skincare, and wellness brands' :
+      creator.niche.includes('Parenting') || creator.niche.includes('Family') || creator.niche.includes('Pets') ? 'family, FMCG, and lifestyle brands' :
+      creator.niche.includes('UGC') ? 'e-commerce and direct-to-consumer brands' :
+      creator.niche.includes('Fitness') ? 'health, fitness, and activewear brands' :
+      'lifestyle and consumer brands'
+
     setOutreachMessage(`Hi ${creator.name.split(' ')[0]},
 
-[INSERT PERSONAL NOTE — reference specific content you liked, a brand collab that looked great, or why their audience is a fit]
+[YOUR PERSONAL NOTE — reference something specific you saw in their content after clicking their profile links above]
 
-I'm Joel, founder of Mobileyes — a talent agency representing creators for brand campaigns across Australia and APAC.
+I'm Joel — founder of Mobileyes, a creator agency based in Sydney. We represent talent for brand campaigns across Australia and APAC.
 
-What makes us different:
-• 4-day payment (content approved → paid in 4 days, no exceptions)
-• Selective briefs only — matched to your audience and style
-• Full campaign analytics — you see exactly how your content performed
-• No lock-in — non-exclusive, work with us when it suits you
+I'm reaching out because we've got briefs coming in from ${brandExamples} that would be a strong fit for ${nicheIntro}. We're selective about who we work with — we only reach out when we genuinely see a match.
 
-We're currently working with brands in lifestyle, fashion, beauty, and family — and your content stood out as a strong fit for what our brands are looking for.
+How we work:
+• Briefs come to you with the fee upfront — no guessing, no negotiation back-and-forth
+• 4-day payment once content is approved (we carry the float, you get paid fast)
+• Non-exclusive — work with us when it suits you, no lock-in
+• We handle the brand relationship, contracts, and reporting — you just create
 
-Would you be open to a quick chat about what representation looks like?
+We're hearing from brands right now looking for authentic Australian creators in your space. Would you be open to a quick chat about what this looks like?
+
+No pressure either way — just wanted to put it on your radar.
 
 Joel Kirk
 Mobileyes — mobileyes.live
