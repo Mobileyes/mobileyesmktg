@@ -225,6 +225,7 @@ export default function FabulatePipelinePage() {
     setPersonalNote('')
     // Auto-generate outreach personalised to their niche
     const nicheIntro = creator.niche.includes('verify') ? 'your content' :
+      creator.niche.includes('Adult') || creator.niche.includes('OF') ? 'your content' :
       creator.niche.includes('UGC') ? 'your UGC portfolio' :
       creator.niche.includes('Gaming') && creator.niche.includes('FPS') ? 'your FPS gameplay content' :
       creator.niche.includes('Gaming') && creator.niche.includes('Racing') ? 'your racing/drift gaming content' :
@@ -242,6 +243,7 @@ export default function FabulatePipelinePage() {
       'your content'
 
     const brandExamples = creator.niche.includes('verify') ? 'brands across lifestyle, fashion, beauty, gaming, and consumer products' :
+      creator.niche.includes('Adult') || creator.niche.includes('OF') ? 'gaming and entertainment brands' :
       creator.niche.includes('Gaming') && creator.niche.includes('Racing') ? 'gaming hardware brands and racing game studios (think sim rigs, controllers, and mobile racing titles)' :
       creator.niche.includes('Gaming') && creator.niche.includes('FPS') ? 'gaming peripherals, energy drinks, and FPS game publishers' :
       creator.niche.includes('Gaming') && creator.niche.includes('Mobile') ? 'mobile game studios running UA campaigns — they need authentic gameplay content that drives installs' :
@@ -255,7 +257,27 @@ export default function FabulatePipelinePage() {
       creator.niche.includes('Tech') ? 'tech, SaaS, and consumer electronics brands' :
       'brands across lifestyle, fashion, beauty, gaming, and consumer products'
 
-    setOutreachMessage(`Hi ${creator.name.split(' ')[0]},
+    // OF/Adult creator gets a different outreach angle — gaming crossover
+    const isAdultCreator = creator.niche.includes('Adult') || creator.niche.includes('OF')
+
+    if (isAdultCreator) {
+      setOutreachMessage(`Hi ${creator.name.split(' ')[0]},
+
+[YOUR PERSONAL NOTE — reference something specific about their content/audience]
+
+I'm Joel — founder of Mobileyes, a creator agency based in Sydney. We represent talent for brand campaigns across gaming, entertainment, and lifestyle.
+
+Quick question for you: with GTA 6 coming out, would you consider doing any cross-collabs with a team for gaming campaigns? Or are you looking to only work with adult brands?
+
+This will help me get you the right briefs — we work with gaming studios, entertainment brands, and lifestyle companies who are actively looking for creators with engaged audiences regardless of niche.
+
+Would love to organise a quick Google Meet to chat about what this could look like. No commitment — just exploring if there's a fit.
+
+Joel Kirk
+Mobileyes — mobileyes.live
+admin@mobileyes.live`)
+    } else {
+      setOutreachMessage(`Hi ${creator.name.split(' ')[0]},
 
 [YOUR PERSONAL NOTE — reference something specific you saw in their content after clicking their profile links above]
 
@@ -276,6 +298,7 @@ No pressure either way — just wanted to put it on your radar.
 Joel Kirk
 Mobileyes — mobileyes.live
 admin@mobileyes.live`)
+    }
   }
 
   const handleSend = async () => {
