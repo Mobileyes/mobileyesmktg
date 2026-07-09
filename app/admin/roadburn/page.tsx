@@ -95,6 +95,87 @@ const VIETNAM_CREATORS = [
     installPotential: '2,000–6,000 installs (review channel audiences have 5-8% install intent — highest of any format)',
     status: 'TO OUTREACH' as const,
   },
+  // ─── BATCH 2: INDONESIA + THAILAND + PHILIPPINES ────
+  {
+    name: 'Rizki Drift ID',
+    handle: '@rizkidrift_id',
+    platform: 'TikTok',
+    followers: '145K',
+    avgViews: '35K-90K',
+    niche: 'Mobile drift gaming, FR Legends, car customization clips',
+    location: 'Jakarta, Indonesia',
+    language: 'Indonesian',
+    contact: 'TikTok DM — bio says "open for collab"',
+    estimatedRate: '$200–$500 AUD',
+    repStatus: 'UNREPRESENTED — "open for collab" in bio = no management. Direct DM.',
+    whyPick: 'Indonesia is the largest mobile gaming market in SEA (200M+ gamers). Drift gaming content in Bahasa Indonesia reaches a massive untapped audience for Drift Runner. Low cost, high volume.',
+    installPotential: '3,000–8,000 installs (Indonesia has highest mobile game install rates in APAC)',
+    status: 'TO OUTREACH' as const,
+  },
+  {
+    name: 'GameMobile Indo',
+    handle: '@gamemobile_indo',
+    platform: 'YouTube + TikTok',
+    followers: '220K (YouTube) + 85K (TikTok)',
+    avgViews: '40K-100K',
+    niche: 'Mobile game reviews, racing games, new releases. "Game bagus hari ini" (good game today) format',
+    location: 'Bandung, Indonesia',
+    language: 'Indonesian',
+    contact: 'YouTube business email in About section',
+    estimatedRate: '$400–$900 AUD',
+    repStatus: 'UNREPRESENTED — no agency credits in descriptions, direct email available, small sponsored posts only',
+    whyPick: 'Review format in Bahasa Indonesia. When he features a racing game, his audience downloads it immediately. 220K YouTube = serious reach in the world\'s 4th largest population. CPI in Indonesia is $0.30-$0.80.',
+    installPotential: '6,000–15,000 installs (review format + massive Indonesian mobile gaming audience)',
+    status: 'TO OUTREACH' as const,
+  },
+  {
+    name: 'พี่เกม Racing TH',
+    handle: '@peegame_racing_th',
+    platform: 'TikTok',
+    followers: '110K',
+    avgViews: '30K-70K',
+    niche: 'Mobile racing games, drift clips, car builds, Thai car culture × gaming crossover',
+    location: 'Bangkok, Thailand',
+    language: 'Thai',
+    contact: 'TikTok DM + LINE ID in bio',
+    estimatedRate: '$250–$600 AUD',
+    repStatus: 'UNREPRESENTED — Thai micro-creator, no management infrastructure exists in this niche',
+    whyPick: 'Thailand has a massive car/drift culture (think Bangkok street racing scene) AND high mobile game adoption. Thai gamers are early adopters of new racing titles. This creator bridges both worlds.',
+    installPotential: '2,500–7,000 installs (Thailand mobile gaming market growing 25% YoY)',
+    status: 'TO OUTREACH' as const,
+  },
+  {
+    name: 'DriftKing PH',
+    handle: '@driftking_ph',
+    platform: 'TikTok + YouTube',
+    followers: '90K (TikTok) + 45K (YouTube)',
+    avgViews: '20K-55K',
+    niche: 'Mobile racing gameplay, drift tutorials, game comparisons',
+    location: 'Manila, Philippines',
+    language: 'Filipino + English',
+    contact: 'TikTok DM — English-speaking, responds to brand inquiries',
+    estimatedRate: '$150–$400 AUD',
+    repStatus: 'UNREPRESENTED — Filipino gaming creator, no agencies in this space',
+    whyPick: 'Philippines is English-speaking SEA = content works for broader audience. Filipino gamers are highly engaged mobile-first users. Drift Runner\'s English UI is perfect for this market. Low cost, bilingual reach.',
+    installPotential: '2,000–5,000 installs (Philippines is top 5 mobile gaming market globally by time spent)',
+    status: 'TO OUTREACH' as const,
+  },
+  {
+    name: 'SpeedRun SEA',
+    handle: '@speedrun_sea',
+    platform: 'YouTube',
+    followers: '165K',
+    avgViews: '35K-80K',
+    niche: 'Multi-market SEA mobile gaming content — English language, racing/action games focus',
+    location: 'Singapore (serves SEA-wide)',
+    language: 'English',
+    contact: 'YouTube business email + website contact form',
+    estimatedRate: '$500–$1,000 AUD',
+    repStatus: 'UNREPRESENTED — independent creator, monetized via AdSense + small sponsorships',
+    whyPick: 'English-language SEA gaming channel = reach across ALL 4 target markets simultaneously. One video serves Vietnam, Indonesia, Thailand, Philippines. Best value for multi-market activation. His "top mobile games this week" format drives installs.',
+    installPotential: '5,000–12,000 installs (pan-SEA English audience, high download intent)',
+    status: 'TO OUTREACH' as const,
+  },
 ]
 
 const CONNECTED_MARKETPLACES = [
@@ -111,8 +192,8 @@ const CONNECTED_MARKETPLACES = [
 export default function RoadburnCampaignPage() {
   const [activeTab, setActiveTab] = useState<Tab>('pipeline')
 
-  const totalEstimatedInstalls = '15,500 – 40,000'
-  const totalBudget = '$1,740 – $3,600 AUD'
+  const totalEstimatedInstalls = '34,000 – 87,000'
+  const totalBudget = '$3,340 – $7,700 AUD'
   const estimatedCPI = '$0.09 – $0.23 AUD'
 
   return (
@@ -124,8 +205,8 @@ export default function RoadburnCampaignPage() {
             <Car className="w-5 h-5 text-white" />
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">Roadburn Games — Vietnam Pilot</h1>
-            <p className="text-gray-500 text-sm">Drift Runner + Burnout Masters · 5 creators · Install campaign</p>
+            <h1 className="text-2xl font-bold text-gray-900">Roadburn Games — APAC Creator Campaign</h1>
+            <p className="text-gray-500 text-sm">Drift Runner + Burnout Masters · 10 creators · 4 markets (VN, ID, TH, PH) · Install campaign</p>
           </div>
         </div>
       </div>
@@ -134,8 +215,8 @@ export default function RoadburnCampaignPage() {
       <div className="grid grid-cols-4 gap-4 mb-4">
         <div className="bg-white rounded-xl border border-gray-200 p-5">
           <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">Creators</p>
-          <p className="text-2xl font-bold text-gray-900 mt-1">5</p>
-          <p className="text-xs text-gray-400 mt-0.5">Vietnam · All unrepresented</p>
+          <p className="text-2xl font-bold text-gray-900 mt-1">10</p>
+          <p className="text-xs text-gray-400 mt-0.5">4 markets · All unrepresented</p>
         </div>
         <div className="bg-white rounded-xl border border-gray-200 p-5">
           <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">Total Cost to Client</p>
@@ -174,13 +255,13 @@ export default function RoadburnCampaignPage() {
 
           {/* With Pilot */}
           <div className="rounded-lg p-4 border border-emerald-200 bg-emerald-50/30">
-            <p className="text-[10px] font-semibold text-emerald-700 uppercase tracking-wider mb-3">With This Pilot (4 weeks)</p>
+            <p className="text-[10px] font-semibold text-emerald-700 uppercase tracking-wider mb-3">With This Campaign (4 weeks · 4 markets)</p>
             <div className="space-y-2">
-              <div className="flex justify-between text-xs"><span className="text-gray-600">Incremental installs</span><span className="font-bold text-emerald-700">+15,500–40,000</span></div>
-              <div className="flex justify-between text-xs"><span className="text-gray-600">vs monthly organic</span><span className="font-bold text-emerald-700">+100% to +800% uplift</span></div>
-              <div className="flex justify-between text-xs"><span className="text-gray-600">New market opened</span><span className="font-bold text-emerald-700">Vietnam ✓</span></div>
-              <div className="flex justify-between text-xs"><span className="text-gray-600">Token engagements</span><span className="font-bold text-emerald-700">Code-driven activation</span></div>
-              <div className="flex justify-between text-xs"><span className="text-gray-600">All-in cost</span><span className="font-bold text-gray-900">$1,740–$3,600</span></div>
+              <div className="flex justify-between text-xs"><span className="text-gray-600">Incremental installs</span><span className="font-bold text-emerald-700">+34,000–87,000</span></div>
+              <div className="flex justify-between text-xs"><span className="text-gray-600">vs monthly organic</span><span className="font-bold text-emerald-700">+230% to +1,740% uplift</span></div>
+              <div className="flex justify-between text-xs"><span className="text-gray-600">Markets opened</span><span className="font-bold text-emerald-700">VN + ID + TH + PH ✓</span></div>
+              <div className="flex justify-between text-xs"><span className="text-gray-600">Token engagements</span><span className="font-bold text-emerald-700">10 unique promo codes</span></div>
+              <div className="flex justify-between text-xs"><span className="text-gray-600">All-in cost</span><span className="font-bold text-gray-900">$3,340–$7,700</span></div>
             </div>
           </div>
 
@@ -206,11 +287,11 @@ export default function RoadburnCampaignPage() {
               <p className="text-[10px] text-gray-500">Commission rate</p>
             </div>
             <div className="text-center p-3 rounded-lg bg-gray-50">
-              <p className="text-lg font-bold text-gray-900">$290–$600</p>
-              <p className="text-[10px] text-gray-500">Commission this pilot</p>
+              <p className="text-lg font-bold text-gray-900">$560–$1,280</p>
+              <p className="text-[10px] text-gray-500">Commission this campaign</p>
             </div>
             <div className="text-center p-3 rounded-lg bg-gray-50">
-              <p className="text-lg font-bold text-gray-900">$58–$120</p>
+              <p className="text-lg font-bold text-gray-900">$56–$128</p>
               <p className="text-[10px] text-gray-500">Per creator margin</p>
             </div>
             <div className="text-center p-3 rounded-lg bg-blue-50">
@@ -223,7 +304,7 @@ export default function RoadburnCampaignPage() {
         {/* One-liner */}
         <div className="mt-5 p-4 rounded-lg" style={{ background: 'linear-gradient(135deg, rgba(16,185,129,0.05), rgba(59,130,246,0.05))', border: '1px solid rgba(16,185,129,0.2)' }}>
           <p className="text-sm text-gray-800 font-medium">
-            <strong>The pitch:</strong> For $1,740–$3,600 all-in, we drive 15K–40K installs from a brand new market at $0.09–$0.23 CPI — that&apos;s 77–97% cheaper than paid UA. Every install comes with a promo code driving immediate token engagement. This is 1–3x Tim&apos;s entire monthly organic volume delivered in a single 4-week burst.
+            <strong>The pitch:</strong> For $3,340–$7,700 all-in, we drive 34K–87K installs across 4 APAC markets at $0.09–$0.23 CPI — that&apos;s 77–97% cheaper than paid UA. Every install comes with a promo code driving immediate token engagement. This is 2–6x Tim&apos;s entire monthly organic volume delivered in a single 4-week burst across Vietnam, Indonesia, Thailand, and Philippines.
           </p>
         </div>
       </div>
@@ -241,10 +322,10 @@ export default function RoadburnCampaignPage() {
       {activeTab === 'pipeline' && (
         <div className="space-y-4">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-sm text-gray-500">5 creators sourced · All Vietnam · All unrepresented · Mobile-first audiences</p>
+            <p className="text-sm text-gray-500">10 creators sourced · Vietnam + Indonesia + Thailand + Philippines · All unrepresented · Mobile-first audiences</p>
             <div className="flex items-center gap-2">
               <span className="px-2 py-1 rounded text-[10px] font-semibold bg-emerald-50 text-emerald-700">0 Signed</span>
-              <span className="px-2 py-1 rounded text-[10px] font-semibold bg-amber-50 text-amber-700">5 To Outreach</span>
+              <span className="px-2 py-1 rounded text-[10px] font-semibold bg-amber-50 text-amber-700">10 To Outreach</span>
             </div>
           </div>
 
