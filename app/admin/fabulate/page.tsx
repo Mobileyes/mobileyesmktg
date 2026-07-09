@@ -32,9 +32,9 @@ const FABULATE_CREATORS: FabulateCreator[] = [
   {
     name: 'Claudia Rose',
     email: 'comfortbottle@gmail.com',
-    tiktok: 'https://www.tiktok.com/search?q=claudia+rose+australia+lifestyle',
-    instagram: 'https://www.google.com/search?q=site:instagram.com+%22claudia+rose%22+australia+lifestyle',
-    niche: 'Lifestyle / Family',
+    tiktok: 'https://www.google.com/search?q=%22claudia+rose%22+australia+tiktok+creator',
+    instagram: 'https://www.google.com/search?q=%22claudia+rose%22+australia+instagram+creator',
+    niche: '⚠️ Adult/OF Creator — verify brand safety before outreach',
     estimatedFollowers: 'TBD — research needed',
     status: 'TO_RESEARCH',
     outreachDraft: '',
@@ -43,8 +43,8 @@ const FABULATE_CREATORS: FabulateCreator[] = [
     name: 'Tamara Holland',
     email: 'tamaradavisholland@gmail.com',
     tiktok: null,
-    instagram: 'https://www.instagram.com/tamaradavisholland/',
-    niche: 'Lifestyle / Fashion',
+    instagram: 'https://www.google.com/search?q=%22tamara+davis+holland%22+instagram+australia',
+    niche: 'Creator — verify niche after profile review',
     estimatedFollowers: 'TBD — research needed',
     status: 'TO_RESEARCH',
     outreachDraft: '',
@@ -52,19 +52,19 @@ const FABULATE_CREATORS: FabulateCreator[] = [
   {
     name: 'Rojin Torabi',
     email: 'roj@theroject.com',
-    tiktok: null,
+    tiktok: 'https://www.tiktok.com/@theroject',
     instagram: 'https://www.instagram.com/theroject/',
-    niche: 'Lifestyle / Content (theroject.com)',
-    estimatedFollowers: 'TBD — research needed',
+    niche: 'Beauty / Skincare — Dermal Therapy Creative Director, lawyer, @theroject. MAJOR creator.',
+    estimatedFollowers: '100K+ (caused Dermal Therapy stockouts)',
     status: 'TO_RESEARCH',
     outreachDraft: '',
   },
   {
     name: 'Michael Pantaleone',
     email: 'cast@thecastpatrol.com.au',
-    tiktok: 'https://www.tiktok.com/search?q=thecastpatrol',
-    instagram: 'https://www.google.com/search?q=site:instagram.com+%22thecastpatrol%22',
-    niche: 'Entertainment / Comedy (thecastpatrol.com.au)',
+    tiktok: 'https://www.google.com/search?q=%22the+cast+patrol%22+tiktok+australia',
+    instagram: 'https://www.google.com/search?q=%22the+cast+patrol%22+instagram',
+    niche: 'Entertainment (thecastpatrol.com.au)',
     estimatedFollowers: 'TBD — research needed',
     status: 'TO_RESEARCH',
     outreachDraft: '',
@@ -72,9 +72,9 @@ const FABULATE_CREATORS: FabulateCreator[] = [
   {
     name: 'Jasmin Deang',
     email: 'jasmin.deang@gmail.com',
-    tiktok: 'https://www.tiktok.com/search?q=jasmin.dg__',
-    instagram: 'https://www.instagram.com/jasmin.dg_/',
-    niche: 'Lifestyle / Beauty',
+    tiktok: 'https://www.google.com/search?q=%22jasmin.dg__%22+tiktok',
+    instagram: 'https://www.google.com/search?q=%22jasmin.dg_%22+instagram',
+    niche: 'Creator — verify niche after profile review',
     estimatedFollowers: 'TBD — research needed',
     status: 'TO_RESEARCH',
     outreachDraft: '',
@@ -82,9 +82,9 @@ const FABULATE_CREATORS: FabulateCreator[] = [
   {
     name: 'Lily Noonan',
     email: 'lily.noonan97@gmail.com',
-    tiktok: 'https://www.tiktok.com/search?q=lily+noonan+australia',
+    tiktok: 'https://www.google.com/search?q=%22lily+noonan%22+tiktok+australia+creator',
     instagram: 'https://www.google.com/search?q=%22lily+noonan%22+instagram+australia+creator',
-    niche: 'Lifestyle',
+    niche: 'Creator — verify niche after profile review',
     estimatedFollowers: 'TBD — research needed',
     status: 'TO_RESEARCH',
     outreachDraft: '',
@@ -93,8 +93,8 @@ const FABULATE_CREATORS: FabulateCreator[] = [
     name: 'Eliza Boyd',
     email: 'elizaanneboyd@gmail.com',
     tiktok: null,
-    instagram: 'https://www.instagram.com/elizaanneboyd/',
-    niche: 'Lifestyle / Fashion',
+    instagram: 'https://www.google.com/search?q=%22eliza+anne+boyd%22+instagram+australia',
+    niche: 'Creator — verify niche after profile review',
     estimatedFollowers: 'TBD — research needed',
     status: 'TO_RESEARCH',
     outreachDraft: '',
@@ -103,8 +103,8 @@ const FABULATE_CREATORS: FabulateCreator[] = [
     name: 'Aaron Boundy',
     email: 'aaronboundy10@gmail.com',
     tiktok: null,
-    instagram: 'https://www.instagram.com/aaronboundy/',
-    niche: 'Lifestyle / Fitness',
+    instagram: 'https://www.google.com/search?q=%22aaron+boundy%22+instagram+australia+creator',
+    niche: 'Creator — verify niche after profile review',
     estimatedFollowers: 'TBD — research needed',
     status: 'TO_RESEARCH',
     outreachDraft: '',
@@ -114,7 +114,7 @@ const FABULATE_CREATORS: FabulateCreator[] = [
     email: 'jessicarose1901@gmail.com',
     tiktok: null,
     instagram: 'https://www.google.com/search?q=%22charlie+frankie+sonny%22+cocker+spaniels+instagram',
-    niche: 'Pets / Family (Cocker Spaniels)',
+    niche: 'Pets (Cocker Spaniels)',
     estimatedFollowers: 'TBD — research needed',
     status: 'TO_RESEARCH',
     outreachDraft: '',
@@ -123,8 +123,8 @@ const FABULATE_CREATORS: FabulateCreator[] = [
     name: 'Katianna Velos',
     email: 'kjvelos@outlook.com',
     tiktok: null,
-    instagram: 'https://www.google.com/search?q=site:instagram.com+katvel+katianna',
-    niche: 'Lifestyle / Fashion',
+    instagram: 'https://www.google.com/search?q=%22katianna+velos%22+OR+%22katvel%22+instagram+australia',
+    niche: 'Creator — verify niche after profile review',
     estimatedFollowers: 'TBD — research needed',
     status: 'TO_RESEARCH',
     outreachDraft: '',
@@ -132,10 +132,10 @@ const FABULATE_CREATORS: FabulateCreator[] = [
   {
     name: 'Amber De Luca Tao',
     email: 'contact@wordsbyamber.com',
-    tiktok: 'https://www.tiktok.com/search?q=shoe_____gal',
-    instagram: 'https://www.google.com/search?q=%22wordsbyamber%22+OR+%22amber+de+luca+tao%22+instagram',
-    niche: 'Fashion / Shoes / Content Writing (wordsbyamber.com)',
-    estimatedFollowers: 'TBD — research needed',
+    tiktok: 'https://www.google.com/search?q=%22amber+de+luca-tao%22+tiktok+sneaker+freaker',
+    instagram: 'https://www.google.com/search?q=%22amber+de+luca-tao%22+instagram+sneaker+freaker',
+    niche: 'Fashion Journalism / Sneakers — Content Producer at Sneaker Freaker (wordsbyamber.com)',
+    estimatedFollowers: 'Writer/journalist — influence via editorial, not follower count',
     status: 'TO_RESEARCH',
     outreachDraft: '',
   },
@@ -143,8 +143,8 @@ const FABULATE_CREATORS: FabulateCreator[] = [
     name: 'Violet Scully',
     email: 'violetscully12@gmail.com',
     tiktok: null,
-    instagram: 'https://www.google.com/search?q=site:instagram.com+%22violet+scully%22+australia',
-    niche: 'Lifestyle',
+    instagram: 'https://www.google.com/search?q=%22violet+scully%22+instagram+australia+creator',
+    niche: 'Creator — verify niche after profile review',
     estimatedFollowers: 'TBD — research needed',
     status: 'TO_RESEARCH',
     outreachDraft: '',
@@ -152,9 +152,9 @@ const FABULATE_CREATORS: FabulateCreator[] = [
   {
     name: 'Isabella McGavin',
     email: 'isabella.mcgavin@gmail.com',
-    tiktok: 'https://www.tiktok.com/search?q=isabella.mcgavin',
-    instagram: 'https://www.google.com/search?q=site:instagram.com+%22isabella+mcgavin%22',
-    niche: 'Lifestyle / Beauty',
+    tiktok: 'https://www.google.com/search?q=%22isabella.mcgavin%22+tiktok',
+    instagram: 'https://www.google.com/search?q=%22isabella+mcgavin%22+instagram+australia',
+    niche: 'Creator — verify niche after profile review',
     estimatedFollowers: 'TBD — research needed',
     status: 'TO_RESEARCH',
     outreachDraft: '',
@@ -163,8 +163,8 @@ const FABULATE_CREATORS: FabulateCreator[] = [
     name: 'Samantha Walker',
     email: 'my3ratbagz@gmail.com',
     tiktok: null,
-    instagram: 'https://www.google.com/search?q=%22my3ratbagz%22+OR+%22i+am+sam+australia%22+instagram+mum',
-    niche: 'Parenting / Family / Mummy',
+    instagram: 'https://www.google.com/search?q=%22my3ratbagz%22+OR+%22i+am+sam+australia%22+instagram',
+    niche: 'Parenting / Family (my3ratbagz)',
     estimatedFollowers: 'TBD — research needed',
     status: 'TO_RESEARCH',
     outreachDraft: '',
@@ -172,10 +172,10 @@ const FABULATE_CREATORS: FabulateCreator[] = [
   {
     name: 'Gemma Stack',
     email: 'stackgemmattv@gmail.com',
-    tiktok: 'https://www.tiktok.com/search?q=stackgemma',
-    instagram: 'https://www.instagram.com/gemmastack/',
-    niche: 'Lifestyle / Entertainment',
-    estimatedFollowers: 'TBD — research needed',
+    tiktok: 'https://www.google.com/search?q=%22gemma+stack%22+twitch+streamer+tiktok',
+    instagram: 'https://www.google.com/search?q=%22gemma+stack%22+instagram+streamer+audio',
+    niche: 'Gaming / Streaming / Audio — Twitch streamer, sound editor (Disney+), Audio-Technica featured',
+    estimatedFollowers: 'TBD — Twitch community-focused',
     status: 'TO_RESEARCH',
     outreachDraft: '',
   },
@@ -183,8 +183,8 @@ const FABULATE_CREATORS: FabulateCreator[] = [
     name: 'Krystel Seach',
     email: 'collabwithkrystel@gmail.com',
     tiktok: null,
-    instagram: 'https://www.google.com/search?q=%22collabwithkrystel%22+OR+%22krystel+seach%22+instagram+australia',
-    niche: 'Lifestyle / Fashion / Collabs',
+    instagram: 'https://www.google.com/search?q=%22krystel+seach%22+OR+%22collabwithkrystel%22+instagram',
+    niche: 'Creator (collabwithkrystel)',
     estimatedFollowers: 'TBD — research needed',
     status: 'TO_RESEARCH',
     outreachDraft: '',
@@ -192,9 +192,9 @@ const FABULATE_CREATORS: FabulateCreator[] = [
   {
     name: 'Joyce Arizala',
     email: 'joycevillareal94@gmail.com',
-    tiktok: 'https://www.tiktok.com/search?q=joyce+arizala',
-    instagram: 'https://www.google.com/search?q=site:instagram.com+%22joycearizala%22+ugc',
-    niche: 'UGC / Lifestyle',
+    tiktok: 'https://www.google.com/search?q=%22joyce+arizala%22+tiktok',
+    instagram: 'https://www.google.com/search?q=%22joycearizala%22+instagram+ugc',
+    niche: 'UGC Creator',
     estimatedFollowers: 'TBD — research needed',
     status: 'TO_RESEARCH',
     outreachDraft: '',
@@ -224,7 +224,8 @@ export default function FabulatePipelinePage() {
     setSent(false)
     setPersonalNote('')
     // Auto-generate outreach personalised to their niche
-    const nicheIntro = creator.niche.includes('UGC') ? 'your UGC portfolio' :
+    const nicheIntro = creator.niche.includes('verify') ? 'your content' :
+      creator.niche.includes('UGC') ? 'your UGC portfolio' :
       creator.niche.includes('Gaming') && creator.niche.includes('FPS') ? 'your FPS gameplay content' :
       creator.niche.includes('Gaming') && creator.niche.includes('Racing') ? 'your racing/drift gaming content' :
       creator.niche.includes('Gaming') && creator.niche.includes('Mobile') ? 'your mobile gaming content' :
@@ -234,13 +235,14 @@ export default function FabulatePipelinePage() {
       creator.niche.includes('Parenting') || creator.niche.includes('Family') ? 'your family content' :
       creator.niche.includes('Fashion') || creator.niche.includes('Shoes') ? 'your fashion content' :
       creator.niche.includes('Beauty') ? 'your beauty content' :
-      creator.niche.includes('Pets') ? 'your pet content — love the Cockers' :
-      creator.niche.includes('Comedy') || creator.niche.includes('Entertainment') ? 'your content — really entertaining stuff' :
+      creator.niche.includes('Pets') ? 'your pet content' :
+      creator.niche.includes('Comedy') || creator.niche.includes('Entertainment') ? 'your content' :
       creator.niche.includes('Fitness') ? 'your fitness content' :
       creator.niche.includes('Tech') ? 'your tech content' :
       'your content'
 
-    const brandExamples = creator.niche.includes('Gaming') && creator.niche.includes('Racing') ? 'gaming hardware brands and racing game studios (think sim rigs, controllers, and mobile racing titles)' :
+    const brandExamples = creator.niche.includes('verify') ? 'brands across lifestyle, fashion, beauty, gaming, and consumer products' :
+      creator.niche.includes('Gaming') && creator.niche.includes('Racing') ? 'gaming hardware brands and racing game studios (think sim rigs, controllers, and mobile racing titles)' :
       creator.niche.includes('Gaming') && creator.niche.includes('FPS') ? 'gaming peripherals, energy drinks, and FPS game publishers' :
       creator.niche.includes('Gaming') && creator.niche.includes('Mobile') ? 'mobile game studios running UA campaigns — they need authentic gameplay content that drives installs' :
       creator.niche.includes('Gaming') && creator.niche.includes('Streaming') ? 'gaming brands, hardware companies, and game studios looking for live integration campaigns' :
@@ -251,7 +253,7 @@ export default function FabulatePipelinePage() {
       creator.niche.includes('UGC') ? 'e-commerce and direct-to-consumer brands' :
       creator.niche.includes('Fitness') ? 'health, fitness, and activewear brands' :
       creator.niche.includes('Tech') ? 'tech, SaaS, and consumer electronics brands' :
-      'lifestyle and consumer brands'
+      'brands across lifestyle, fashion, beauty, gaming, and consumer products'
 
     setOutreachMessage(`Hi ${creator.name.split(' ')[0]},
 
