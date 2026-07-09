@@ -423,24 +423,24 @@ admin@mobileyes.live`)
               </div>
 
               <div className="mb-3">
-                <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-1">Personalisation Notes</p>
-                <p className="text-[10px] text-gray-400 mb-1">Reference something specific — a piece of content you loved, a brand collab that looked great, or why their audience is a fit.</p>
+                <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-1">Opening Line (goes at the top of your email)</p>
+                <p className="text-[10px] text-gray-400 mb-1">Check their profile first, then write 1-2 lines about what stood out. This replaces the [YOUR PERSONAL NOTE] placeholder in the message below.</p>
                 <textarea
                   value={personalNote}
                   onChange={(e) => setPersonalNote(e.target.value)}
                   rows={3}
-                  placeholder="e.g. Loved your recent Bonds collab — the styling was natural and your audience engaged like crazy. That's exactly what our brands look for..."
-                  className="w-full px-3 py-2 border border-amber-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-amber-400 resize-none bg-amber-50/50"
+                  placeholder="e.g. Saw your recent Bonds collab — the styling felt natural and your audience clearly engaged. That's exactly the kind of content our brands are after."
+                  className="w-full px-3 py-2 border border-amber-200 rounded-lg text-xs text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-400 resize-none bg-amber-50/50"
                 />
               </div>
 
               <div className="mb-4">
-                <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-1">Message</p>
+                <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-1">Full Email Preview</p>
                 <textarea
                   value={outreachMessage}
                   onChange={(e) => setOutreachMessage(e.target.value)}
                   rows={14}
-                  className="w-full px-3 py-2 border border-gray-200 rounded-lg text-xs font-mono focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+                  className="w-full px-3 py-2 border border-gray-200 rounded-lg text-xs text-gray-900 font-mono focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
                 />
               </div>
 
@@ -455,7 +455,7 @@ admin@mobileyes.live`)
                 </button>
               </div>
               {!personalNote.trim() && (
-                <p className="text-[10px] text-amber-600 mt-2 text-center">⚠️ Add a personalisation note before sending — reference their content or a collab you liked</p>
+                <p className="text-[10px] text-amber-600 mt-2 text-center">⚠️ Write your opening line first — check their profiles, then reference what stood out</p>
               )}
             </div>
           ) : (
