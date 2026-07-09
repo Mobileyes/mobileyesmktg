@@ -26,6 +26,7 @@ interface FabulateCreator {
   estimatedFollowers: string
   status: CreatorStatus
   outreachDraft: string
+  suggestedOpener: string
 }
 
 const FABULATE_CREATORS: FabulateCreator[] = [
@@ -34,10 +35,11 @@ const FABULATE_CREATORS: FabulateCreator[] = [
     email: 'comfortbottle@gmail.com',
     tiktok: 'https://www.google.com/search?q=%22claudia+rose%22+australia+tiktok+creator',
     instagram: 'https://www.google.com/search?q=%22claudia+rose%22+australia+instagram+creator',
-    niche: '⚠️ Adult/OF Creator — verify brand safety before outreach',
+    niche: '⚠️ Adult/OF Creator — repped by Luxe Agency. Gaming crossover = incremental revenue for her.',
     estimatedFollowers: 'TBD — research needed',
     status: 'TO_RESEARCH',
     outreachDraft: '',
+    suggestedOpener: 'Saw your work with Luxe Agency — you\'re clearly well-managed for adult brands. But with GTA 6 dropping, gaming brands are actively seeking crossover talent with engaged audiences. This would be incremental for you — new revenue, different brands, no conflict with your existing agency.',
   },
   {
     name: 'Tamara Holland',
@@ -48,6 +50,7 @@ const FABULATE_CREATORS: FabulateCreator[] = [
     estimatedFollowers: 'Media influence — editorial reach over follower count',
     status: 'TO_RESEARCH',
     outreachDraft: '',
+    suggestedOpener: 'Love the \'What Are You Wearing?\' podcast — your fashion editorial eye is exactly the kind of taste-making brands want behind their creator campaigns.',
   },
   {
     name: 'Rojin Torabi',
@@ -58,6 +61,7 @@ const FABULATE_CREATORS: FabulateCreator[] = [
     estimatedFollowers: '100K+ (caused Dermal Therapy stockouts)',
     status: 'TO_RESEARCH',
     outreachDraft: '',
+    suggestedOpener: 'The Dermal Therapy Creative Director role is a serious flex — you literally caused a product stockout from one TikTok. That kind of conversion power is exactly what our brand partners are looking for.',
   },
   {
     name: 'Michael Pantaleone',
@@ -68,6 +72,7 @@ const FABULATE_CREATORS: FabulateCreator[] = [
     estimatedFollowers: 'Podcast audience — TikTok clips for reach',
     status: 'TO_RESEARCH',
     outreachDraft: '',
+    suggestedOpener: 'The Cast Patrol NRL content is quality — your audience is engaged and the sports betting angle shows they act on recommendations. Brands in gaming and sports want that.',
   },
   {
     name: 'Jasmin Deang',
@@ -78,6 +83,7 @@ const FABULATE_CREATORS: FabulateCreator[] = [
     estimatedFollowers: 'Micro — TBD',
     status: 'TO_RESEARCH',
     outreachDraft: '',
+    suggestedOpener: 'Checked your TikTok — your content style is clean and authentic. Brands are looking for exactly that kind of natural integration right now.',
   },
   {
     name: 'Lily Noonan',
@@ -88,6 +94,7 @@ const FABULATE_CREATORS: FabulateCreator[] = [
     estimatedFollowers: 'Micro — TBD',
     status: 'TO_RESEARCH',
     outreachDraft: '',
+    suggestedOpener: 'Your TikTok content has a natural, relatable vibe that brands are specifically seeking right now — authentic over polished.',
   },
   {
     name: 'Eliza Boyd',
@@ -98,6 +105,7 @@ const FABULATE_CREATORS: FabulateCreator[] = [
     estimatedFollowers: 'TBD — research needed',
     status: 'TO_RESEARCH',
     outreachDraft: '',
+    suggestedOpener: 'Looked through your Linktree — your content portfolio shows real versatility. Brands want creators who can adapt their style to different briefs.',
   },
   {
     name: 'Aaron Boundy',
@@ -108,6 +116,7 @@ const FABULATE_CREATORS: FabulateCreator[] = [
     estimatedFollowers: 'TBD — active poster, verify from TikTok',
     status: 'TO_RESEARCH',
     outreachDraft: '',
+    suggestedOpener: 'Checked your TikTok — you\'ve got a natural energy that works well for brand content. Your engagement rate suggests your audience trusts your recommendations.',
   },
   {
     name: 'Jess Donaldson',
@@ -118,6 +127,7 @@ const FABULATE_CREATORS: FabulateCreator[] = [
     estimatedFollowers: 'TBD — research needed',
     status: 'TO_RESEARCH',
     outreachDraft: '',
+    suggestedOpener: 'The Cocker Spaniel content is adorable and clearly resonates — pet brands and family lifestyle brands are actively looking for this kind of authentic content right now.',
   },
   {
     name: 'Katianna Velos',
@@ -128,6 +138,7 @@ const FABULATE_CREATORS: FabulateCreator[] = [
     estimatedFollowers: 'TBD — food/entrepreneur audience',
     status: 'TO_RESEARCH',
     outreachDraft: '',
+    suggestedOpener: 'Golden Groves is a beautiful brand — the way you\'ve built a food/lifestyle presence around real family heritage is exactly what premium FMCG brands want to partner with.',
   },
   {
     name: 'Amber De Luca Tao',
@@ -138,6 +149,7 @@ const FABULATE_CREATORS: FabulateCreator[] = [
     estimatedFollowers: 'Writer/journalist — influence via editorial, not follower count',
     status: 'TO_RESEARCH',
     outreachDraft: '',
+    suggestedOpener: 'Your work at Sneaker Freaker shows serious editorial chops — brands want that kind of credibility behind their creator content, especially in fashion and streetwear.',
   },
   {
     name: 'Violet Scully',
@@ -148,6 +160,7 @@ const FABULATE_CREATORS: FabulateCreator[] = [
     estimatedFollowers: 'TBD — research needed',
     status: 'TO_RESEARCH',
     outreachDraft: '',
+    suggestedOpener: 'Your content caught our eye — we\'ve got brands looking for authentic Australian creators in your space right now.',
   },
   {
     name: 'Isabella McGavin',
@@ -158,6 +171,7 @@ const FABULATE_CREATORS: FabulateCreator[] = [
     estimatedFollowers: 'UGC — portfolio-based, not follower-driven',
     status: 'TO_RESEARCH',
     outreachDraft: '',
+    suggestedOpener: 'Checked your UGC portfolio (createdbyisabella) — your work is clean and brand-ready. We\'ve got briefs coming in that would suit your style perfectly.',
   },
   {
     name: 'Samantha Walker',
@@ -168,6 +182,7 @@ const FABULATE_CREATORS: FabulateCreator[] = [
     estimatedFollowers: 'TBD — research needed',
     status: 'TO_RESEARCH',
     outreachDraft: '',
+    suggestedOpener: 'Your parenting content resonates — mum/family brands are consistently our most active brief category right now and your audience is exactly who they want to reach.',
   },
   {
     name: 'Gemma Stack',
@@ -178,6 +193,7 @@ const FABULATE_CREATORS: FabulateCreator[] = [
     estimatedFollowers: 'TBD — Twitch community-focused',
     status: 'TO_RESEARCH',
     outreachDraft: '',
+    suggestedOpener: 'Your Twitch streaming + the Disney+ sound editing work is a seriously unique combo — gaming and audio brands would love to work with someone who actually understands both sides.',
   },
   {
     name: 'Krystel Seach',
@@ -188,6 +204,7 @@ const FABULATE_CREATORS: FabulateCreator[] = [
     estimatedFollowers: 'Micro-creator — collab-focused',
     status: 'TO_RESEARCH',
     outreachDraft: '',
+    suggestedOpener: 'Love your Collabstr profile — \'warm, simple, authentic\' is exactly the creative brief we hear from brands every week. Your beauty and lifestyle work stands out.',
   },
   {
     name: 'Joyce Arizala',
@@ -198,6 +215,7 @@ const FABULATE_CREATORS: FabulateCreator[] = [
     estimatedFollowers: 'TBD — research needed',
     status: 'TO_RESEARCH',
     outreachDraft: '',
+    suggestedOpener: 'Your UGC portfolio on Beacons shows solid brand-ready content — we\'ve got active briefs from DTC and lifestyle brands that would be a strong fit for your style.',
   },
 ]
 
@@ -222,7 +240,7 @@ export default function FabulatePipelinePage() {
   const handleSelectCreator = (creator: FabulateCreator) => {
     setSelectedCreator(creator)
     setSent(false)
-    setPersonalNote('')
+    setPersonalNote(creator.suggestedOpener || '')
     // Auto-generate outreach personalised to their niche
     const nicheIntro = creator.niche.includes('verify') ? 'your content' :
       creator.niche.includes('Adult') || creator.niche.includes('OF') ? 'your content' :
