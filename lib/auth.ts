@@ -14,6 +14,12 @@ export async function getServerSession() {
 
     if (!sessionCookie) return null
 
+    // Simple admin session (set by /api/auth/session login route)
+    if (sessionCookie.startsWith('admin_')) {
+      return { email: process.env.ADMIN_EMAIL || 'admin@mobileyes.live' }
+    }
+
+    // Firebase session cookie (if using Firebase Auth flow)
     const { getAdminAuth } = await import('./firebase-admin')
     const adminAuth = getAdminAuth()
     const decodedToken = await adminAuth.verifySessionCookie(sessionCookie, true)

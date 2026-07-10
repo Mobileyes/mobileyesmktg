@@ -333,6 +333,7 @@ admin@mobileyes.live`)
       const res = await fetch('/api/admin/outreach/send', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify({
           to: selectedCreator.email,
           subject: `Your ${selectedCreator.tiktok ? 'TikTok' : 'Instagram'} content — Mobileyes representation`,
