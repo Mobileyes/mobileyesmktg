@@ -236,10 +236,16 @@ export default function FabulatePipelinePage() {
   const [personalNote, setPersonalNote] = useState('')
   const [sending, setSending] = useState(false)
   const [sent, setSent] = useState(false)
+  const [sentTo, setSentTo] = useState('')
+  const [messageId, setMessageId] = useState('')
+  const [sendError, setSendError] = useState<string | null>(null)
 
   const handleSelectCreator = (creator: FabulateCreator) => {
     setSelectedCreator(creator)
     setSent(false)
+    setSentTo('')
+    setMessageId('')
+    setSendError(null)
     setPersonalNote(creator.suggestedOpener || '')
     // Auto-generate outreach personalised to their niche
     const nicheIntro = creator.niche.includes('verify') ? 'your content' :
@@ -320,8 +326,9 @@ admin@mobileyes.live`)
   }
 
   const handleSend = async () => {
-    if (!selectedCreator) return
+    if (!selectedCreator || sending || sent) return
     setSending(true)
+    setSendError(null)
     try {
       const res = await fetch('/api/admin/outreach/send', {
         method: 'POST',
@@ -333,8 +340,17 @@ admin@mobileyes.live`)
           fromAlias: 'talent',
         }),
       })
-      if (res.ok) setSent(true)
+      if (res.ok) {
+        const data = await res.json()
+        setSent(true)
+        setSentTo(selectedCreator.email)
+        setMessageId(data.messageId || 'confirmed')
+      } else {
+        const data = await res.json().catch(() => ({ error: 'Unknown error' }))
+        setSendError(data.error || `Failed (${res.status})`)
+      }
     } catch (err) {
+      setSendError('Network error — check connection')
       console.error(err)
     } finally {
       setSending(false)
@@ -435,7 +451,13 @@ admin@mobileyes.live`)
 
               {sent && (
                 <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-sm text-emerald-700 mb-4 flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4" /> Email sent to {selectedCreator.email}
+                  <CheckCircle2 className="w-4 h-4" /> <strong>Sent!</strong> Email delivered to {sentTo}. Message ID: {messageId}
+                </div>
+              )}
+
+              {sendError && (
+                <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-sm text-red-700 mb-4">
+                  ❌ <strong>Failed:</strong> {sendError}
                 </div>
               )}
 
@@ -491,10 +513,16 @@ admin@mobileyes.live`)
                 <button
                   onClick={handleSend}
                   disabled={sending || sent || !personalNote.trim()}
-                  className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-blue-600 text-white rounded-lg font-medium text-sm hover:bg-blue-700 disabled:opacity-50 transition-colors"
+                  className={cn(
+                    "flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-medium text-sm transition-colors",
+                    sent ? "bg-emerald-600 text-white cursor-not-allowed" :
+                    sending ? "bg-blue-400 text-white cursor-wait" :
+                    !personalNote.trim() ? "bg-gray-200 text-gray-500 cursor-not-allowed" :
+                    "bg-blue-600 text-white hover:bg-blue-700"
+                  )}
                 >
                   <Send className="w-4 h-4" />
-                  {sending ? 'Sending...' : sent ? 'Sent ✓' : 'Review & Send'}
+                  {sending ? 'Sending via Resend...' : sent ? '✓ Sent — Check Resend Dashboard' : 'Review & Send'}
                 </button>
               </div>
               {!personalNote.trim() && (
