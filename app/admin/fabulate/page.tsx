@@ -246,8 +246,14 @@ export default function FabulatePipelinePage() {
 
   const handleAddToQueue = () => {
     if (!selectedCreator || !personalNote.trim()) return
-    // Replace the placeholder in the message with the personal note
-    const finalMessage = outreachMessage.replace('[YOUR PERSONAL NOTE — reference something specific about their content/audience]', personalNote).replace('[YOUR PERSONAL NOTE — reference something specific you saw in their content after clicking their profile links above]', personalNote)
+    // Build the final message with the personal note properly inserted at the top
+    const messageLines = outreachMessage.split('\n')
+    // Remove the placeholder line and insert the personal note after "Hi [Name],"
+    const finalLines = messageLines.filter(line => !line.includes('[YOUR PERSONAL NOTE'))
+    // Insert personal note after the greeting (line 0 is "Hi Name,")
+    finalLines.splice(1, 0, '', personalNote.trim(), '')
+    const finalMessage = finalLines.join('\n')
+    
     setQueue(prev => [...prev, {
       name: selectedCreator.name,
       email: selectedCreator.email,
@@ -265,6 +271,12 @@ export default function FabulatePipelinePage() {
 
   const handleSendAll = async () => {
     if (queue.length === 0 || batchSending) return
+    // Safety check — don't send anything with placeholder text
+    const hasPlaceholders = queue.some(q => q.message.includes('[YOUR PERSONAL NOTE'))
+    if (hasPlaceholders) {
+      alert('ERROR: Some messages still contain placeholder text. Remove them from queue and re-add with a proper opening line.')
+      return
+    }
     setBatchSending(true)
 
     for (let i = 0; i < queue.length; i++) {
@@ -305,10 +317,14 @@ export default function FabulatePipelinePage() {
 
   // Individual send (keep for one-offs)
   const handleSend = async () => {
-    if (!selectedCreator || sending || sent) return
+    if (!selectedCreator || sending || sent || !personalNote.trim()) return
     setSending(true)
     setSendError(null)
-    const finalMessage = outreachMessage.replace('[YOUR PERSONAL NOTE — reference something specific about their content/audience]', personalNote).replace('[YOUR PERSONAL NOTE — reference something specific you saw in their content after clicking their profile links above]', personalNote)
+    // Build final message with personal note properly inserted
+    const messageLines = outreachMessage.split('\n')
+    const finalLines = messageLines.filter(line => !line.includes('[YOUR PERSONAL NOTE'))
+    finalLines.splice(1, 0, '', personalNote.trim(), '')
+    const finalMessage = finalLines.join('\n')
     try {
       const res = await fetch('/api/admin/outreach/send', {
         method: 'POST',
@@ -520,19 +536,24 @@ admin@mobileyes.live`)
           {FABULATE_CREATORS.map((creator, idx) => {
             const statusConfig = getStatusConfig(creator.status)
             const isSelected = selectedCreator?.email === creator.email
+            const isQueued = queue.some(q => q.email === creator.email)
             return (
               <div
                 key={idx}
                 onClick={() => handleSelectCreator(creator)}
                 className={cn(
                   'bg-white rounded-xl border p-4 cursor-pointer transition-all hover:shadow-md',
-                  isSelected ? 'border-blue-300 shadow-md ring-1 ring-blue-200' : 'border-gray-200'
+                  isSelected ? 'border-blue-300 shadow-md ring-1 ring-blue-200' : isQueued ? 'border-emerald-300 bg-emerald-50/30' : 'border-gray-200'
                 )}
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #1E293B, #334155)' }}>
-                      <span className="text-xs font-bold text-white">{creator.name.charAt(0)}</span>
+                    <div className={cn("w-9 h-9 rounded-lg flex items-center justify-center", isQueued ? "bg-emerald-600" : "")} style={!isQueued ? { background: 'linear-gradient(135deg, #1E293B, #334155)' } : undefined}>
+                      {isQueued ? (
+                        <CheckCircle2 className="w-4 h-4 text-white" />
+                      ) : (
+                        <span className="text-xs font-bold text-white">{creator.name.charAt(0)}</span>
+                      )}
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
@@ -610,7 +631,19 @@ admin@mobileyes.live`)
               </div>
 
               <div className="mb-3">
-                <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-1">Opening Line (goes at the top of your email)</p>
+                <div className="flex items-center justify-between mb-1">
+                  <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">Opening Line (goes at the top of your email)</p>
+                  <button
+                    onClick={() => {
+                      // Shorten the note to be more direct
+                      const short = personalNote.split('.')[0] + '.' 
+                      setPersonalNote(short.length > 20 ? short : personalNote.substring(0, 80) + '...')
+                    }}
+                    className="text-[10px] text-blue-600 hover:text-blue-700 font-medium"
+                  >
+                    ↻ Make shorter
+                  </button>
+                </div>
                 <p className="text-[10px] text-gray-400 mb-1">Check their profile first, then write 1-2 lines about what stood out. This replaces the [YOUR PERSONAL NOTE] placeholder in the message below.</p>
                 <textarea
                   value={personalNote}
