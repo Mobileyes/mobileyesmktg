@@ -240,6 +240,104 @@ export default function FabulatePipelinePage() {
   const [messageId, setMessageId] = useState('')
   const [sendError, setSendError] = useState<string | null>(null)
 
+  // Queue system
+  const [queue, setQueue] = useState<Array<{ name: string; email: string; subject: string; message: string; status: 'queued' | 'sending' | 'sent' | 'failed'; messageId?: string; error?: string }>>([])
+  const [batchSending, setBatchSending] = useState(false)
+
+  const handleAddToQueue = () => {
+    if (!selectedCreator || !personalNote.trim()) return
+    // Replace the placeholder in the message with the personal note
+    const finalMessage = outreachMessage.replace('[YOUR PERSONAL NOTE — reference something specific about their content/audience]', personalNote).replace('[YOUR PERSONAL NOTE — reference something specific you saw in their content after clicking their profile links above]', personalNote)
+    setQueue(prev => [...prev, {
+      name: selectedCreator.name,
+      email: selectedCreator.email,
+      subject: `Your ${selectedCreator.tiktok ? 'TikTok' : 'Instagram'} content — Mobileyes representation`,
+      message: finalMessage,
+      status: 'queued',
+    }])
+    setSent(true)
+    setSentTo('Added to queue')
+  }
+
+  const handleRemoveFromQueue = (email: string) => {
+    setQueue(prev => prev.filter(q => q.email !== email))
+  }
+
+  const handleSendAll = async () => {
+    if (queue.length === 0 || batchSending) return
+    setBatchSending(true)
+
+    for (let i = 0; i < queue.length; i++) {
+      const item = queue[i]
+      if (item.status !== 'queued') continue
+
+      setQueue(prev => prev.map((q, idx) => idx === i ? { ...q, status: 'sending' } : q))
+
+      try {
+        const res = await fetch('/api/admin/outreach/send', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+          body: JSON.stringify({
+            to: item.email,
+            subject: item.subject,
+            message: item.message,
+            fromAlias: 'talent',
+          }),
+        })
+        if (res.ok) {
+          const data = await res.json()
+          setQueue(prev => prev.map((q, idx) => idx === i ? { ...q, status: 'sent', messageId: data.messageId || 'confirmed' } : q))
+        } else {
+          const data = await res.json().catch(() => ({ error: 'Unknown error' }))
+          setQueue(prev => prev.map((q, idx) => idx === i ? { ...q, status: 'failed', error: data.error } : q))
+        }
+      } catch (err) {
+        setQueue(prev => prev.map((q, idx) => idx === i ? { ...q, status: 'failed', error: 'Network error' } : q))
+      }
+
+      // Small delay between sends to avoid rate limiting
+      await new Promise(resolve => setTimeout(resolve, 1000))
+    }
+
+    setBatchSending(false)
+  }
+
+  // Individual send (keep for one-offs)
+  const handleSend = async () => {
+    if (!selectedCreator || sending || sent) return
+    setSending(true)
+    setSendError(null)
+    const finalMessage = outreachMessage.replace('[YOUR PERSONAL NOTE — reference something specific about their content/audience]', personalNote).replace('[YOUR PERSONAL NOTE — reference something specific you saw in their content after clicking their profile links above]', personalNote)
+    try {
+      const res = await fetch('/api/admin/outreach/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({
+          to: selectedCreator.email,
+          subject: `Your ${selectedCreator.tiktok ? 'TikTok' : 'Instagram'} content — Mobileyes representation`,
+          message: finalMessage,
+          fromAlias: 'talent',
+        }),
+      })
+      if (res.ok) {
+        const data = await res.json()
+        setSent(true)
+        setSentTo(selectedCreator.email)
+        setMessageId(data.messageId || 'confirmed')
+      } else {
+        const data = await res.json().catch(() => ({ error: 'Unknown error' }))
+        setSendError(data.error || `Failed (${res.status})`)
+      }
+    } catch (err) {
+      setSendError('Network error — check connection')
+      console.error(err)
+    } finally {
+      setSending(false)
+    }
+  }
+
   const handleSelectCreator = (creator: FabulateCreator) => {
     setSelectedCreator(creator)
     setSent(false)
@@ -325,39 +423,6 @@ admin@mobileyes.live`)
     }
   }
 
-  const handleSend = async () => {
-    if (!selectedCreator || sending || sent) return
-    setSending(true)
-    setSendError(null)
-    try {
-      const res = await fetch('/api/admin/outreach/send', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
-        body: JSON.stringify({
-          to: selectedCreator.email,
-          subject: `Your ${selectedCreator.tiktok ? 'TikTok' : 'Instagram'} content — Mobileyes representation`,
-          message: outreachMessage,
-          fromAlias: 'talent',
-        }),
-      })
-      if (res.ok) {
-        const data = await res.json()
-        setSent(true)
-        setSentTo(selectedCreator.email)
-        setMessageId(data.messageId || 'confirmed')
-      } else {
-        const data = await res.json().catch(() => ({ error: 'Unknown error' }))
-        setSendError(data.error || `Failed (${res.status})`)
-      }
-    } catch (err) {
-      setSendError('Network error — check connection')
-      console.error(err)
-    } finally {
-      setSending(false)
-    }
-  }
-
   return (
     <div>
       {/* Header */}
@@ -388,10 +453,66 @@ admin@mobileyes.live`)
           <p className="text-xs text-gray-500">Have Instagram</p>
         </div>
         <div className="bg-white rounded-xl border border-gray-200 p-4">
-          <p className="text-2xl font-bold text-emerald-600">0</p>
-          <p className="text-xs text-gray-500">Outreached</p>
+          <p className="text-2xl font-bold text-emerald-600">{queue.filter(q => q.status === 'sent').length}</p>
+          <p className="text-xs text-gray-500">Sent</p>
         </div>
       </div>
+
+      {/* Send Queue */}
+      {queue.length > 0 && (
+        <div className="bg-white rounded-xl border border-blue-200 p-5 mb-6">
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-2">
+              <Mail className="w-4 h-4 text-blue-600" />
+              <h3 className="text-sm font-semibold text-gray-900">Send Queue ({queue.filter(q => q.status === 'queued').length} ready)</h3>
+            </div>
+            <button
+              onClick={handleSendAll}
+              disabled={batchSending || queue.filter(q => q.status === 'queued').length === 0}
+              className={cn(
+                "flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors",
+                batchSending ? "bg-blue-400 text-white cursor-wait" :
+                queue.filter(q => q.status === 'queued').length === 0 ? "bg-gray-200 text-gray-500" :
+                "bg-blue-600 text-white hover:bg-blue-700"
+              )}
+            >
+              <Send className="w-3.5 h-3.5" />
+              {batchSending ? 'Sending...' : `Approve & Send All (${queue.filter(q => q.status === 'queued').length})`}
+            </button>
+          </div>
+          <div className="space-y-2">
+            {queue.map((item, idx) => (
+              <div key={idx} className={cn(
+                "flex items-center justify-between px-3 py-2 rounded-lg text-xs",
+                item.status === 'queued' ? 'bg-blue-50 border border-blue-100' :
+                item.status === 'sending' ? 'bg-amber-50 border border-amber-100' :
+                item.status === 'sent' ? 'bg-emerald-50 border border-emerald-100' :
+                'bg-red-50 border border-red-100'
+              )}>
+                <div className="flex items-center gap-2">
+                  <span className={cn(
+                    "w-2 h-2 rounded-full",
+                    item.status === 'queued' ? 'bg-blue-500' :
+                    item.status === 'sending' ? 'bg-amber-500 animate-pulse' :
+                    item.status === 'sent' ? 'bg-emerald-500' :
+                    'bg-red-500'
+                  )} />
+                  <span className="font-medium text-gray-900">{item.name}</span>
+                  <span className="text-gray-500">{item.email}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  {item.status === 'sent' && <span className="text-emerald-700 font-medium">✓ Sent ({item.messageId})</span>}
+                  {item.status === 'failed' && <span className="text-red-700">✗ {item.error}</span>}
+                  {item.status === 'sending' && <span className="text-amber-700">Sending...</span>}
+                  {item.status === 'queued' && (
+                    <button onClick={() => handleRemoveFromQueue(item.email)} className="text-red-500 hover:text-red-700 font-medium">Remove</button>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Creator List */}
@@ -512,18 +633,30 @@ admin@mobileyes.live`)
 
               <div className="flex gap-2">
                 <button
-                  onClick={handleSend}
-                  disabled={sending || sent || !personalNote.trim()}
+                  onClick={handleAddToQueue}
+                  disabled={sent || !personalNote.trim() || queue.some(q => q.email === selectedCreator?.email)}
                   className={cn(
                     "flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-medium text-sm transition-colors",
-                    sent ? "bg-emerald-600 text-white cursor-not-allowed" :
-                    sending ? "bg-blue-400 text-white cursor-wait" :
+                    sent || queue.some(q => q.email === selectedCreator?.email) ? "bg-emerald-600 text-white cursor-not-allowed" :
                     !personalNote.trim() ? "bg-gray-200 text-gray-500 cursor-not-allowed" :
                     "bg-blue-600 text-white hover:bg-blue-700"
                   )}
                 >
                   <Send className="w-4 h-4" />
-                  {sending ? 'Sending via Resend...' : sent ? '✓ Sent — Check Resend Dashboard' : 'Review & Send'}
+                  {queue.some(q => q.email === selectedCreator?.email) ? '✓ In Queue' : sent ? '✓ Queued' : 'Add to Queue'}
+                </button>
+                <button
+                  onClick={handleSend}
+                  disabled={sending || sent || !personalNote.trim()}
+                  className={cn(
+                    "flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-medium text-sm transition-colors",
+                    sending ? "bg-amber-500 text-white cursor-wait" :
+                    sent ? "bg-gray-200 text-gray-500 cursor-not-allowed" :
+                    !personalNote.trim() ? "bg-gray-200 text-gray-500 cursor-not-allowed" :
+                    "bg-gray-800 text-white hover:bg-gray-700"
+                  )}
+                >
+                  {sending ? '...' : 'Send Now'}
                 </button>
               </div>
               {!personalNote.trim() && (
