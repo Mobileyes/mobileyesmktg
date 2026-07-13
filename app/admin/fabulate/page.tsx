@@ -365,6 +365,14 @@ export default function FabulatePipelinePage() {
       updateQueue(updatedQueue)
 
       try {
+        // Strip "How we work" bullets at send time to avoid Gmail Promotions tab
+        let cleanMessage = item.message
+        // Remove the how we work section (bullet points trigger Promotions)
+        cleanMessage = cleanMessage.replace(/How we work:\n(•[^\n]+\n?)+/g, '')
+        cleanMessage = cleanMessage.replace(/How we work:\n(-[^\n]+\n?)+/g, '')
+        // Remove any leftover double blank lines
+        cleanMessage = cleanMessage.replace(/\n{3,}/g, '\n\n')
+
         const res = await fetch('/api/admin/outreach/send', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -372,7 +380,7 @@ export default function FabulatePipelinePage() {
           body: JSON.stringify({
             to: item.email,
             subject: getOptimisedSubject(item.name, item.email),
-            message: item.message,
+            message: cleanMessage,
             fromAlias: 'joel',
           }),
         })
