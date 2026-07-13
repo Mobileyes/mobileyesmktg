@@ -545,12 +545,6 @@ I'm Joel — founder of Mobileyes, a creator agency based in Sydney. We represen
 
 I'm reaching out because we've got briefs coming in from ${brandExamples} that would be a strong fit for ${nicheIntro}. We're selective about who we work with — we only reach out when we genuinely see a match.
 
-How we work:
-• Briefs come to you with the fee upfront — no guessing, no negotiation back-and-forth
-• 4-day payment once content is approved (we carry the float, you get paid fast)
-• Non-exclusive — work with us when it suits you, no lock-in
-• We handle the brand relationship, contracts, and reporting — you just create
-
 We're hearing from brands right now looking for authentic Australian creators in your space. Would you be open to a quick chat about what this looks like?
 
 No pressure either way — just wanted to put it on your radar.
