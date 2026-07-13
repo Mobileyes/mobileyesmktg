@@ -243,9 +243,24 @@ export default function FabulatePipelinePage() {
   const [skipReason, setSkipReason] = useState('')
   const [skippedCreators, setSkippedCreators] = useState<Array<{ name: string; email: string; reason: string }>>([])
 
-  // Queue system
-  const [queue, setQueue] = useState<Array<{ name: string; email: string; subject: string; message: string; status: 'queued' | 'sending' | 'sent' | 'failed'; messageId?: string; error?: string }>>([])
+  // Queue system — persisted to localStorage
+  const [queue, setQueue] = useState<Array<{ name: string; email: string; subject: string; message: string; status: 'queued' | 'sending' | 'sent' | 'failed'; messageId?: string; error?: string }>>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('fabulate_queue')
+      if (saved) return JSON.parse(saved)
+    }
+    return []
+  })
   const [batchSending, setBatchSending] = useState(false)
+  const [previewEmail, setPreviewEmail] = useState<string | null>(null)
+
+  // Persist queue to localStorage on every change
+  const updateQueue = (newQueue: typeof queue) => {
+    setQueue(newQueue)
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('fabulate_queue', JSON.stringify(newQueue))
+    }
+  }
 
   const handleCloseCreator = () => {
     if (!selectedCreator) return
@@ -275,7 +290,7 @@ export default function FabulatePipelinePage() {
     finalLines.splice(1, 0, '', personalNote.trim(), '')
     const finalMessage = finalLines.join('\n')
     
-    setQueue(prev => [...prev, {
+    updateQueue([...queue, {
       name: selectedCreator.name,
       email: selectedCreator.email,
       subject: `Your ${selectedCreator.tiktok ? 'TikTok' : 'Instagram'} content — Mobileyes representation`,
@@ -287,7 +302,7 @@ export default function FabulatePipelinePage() {
   }
 
   const handleRemoveFromQueue = (email: string) => {
-    setQueue(prev => prev.filter(q => q.email !== email))
+    updateQueue(queue.filter(q => q.email !== email))
   }
 
   const handleSendAll = async () => {
@@ -304,7 +319,7 @@ export default function FabulatePipelinePage() {
       const item = queue[i]
       if (item.status !== 'queued') continue
 
-      setQueue(prev => prev.map((q, idx) => idx === i ? { ...q, status: 'sending' } : q))
+      updateQueue(queue.map((q, idx) => idx === i ? { ...q, status: 'sending' as const } : q))
 
       try {
         const res = await fetch('/api/admin/outreach/send', {
@@ -320,13 +335,13 @@ export default function FabulatePipelinePage() {
         })
         if (res.ok) {
           const data = await res.json()
-          setQueue(prev => prev.map((q, idx) => idx === i ? { ...q, status: 'sent', messageId: data.messageId || 'confirmed' } : q))
+          updateQueue(queue.map((q, idx) => idx === i ? { ...q, status: 'sent' as const, messageId: data.messageId || 'confirmed' } : q))
         } else {
           const data = await res.json().catch(() => ({ error: 'Unknown error' }))
-          setQueue(prev => prev.map((q, idx) => idx === i ? { ...q, status: 'failed', error: data.error } : q))
+          updateQueue(queue.map((q, idx) => idx === i ? { ...q, status: 'failed' as const, error: data.error } : q))
         }
       } catch (err) {
-        setQueue(prev => prev.map((q, idx) => idx === i ? { ...q, status: 'failed', error: 'Network error' } : q))
+        updateQueue(queue.map((q, idx) => idx === i ? { ...q, status: 'failed' as const, error: 'Network error' } : q))
       }
 
       // Small delay between sends to avoid rate limiting
