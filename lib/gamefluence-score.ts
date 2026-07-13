@@ -441,7 +441,7 @@ export const PARTNERSHIPS = {
   },
   google: {
     contactName: 'Via Meltwater/Dean connection',
-    relationship: 'Aligned with Google's new social influence measurement framework',
+    relationship: 'Aligned with Googles new social influence measurement framework',
     value: 'Brand Lift survey infrastructure. Search volume data (Google Trends). YouTube deep analytics. Credibility of Google brand.',
     integration: 'Google Trends API for search lift. YouTube Data API for content performance. Potential Brand Lift study integration.',
     gcapAngle: 'Position Gamefluence Score as "aligned with Googles influence measurement standards." Use their methodology as validation.',
