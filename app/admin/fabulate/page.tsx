@@ -239,10 +239,31 @@ export default function FabulatePipelinePage() {
   const [sentTo, setSentTo] = useState('')
   const [messageId, setMessageId] = useState('')
   const [sendError, setSendError] = useState<string | null>(null)
+  const [showSkipModal, setShowSkipModal] = useState(false)
+  const [skipReason, setSkipReason] = useState('')
+  const [skippedCreators, setSkippedCreators] = useState<Array<{ name: string; email: string; reason: string }>>([])
 
   // Queue system
   const [queue, setQueue] = useState<Array<{ name: string; email: string; subject: string; message: string; status: 'queued' | 'sending' | 'sent' | 'failed'; messageId?: string; error?: string }>>([])
   const [batchSending, setBatchSending] = useState(false)
+
+  const handleCloseCreator = () => {
+    if (!selectedCreator) return
+    // If not queued, ask why we're skipping
+    if (!queue.some(q => q.email === selectedCreator.email)) {
+      setShowSkipModal(true)
+    } else {
+      setSelectedCreator(null)
+    }
+  }
+
+  const handleConfirmSkip = () => {
+    if (!selectedCreator || !skipReason.trim()) return
+    setSkippedCreators(prev => [...prev, { name: selectedCreator.name, email: selectedCreator.email, reason: skipReason }])
+    setShowSkipModal(false)
+    setSkipReason('')
+    setSelectedCreator(null)
+  }
 
   const handleAddToQueue = () => {
     if (!selectedCreator || !personalNote.trim()) return
@@ -537,20 +558,24 @@ admin@mobileyes.live`)
             const statusConfig = getStatusConfig(creator.status)
             const isSelected = selectedCreator?.email === creator.email
             const isQueued = queue.some(q => q.email === creator.email)
+            const isSkipped = skippedCreators.some(s => s.email === creator.email)
+            const skipInfo = skippedCreators.find(s => s.email === creator.email)
             return (
               <div
                 key={idx}
                 onClick={() => handleSelectCreator(creator)}
                 className={cn(
                   'bg-white rounded-xl border p-4 cursor-pointer transition-all hover:shadow-md',
-                  isSelected ? 'border-blue-300 shadow-md ring-1 ring-blue-200' : isQueued ? 'border-emerald-300 bg-emerald-50/30' : 'border-gray-200'
+                  isSelected ? 'border-blue-300 shadow-md ring-1 ring-blue-200' : isQueued ? 'border-emerald-300 bg-emerald-50/30' : isSkipped ? 'border-gray-300 bg-gray-50 opacity-60' : 'border-gray-200'
                 )}
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className={cn("w-9 h-9 rounded-lg flex items-center justify-center", isQueued ? "bg-emerald-600" : "")} style={!isQueued ? { background: 'linear-gradient(135deg, #1E293B, #334155)' } : undefined}>
+                    <div className={cn("w-9 h-9 rounded-lg flex items-center justify-center", isQueued ? "bg-emerald-600" : isSkipped ? "bg-gray-400" : "")} style={!isQueued && !isSkipped ? { background: 'linear-gradient(135deg, #1E293B, #334155)' } : undefined}>
                       {isQueued ? (
                         <CheckCircle2 className="w-4 h-4 text-white" />
+                      ) : isSkipped ? (
+                        <span className="text-xs text-white">—</span>
                       ) : (
                         <span className="text-xs font-bold text-white">{creator.name.charAt(0)}</span>
                       )}
@@ -558,6 +583,7 @@ admin@mobileyes.live`)
                     <div>
                       <div className="flex items-center gap-2">
                         <p className="text-sm font-semibold text-gray-900">{creator.name}</p>
+                        {isSkipped && <span className="text-[10px] px-1.5 py-0.5 rounded bg-gray-200 text-gray-500">{skipInfo?.reason}</span>}
                         <span className={cn('px-2 py-0.5 rounded text-[10px] font-semibold', statusConfig.bg, statusConfig.text)}>
                           {statusConfig.label}
                         </span>
@@ -587,10 +613,37 @@ admin@mobileyes.live`)
         <div className="space-y-4">
           {selectedCreator ? (
             <div className="bg-white rounded-xl border border-gray-200 p-5 sticky top-8">
-              <div className="flex items-center gap-2 mb-4">
-                <Mail className="w-4 h-4 text-blue-600" />
-                <h3 className="text-sm font-semibold text-gray-900">Outreach — {selectedCreator.name}</h3>
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-2">
+                  <Mail className="w-4 h-4 text-blue-600" />
+                  <h3 className="text-sm font-semibold text-gray-900">Outreach — {selectedCreator.name}</h3>
+                </div>
+                <button onClick={handleCloseCreator} className="text-gray-400 hover:text-red-500 transition-colors" title="Close / Skip">
+                  ✕
+                </button>
               </div>
+
+              {/* Skip Modal */}
+              {showSkipModal && (
+                <div className="mb-4 p-3 bg-amber-50 border border-amber-200 rounded-lg">
+                  <p className="text-xs font-semibold text-amber-800 mb-2">Why are we skipping {selectedCreator.name}?</p>
+                  <select value={skipReason} onChange={(e) => setSkipReason(e.target.value)} className="w-full px-3 py-2 border border-amber-200 rounded-lg text-xs text-gray-900 mb-2 bg-white">
+                    <option value="">Select reason...</option>
+                    <option value="Already repped by agency">Already repped by agency</option>
+                    <option value="Brand safety concern">Brand safety concern</option>
+                    <option value="Too small / not enough reach">Too small / not enough reach</option>
+                    <option value="Wrong niche for current briefs">Wrong niche for current briefs</option>
+                    <option value="Content quality not a fit">Content quality not a fit</option>
+                    <option value="Couldnt find their profile">Couldn&apos;t find their profile</option>
+                    <option value="Come back to later">Come back to later</option>
+                    <option value="Other">Other</option>
+                  </select>
+                  <div className="flex gap-2">
+                    <button onClick={handleConfirmSkip} disabled={!skipReason.trim()} className="flex-1 px-3 py-2 bg-amber-600 text-white rounded-lg text-xs font-medium disabled:opacity-50">Confirm Skip</button>
+                    <button onClick={() => setShowSkipModal(false)} className="px-3 py-2 border border-gray-200 rounded-lg text-xs text-gray-600">Cancel</button>
+                  </div>
+                </div>
+              )}
 
               {sent && (
                 <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-sm text-emerald-700 mb-4 flex items-center gap-2">
