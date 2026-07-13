@@ -181,12 +181,16 @@ const VIETNAM_CREATORS = [
 const CONNECTED_MARKETPLACES = [
   { name: 'StreamCharts', url: 'https://streamcharts.com', purpose: 'Live streaming analytics, creator discovery, audience data', status: 'CONNECTED' },
   { name: 'Scrumball', url: 'https://scrumball.com', purpose: 'Influencer rankings by region/niche — Vietnam, Indonesia, Thailand gaming creators', status: 'CONNECTED' },
+  { name: 'Meltwater', url: 'https://meltwater.com', purpose: 'Social listening, share of voice, sentiment analysis — GCAP report partner (via Dean)', status: 'PARTNER' },
+  { name: 'Google Trends', url: 'https://trends.google.com', purpose: 'Search volume lift tracking — intent signals for Gamefluence Score', status: 'CONNECTED' },
   { name: 'Modash', url: 'https://modash.io', purpose: 'Influencer search + audience demographics + fake follower detection', status: 'AVAILABLE' },
   { name: 'vidIQ', url: 'https://vidiq.com', purpose: 'YouTube channel analytics, growth trends, keyword research', status: 'CONNECTED' },
   { name: 'SocialBlade', url: 'https://socialblade.com', purpose: 'Cross-platform growth tracking, historical subscriber data', status: 'CONNECTED' },
-  { name: 'TikTok Creator Marketplace', url: 'https://creatormarketplace.tiktok.com', purpose: 'Official TikTok creator discovery + direct campaign booking', status: 'AVAILABLE' },
+  { name: 'TikTok Creator Marketplace', url: 'https://ads.tiktok.com/creative/creatormarketplace', purpose: 'Official TikTok creator discovery + direct campaign booking (Mobileyes.live account)', status: 'CONNECTED' },
+  { name: 'TikTok Business Center', url: 'https://business.tiktok.com', purpose: 'Org ID: 7647763320648384529 — ads, analytics, creator tools', status: 'CONNECTED' },
   { name: 'Nox Influencer', url: 'https://noxinfluencer.com', purpose: 'YouTube analytics, estimated earnings, audience geo', status: 'AVAILABLE' },
   { name: 'CreatorContacts', url: 'https://creatorcontacts.com', purpose: '4M+ YouTube creator emails — verified contact database', status: 'AVAILABLE' },
+  { name: 'Resend', url: 'https://resend.com/emails', purpose: 'Email delivery + open/click tracking for all outreach', status: 'CONNECTED' },
 ]
 
 export default function RoadburnCampaignPage() {
