@@ -6,7 +6,8 @@ export const resend = new Resend(process.env.RESEND_API_KEY)
 // M-05: admin@mobileyes.live is the single inbox. talent@ added when staff hired.
 export const EMAIL_FROM = {
   admin: 'admin@mobileyes.live',
-  talent: 'admin@mobileyes.live', // talent@ added when staff hired
+  joel: 'Joel Kirk <joel@mobileyes.live>',
+  talent: 'Joel Kirk <joel@mobileyes.live>', // outreach comes from Joel personally
   campaigns: 'admin@mobileyes.live', // campaigns@ added when staff hired
 }
 

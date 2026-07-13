@@ -17,7 +17,9 @@ export async function POST(request: Request) {
     }
 
     // Determine sender
-    const from = fromAlias === 'talent'
+    const from = fromAlias === 'joel'
+      ? EMAIL_FROM.joel
+      : fromAlias === 'talent'
       ? EMAIL_FROM.talent
       : fromAlias === 'campaigns'
       ? EMAIL_FROM.campaigns

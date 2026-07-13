@@ -289,11 +289,33 @@ export default function FabulatePipelinePage() {
     // Insert personal note after the greeting (line 0 is "Hi Name,")
     finalLines.splice(1, 0, '', personalNote.trim(), '')
     const finalMessage = finalLines.join('\n')
-    
+
+    // Personalised subject lines that drive opens
+    const firstName = selectedCreator.name.split(' ')[0]
+    const subject = selectedCreator.niche.includes('Adult') || selectedCreator.niche.includes('OF')
+      ? `${firstName} — gaming collab opportunity (GTA 6 + more)`
+      : selectedCreator.niche.includes('Gaming') || selectedCreator.niche.includes('Streaming')
+      ? `${firstName} — brand campaigns for gaming creators (paid, 4-day payment)`
+      : selectedCreator.niche.includes('Beauty') || selectedCreator.niche.includes('Skincare')
+      ? `${firstName} — beauty brand briefs coming in (thought of you)`
+      : selectedCreator.niche.includes('Fashion') || selectedCreator.niche.includes('Sneaker')
+      ? `${firstName} — fashion briefs we think you'd crush`
+      : selectedCreator.niche.includes('Food') || selectedCreator.niche.includes('Entrepreneur')
+      ? `${firstName} — brand partnerships for food/lifestyle creators`
+      : selectedCreator.niche.includes('UGC')
+      ? `${firstName} — paid UGC briefs (brands actively looking)`
+      : selectedCreator.niche.includes('Pets')
+      ? `${firstName} — brand briefs for pet creators (yes, really)`
+      : selectedCreator.niche.includes('Sport') || selectedCreator.niche.includes('NRL')
+      ? `${firstName} — sports brand campaigns (your audience is perfect)`
+      : selectedCreator.niche.includes('Parenting') || selectedCreator.niche.includes('Family')
+      ? `${firstName} — family brand briefs (4-day payment, non-exclusive)`
+      : `${firstName} — brand campaigns we think you'd be perfect for`
+
     updateQueue([...queue, {
       name: selectedCreator.name,
       email: selectedCreator.email,
-      subject: `Your ${selectedCreator.tiktok ? 'TikTok' : 'Instagram'} content — Mobileyes representation`,
+      subject,
       message: finalMessage,
       status: 'queued',
     }])
@@ -315,11 +337,13 @@ export default function FabulatePipelinePage() {
     }
     setBatchSending(true)
 
-    for (let i = 0; i < queue.length; i++) {
-      const item = queue[i]
+    const updatedQueue = [...queue]
+    for (let i = 0; i < updatedQueue.length; i++) {
+      const item = updatedQueue[i]
       if (item.status !== 'queued') continue
 
-      updateQueue(queue.map((q, idx) => idx === i ? { ...q, status: 'sending' as const } : q))
+      updatedQueue[i] = { ...item, status: 'sending' }
+      updateQueue(updatedQueue)
 
       try {
         const res = await fetch('/api/admin/outreach/send', {
@@ -330,22 +354,25 @@ export default function FabulatePipelinePage() {
             to: item.email,
             subject: item.subject,
             message: item.message,
-            fromAlias: 'talent',
+            fromAlias: 'joel',
           }),
         })
         if (res.ok) {
           const data = await res.json()
-          updateQueue(queue.map((q, idx) => idx === i ? { ...q, status: 'sent' as const, messageId: data.messageId || 'confirmed' } : q))
+          updatedQueue[i] = { ...updatedQueue[i], status: 'sent', messageId: data.messageId || 'confirmed' }
+          updateQueue([...updatedQueue])
         } else {
           const data = await res.json().catch(() => ({ error: 'Unknown error' }))
-          updateQueue(queue.map((q, idx) => idx === i ? { ...q, status: 'failed' as const, error: data.error } : q))
+          updatedQueue[i] = { ...updatedQueue[i], status: 'failed', error: data.error }
+          updateQueue([...updatedQueue])
         }
       } catch (err) {
-        updateQueue(queue.map((q, idx) => idx === i ? { ...q, status: 'failed' as const, error: 'Network error' } : q))
+        updatedQueue[i] = { ...updatedQueue[i], status: 'failed', error: 'Network error' }
+        updateQueue([...updatedQueue])
       }
 
       // Small delay between sends to avoid rate limiting
-      await new Promise(resolve => setTimeout(resolve, 1000))
+      await new Promise(resolve => setTimeout(resolve, 1500))
     }
 
     setBatchSending(false)
@@ -370,7 +397,7 @@ export default function FabulatePipelinePage() {
           to: selectedCreator.email,
           subject: `Your ${selectedCreator.tiktok ? 'TikTok' : 'Instagram'} content — Mobileyes representation`,
           message: finalMessage,
-          fromAlias: 'talent',
+          fromAlias: 'joel',
         }),
       })
       if (res.ok) {
