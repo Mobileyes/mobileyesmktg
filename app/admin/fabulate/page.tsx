@@ -327,6 +327,25 @@ export default function FabulatePipelinePage() {
     updateQueue(queue.filter(q => q.email !== email))
   }
 
+  // Generate optimised subject line for a creator
+  const getOptimisedSubject = (name: string, email: string): string => {
+    const firstName = name.split(' ')[0]
+    const creator = FABULATE_CREATORS.find(c => c.email === email)
+    if (!creator) return `${firstName} — brand campaigns we think you'd be perfect for`
+    const niche = creator.niche
+    if (niche.includes('Adult') || niche.includes('OF')) return `${firstName} — gaming collab opportunity (GTA 6 + more)`
+    if (niche.includes('Gaming') || niche.includes('Streaming')) return `${firstName} — brand campaigns for gaming creators (paid, 4-day payment)`
+    if (niche.includes('Beauty') || niche.includes('Skincare')) return `${firstName} — beauty brand briefs coming in (thought of you)`
+    if (niche.includes('Fashion') || niche.includes('Sneaker')) return `${firstName} — fashion briefs we think you'd crush`
+    if (niche.includes('Food') || niche.includes('Entrepreneur')) return `${firstName} — brand partnerships for food/lifestyle creators`
+    if (niche.includes('UGC')) return `${firstName} — paid UGC briefs (brands actively looking)`
+    if (niche.includes('Pets')) return `${firstName} — brand briefs for pet creators (yes, really)`
+    if (niche.includes('Sport') || niche.includes('NRL')) return `${firstName} — sports brand campaigns (your audience is perfect)`
+    if (niche.includes('Parenting') || niche.includes('Family')) return `${firstName} — family brand briefs (4-day payment, non-exclusive)`
+    if (niche.includes('Media') || niche.includes('Journalist') || niche.includes('Podcast')) return `${firstName} — creator campaigns for media talent`
+    return `${firstName} — brand campaigns we think you'd be perfect for`
+  }
+
   const handleSendAll = async () => {
     if (queue.length === 0 || batchSending) return
     // Safety check — don't send anything with placeholder text
@@ -352,7 +371,7 @@ export default function FabulatePipelinePage() {
           credentials: 'include',
           body: JSON.stringify({
             to: item.email,
-            subject: item.subject,
+            subject: getOptimisedSubject(item.name, item.email),
             message: item.message,
             fromAlias: 'joel',
           }),
