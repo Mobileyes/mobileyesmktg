@@ -286,31 +286,14 @@ export default function FabulatePipelinePage() {
     const messageLines = outreachMessage.split('\n')
     // Remove the placeholder line and insert the personal note after "Hi [Name],"
     const finalLines = messageLines.filter(line => !line.includes('[YOUR PERSONAL NOTE'))
+    // Also strip How we work bullets pre-emptively
+    const cleanLines = finalLines.filter(line => !line.startsWith('How we work:') && !line.startsWith('•'))
     // Insert personal note after the greeting (line 0 is "Hi Name,")
-    finalLines.splice(1, 0, '', personalNote.trim(), '')
-    const finalMessage = finalLines.join('\n')
+    cleanLines.splice(1, 0, '', personalNote.trim(), '')
+    const finalMessage = cleanLines.join('\n').replace(/\n{3,}/g, '\n\n')
 
     // Personalised subject lines that drive opens
-    const firstName = selectedCreator.name.split(' ')[0]
-    const subject = selectedCreator.niche.includes('Adult') || selectedCreator.niche.includes('OF')
-      ? `${firstName} — gaming collab opportunity (GTA 6 + more)`
-      : selectedCreator.niche.includes('Gaming') || selectedCreator.niche.includes('Streaming')
-      ? `${firstName} — brand campaigns for gaming creators (paid, 4-day payment)`
-      : selectedCreator.niche.includes('Beauty') || selectedCreator.niche.includes('Skincare')
-      ? `${firstName} — beauty brand briefs coming in (thought of you)`
-      : selectedCreator.niche.includes('Fashion') || selectedCreator.niche.includes('Sneaker')
-      ? `${firstName} — fashion briefs we think you'd crush`
-      : selectedCreator.niche.includes('Food') || selectedCreator.niche.includes('Entrepreneur')
-      ? `${firstName} — brand partnerships for food/lifestyle creators`
-      : selectedCreator.niche.includes('UGC')
-      ? `${firstName} — paid UGC briefs (brands actively looking)`
-      : selectedCreator.niche.includes('Pets')
-      ? `${firstName} — brand briefs for pet creators (yes, really)`
-      : selectedCreator.niche.includes('Sport') || selectedCreator.niche.includes('NRL')
-      ? `${firstName} — sports brand campaigns (your audience is perfect)`
-      : selectedCreator.niche.includes('Parenting') || selectedCreator.niche.includes('Family')
-      ? `${firstName} — family brand briefs (4-day payment, non-exclusive)`
-      : `${firstName} — brand campaigns we think you'd be perfect for`
+    const subject = getOptimisedSubject(selectedCreator.name, selectedCreator.email)
 
     updateQueue([...queue, {
       name: selectedCreator.name,
@@ -321,6 +304,55 @@ export default function FabulatePipelinePage() {
     }])
     setSent(true)
     setSentTo('Added to queue')
+  }
+
+  const handleAutoQueueAll = () => {
+    if (queue.length > 0) {
+      if (!confirm('This will replace your current queue with all 17 creators using pre-filled openers. Continue?')) return
+    }
+    const newQueue: typeof queue = []
+    for (const creator of FABULATE_CREATORS) {
+      if (queue.some(q => q.email === creator.email && q.status === 'sent')) continue // skip already sent
+      const firstName = creator.name.split(' ')[0]
+      const opener = creator.suggestedOpener || ''
+      if (!opener) continue
+
+      const isAdult = creator.niche.includes('Adult') || creator.niche.includes('OF')
+      const nicheIntro = creator.niche.includes('Beauty') || creator.niche.includes('Skincare') ? 'your beauty content' :
+        creator.niche.includes('Fashion') || creator.niche.includes('Sneaker') ? 'your fashion content' :
+        creator.niche.includes('Gaming') || creator.niche.includes('Streaming') ? 'your gaming content' :
+        creator.niche.includes('UGC') ? 'your UGC work' :
+        creator.niche.includes('Pets') ? 'your pet content' :
+        creator.niche.includes('Food') || creator.niche.includes('Entrepreneur') ? 'your content' :
+        creator.niche.includes('Parenting') || creator.niche.includes('Family') ? 'your family content' :
+        'your content'
+
+      const brandRef = creator.niche.includes('Beauty') || creator.niche.includes('Skincare') ? 'beauty, skincare, and wellness brands' :
+        creator.niche.includes('Fashion') || creator.niche.includes('Sneaker') ? 'fashion and lifestyle brands' :
+        creator.niche.includes('Gaming') || creator.niche.includes('Streaming') ? 'gaming and entertainment brands' :
+        creator.niche.includes('UGC') ? 'e-commerce and DTC brands' :
+        creator.niche.includes('Pets') ? 'pet and family lifestyle brands' :
+        creator.niche.includes('Food') || creator.niche.includes('Entrepreneur') ? 'food and lifestyle brands' :
+        creator.niche.includes('Parenting') || creator.niche.includes('Family') ? 'family and FMCG brands' :
+        creator.niche.includes('Sport') || creator.niche.includes('NRL') ? 'sports and betting brands' :
+        'brands across lifestyle and consumer products'
+
+      let message: string
+      if (isAdult) {
+        message = `Hi ${firstName},\n\n${opener}\n\nI'm Joel — founder of Mobileyes, a creator agency based in Sydney. We represent talent for brand campaigns across gaming, entertainment, and lifestyle.\n\nWith GTA 6 coming out, gaming brands are actively seeking crossover talent with engaged audiences. This would be incremental for you — new revenue, different brands, no conflict with your existing agency.\n\nWould love to organise a quick Google Meet to chat about what this could look like. No commitment — just exploring if there's a fit.\n\nJoel Kirk\nMobileyes — mobileyes.live`
+      } else {
+        message = `Hi ${firstName},\n\n${opener}\n\nI'm Joel — founder of Mobileyes, a creator agency based in Sydney. We represent talent for brand campaigns across Australia and APAC.\n\nWe've got briefs coming in from ${brandRef} that would be a strong fit for ${nicheIntro}. We're selective about who we work with — we only reach out when we genuinely see a match.\n\nWould you be open to a quick chat about what this looks like?\n\nNo pressure either way — just wanted to put it on your radar.\n\nJoel Kirk\nMobileyes — mobileyes.live`
+      }
+
+      newQueue.push({
+        name: creator.name,
+        email: creator.email,
+        subject: getOptimisedSubject(creator.name, creator.email),
+        message,
+        status: 'queued',
+      })
+    }
+    updateQueue(newQueue)
   }
 
   const handleRemoveFromQueue = (email: string) => {
@@ -545,7 +577,8 @@ admin@mobileyes.live`)
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-4 gap-4 mb-6">
+      <div className="flex items-center justify-between mb-4">
+        <div className="grid grid-cols-4 gap-4 flex-1 mr-4">
         <div className="bg-white rounded-xl border border-gray-200 p-4">
           <p className="text-2xl font-bold text-gray-900">{FABULATE_CREATORS.length}</p>
           <p className="text-xs text-gray-500">Total Creators</p>
@@ -562,6 +595,10 @@ admin@mobileyes.live`)
           <p className="text-2xl font-bold text-emerald-600">{queue.filter(q => q.status === 'sent').length}</p>
           <p className="text-xs text-gray-500">Sent</p>
         </div>
+      </div>
+        <button onClick={handleAutoQueueAll} className="px-4 py-2 bg-violet-600 text-white rounded-lg text-sm font-medium hover:bg-violet-700 whitespace-nowrap">
+          Queue All 17
+        </button>
       </div>
 
       {/* Send Queue */}
