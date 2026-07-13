@@ -419,7 +419,7 @@ export interface MeltwaterIntegration {
 
 export interface GooglePartnership {
   enabled: boolean
-  // Google's influence measurement framework alignment
+  // Googles influence measurement framework alignment
   capabilities: [
     'brand_lift_surveys',    // In-platform brand lift studies
     'search_volume_data',   // Google Trends API for intent signals
@@ -441,10 +441,10 @@ export const PARTNERSHIPS = {
   },
   google: {
     contactName: 'Via Meltwater/Dean connection',
-    relationship: 'Aligned with Google\\'s new social influence measurement framework',
+    relationship: 'Aligned with Google's new social influence measurement framework',
     value: 'Brand Lift survey infrastructure. Search volume data (Google Trends). YouTube deep analytics. Credibility of Google brand.',
     integration: 'Google Trends API for search lift. YouTube Data API for content performance. Potential Brand Lift study integration.',
-    gcapAngle: 'Position Gamefluence Score as "aligned with Google\\'s influence measurement standards." Use their methodology as validation.',
+    gcapAngle: 'Position Gamefluence Score as "aligned with Googles influence measurement standards." Use their methodology as validation.',
   },
   screenAgencies: {
     targets: ['Screen Australia', 'Screen NSW', 'Film Victoria', 'Screen Queensland'],
