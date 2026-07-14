@@ -96,9 +96,9 @@ export const NEIL_KICK_STRATEGY = {
     scale: 'Train managed creators to clip their own content. Gamefluence becomes the distribution engine.',
   },
 
-  // ─── THE LOT LAP — BRANDED ROAD TRIP CONTENT ──────────
-  theLotLap: {
-    concept: 'Joel picks up a P1 rig from Neil, drives it down the coast to GCAP Melbourne, stopping at gaming creators along the way. Branded road trip content series.',
+  // ─── THE HOT LAP — P1 STANDALONE CONTENT PROPERTY ────
+  theHotLap: {
+    concept: 'Joel picks up a P1 rig from Neil, drives it down the coast to GCAP/PAX Melbourne, stopping at gaming creators along the way. Branded road trip content series. STANDALONE P1 property.',
     route: [
       { stop: 'Neils place (P1 HQ)', location: 'North of Sydney / Newcastle area', activity: 'Pick up the rig. Film the build. Interview Neil about P1.', content: 'Episode 1: The Rig' },
       { stop: 'Central Coast', location: 'Central Coast NSW', activity: 'Visit Simon + Mike from Kids From Next Door / LFG Gaming. Set up rig. They play.', content: 'Episode 2: The OGs' },
@@ -110,6 +110,43 @@ export const NEIL_KICK_STRATEGY = {
     platforms: 'YouTube series (5 episodes) + TikTok/Shorts clips from each stop + live streams at each stop on Kick',
     budget: 'Fuel + accommodation (~$1,500-$2,000). Rig provided by Neil. Content = Joel + phone/camera.',
     gcapTiming: 'October 2026. Arrive in Melbourne for GCAP with the rig, full content series already published. Present at GCAP with the case study.',
+    year2Evolution: 'Year 2 becomes a fully funded production — pitch to all state screen agencies. Each state pays $5-10K for their segment. Full crew, higher production value. Called "The Hot Lap" proper.',
+    topGearSegment: {
+      concept: 'Neil donates a sim racing rig AND a flight sim rig as competition prizes. We USE them the entire trip — setting them up at every stop, filming people playing, creating challenges. At the final stop (GCAP/PAX), we give them away live on stage or on stream to competition winners.',
+      format: 'Top Gear-style challenges at each stop: "Can this flight sim veteran beat this racing sim pro on a P1 rig?" Lap times, head-to-heads, ridiculous challenges. Entertainment content, not just reviews.',
+      rigsOnTheRoad: ['1x P1 Flight Sim Rig (HOTAS, pedals, MFDs — the dream DCS setup)', '1x P1 Racing Sim Rig (direct drive, triple monitor ready — the dream racing setup)'],
+      competitionMechanic: 'Viewers enter throughout the series. Each episode teases the giveaway. Final episode = live draw at GCAP/PAX. Massive engagement driver across all episodes.',
+      neilCost: 'Two rigs at cost (~$5K-$10K total). Return: massive brand exposure across 5+ episodes, every gaming creator they visit plays on P1, content lives forever on YouTube.',
+      contentStyle: 'Top Gear meets gaming: banter, challenges, rivalries between sim racers and flight simmers, ridiculous scenarios (can you drift a flight sim rig? can a DCS pilot win a racing lap?). Fun, entertaining, shareable.',
+    },
+  },
+
+  // ─── PATHWAY TO PAX — MAJOR CONTENT SERIES ────────────
+  pathwayToPax: {
+    concept: 'Full QLD-to-Melbourne content creation tour tied to PAX Aus. Stop at every gaming studio, creator, and key part of the gaming economy. Year 1 version of The Hot Lap concept — proves it works before seeking full government/state funding.',
+    routeExpanded: [
+      { region: 'Queensland', stops: 'Brisbane/Gold Coast game studios, screen agency meetings, local creators' },
+      { region: 'Northern NSW', stops: 'Neil/P1 (pick up rig), Newcastle gaming community' },
+      { region: 'Central Coast', stops: 'Simon, Mike (Kids From Next Door), LFG Gaming' },
+      { region: 'Sydney', stops: 'Gaming studios, brand meetings, creator content days' },
+      { region: 'Canberra', stops: 'Flight sim creators (Jacob/DCS), indie devs, government gaming contacts' },
+      { region: 'Regional VIC', stops: 'Studios along the way, smaller creator meetups' },
+      { region: 'Melbourne', stops: 'GCAP + PAX Aus — arrive with full content series, present Gamefluence Score, P1 rig demo' },
+    ],
+    contentOutput: [
+      'Gamefluence podcast episodes (recorded at each stop)',
+      'Mobileyes creator features (sign talent along the route)',
+      'YouTube series (episodic, each stop = 1 episode)',
+      'TikTok/Shorts clips from every meeting',
+      'Live streams on Kick at key stops',
+      'P1 rig featured throughout (in-car, set up at studios, demo at events)',
+    ],
+    fundingStrategy: {
+      year1: 'Self-funded or light sponsor (P1 covers rig, fuel ~$3K). Content proves the concept.',
+      year2: 'Pitch to ALL state screen agencies. Each state contributes $5-10K for their segment. Total: $30-50K. Full production crew.',
+      governmentAngle: 'Screen Australia / state agencies fund as "gaming industry development content" — showcases AU game studios, creates employment, promotes sector internationally.',
+      brandSponsors: ['P1 (hardware)', 'Logitech/Fanatec (peripherals)', 'Game studios (featured stops)', 'AppsFlyer (attribution demo)', 'Energy drink (travel content)'],
+    },
   },
 
   // ─── HOW TO INFLUENCE WHATS POPULAR ON KICK ───────────
