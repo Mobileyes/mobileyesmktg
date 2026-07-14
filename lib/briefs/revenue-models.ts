@@ -82,7 +82,7 @@ export const ROADBURN_REVENUE_MODEL = {
     'Would you be open to sharing Firebase analytics with us for campaign measurement?',
     'Are you running rewarded video ads in-game? (we can benchmark attention metrics)',
     'What is your total game dev budget annually? (helps us size our % of spend)',
-    'Have you tried influencer campaigns before? What worked/didn\\'t?',
+    'Have you tried influencer campaigns before? What worked/didn\t?',
     'Do you have a token/promo code system we can use for attribution?',
   ],
 
@@ -120,7 +120,7 @@ export const ROADBURN_REVENUE_MODEL = {
       markets: ['All SEA', 'India (test)', 'LATAM (test)'],
       expectedInstalls: '80,000-200,000',
       budget: '$8,000-$20,000 AUD',
-      kpis: ['Sustained CPI < $0.20', 'ROAS > 3x', 'Tim\\'s revenue up 20%+ from creator cohort'],
+      kpis: ['Sustained CPI < $0.20', 'ROAS > 3x', 'Tims revenue up 20%+ from creator cohort'],
     },
   },
 }
@@ -180,7 +180,7 @@ export const P1_REVENUE_MODEL = {
 
   // What good looks like for Neil
   successMetrics: {
-    month1: '2-3 attributed rig sales from Jacob\\'s content (est $5K-$15K revenue for Neil)',
+    month1: '2-3 attributed rig sales from Jacobs content (est $5K-$15K revenue for Neil)',
     month3: '5-10 rig sales/month from creator content (est $15K-$50K/month)',
     month6: '10-20 rig sales/month + repeat purchases (peripherals, upgrades)',
     annual: 'Creator channel drives 30-50% of online sales ($150K-$400K attributed)',
