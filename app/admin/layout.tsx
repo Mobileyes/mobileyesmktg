@@ -34,6 +34,8 @@ const navItems = [
   { href: '/admin/roadburn', label: 'Roadburn (Tim)', icon: Car },
   { href: '/admin/fabulate', label: 'Fabulate (Nathan)', icon: Users },
   { href: '/admin/brands', label: 'Brand Intel', icon: Search },
+  { href: '/admin/clients', label: 'Clients', icon: Search },
+  { href: '/admin/partners', label: 'Partners', icon: Search },
   { href: '/admin/billing', label: 'Billing', icon: DollarSign },
   { href: '/admin/analytics', label: 'Analytics', icon: BarChart3 },
 ]
