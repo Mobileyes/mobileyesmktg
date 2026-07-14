@@ -37,7 +37,7 @@ export const NEIL_KICK_STRATEGY = {
       'Creator showcase streams (featuring managed talent)',
       'Game review streams (Gamefluence Score live — rate games on stream)',
       'Tournament/community events (P1 rigs as prizes)',
-      'The Lot Lap road trip series (see below)',
+      'The Hot Lap road trip series (see below)',
     ],
     monetization: [
       'Kick creator payouts (viewership-based)',
