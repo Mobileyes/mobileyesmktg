@@ -25,12 +25,28 @@ export const NEIL_KICK_STRATEGY = {
     neilRole: 'Hardware partner. P1 rigs are the set dressing for premium streaming setups. Every sponsored stream needs a rig.',
     joelRole: 'Talent agency + content measurement. Brings the creators, manages the campaigns, measures the results.',
     kickNeed: 'Content. Always content. Kick needs creators streaming, needs brands spending, needs viewership growing. They need a content agency partner who gets gaming.',
+    keyContacts: {
+      ryan: 'Ryan at Kick — key contact for contract/agency deal. Joel needs to land this.',
+      eddie: 'Eddie — Joel + Neil both know him personally. F1 driver. Dream content: Eddie does his sim lap in his F1 car on a P1 rig. If Kick deal lands, Eddie content = massive credibility moment.',
+    },
+    eddieContent: {
+      concept: 'Eddie does a sim lap in his actual F1 car setup replicated on a P1 rig. Compares real lap times to sim times. Ultimate crossover content.',
+      value: 'Mainstream credibility. F1 audience crossover into sim racing. P1 brand elevated instantly. Kick gets premium content they cant get anywhere else.',
+      trigger: 'Only happens if Kick contract lands first. Eddie content = the premium tier that justifies the agency deal.',
+    },
   },
 
   // ─── GAMEFLUENCE ON KICK ──────────────────────────────
   gamefluenceChannel: {
     platform: 'Kick (primary) + multicast to YouTube, TikTok, Twitch',
     concept: 'Gamefluence branded channel — gaming reviews, creator showcases, sponsored streams, rig builds, game launches',
+    podcast: {
+      name: 'Gamefluence Podcast',
+      format: 'Camp chairs + sign in the sand. Low-fi, authentic, no studio needed. Record anywhere — beach, road trip, event, backyard.',
+      style: 'Two mates talking gaming, creators, and campaigns. Guests join on location.',
+      distribution: ['YouTube', 'Spotify', 'Kick VOD', 'TikTok clips', 'Apple Podcasts'],
+      cost: 'Near zero. Phone + camp chairs + printed sign. Content gold.',
+    },
     contentTypes: [
       'Sponsored game streams (paid by publishers/studios)',
       'P1 rig build streams (sponsored by Neil, affiliate-driven)',
